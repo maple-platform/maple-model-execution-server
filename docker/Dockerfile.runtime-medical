@@ -1,0 +1,12 @@
+FROM maple/runtime-basic:latest
+
+# MONAI for BraTS segmentation models
+RUN pip install --no-cache-dir \
+    monai==1.5.2
+
+# TorchXRayVision for ChestXray14 — install without deps to avoid torch conflict
+RUN pip install --no-cache-dir --no-deps \
+    torchxrayvision==1.4.0
+
+EXPOSE 8000
+CMD ["uvicorn", "app.runtime_server:app", "--host", "0.0.0.0", "--port", "8000"]

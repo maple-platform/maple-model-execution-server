@@ -1,0 +1,13 @@
+{
+  "model_name": "ChestXray14_Multilabel_Classification",
+  "description": "Radiology chest X-ray abnormality classification model. PNG/JPG chest X-ray image input is analyzed with TorchXRayVision resnet50-res512-all to return a Grad-CAM overlay image plus multi-label classification probabilities for 14 thoracic findings.",
+  "task_type": "classification",
+  "disease": "chest x-ray, thoracic abnormality, atelectasis, cardiomegaly, effusion, infiltration, mass, nodule, pneumonia, pneumothorax, consolidation, edema, emphysema, fibrosis, pleural thickening, hernia",
+  "model_type": "standalone",
+  "required_data": ["image"],
+  "result_type": "image",
+  "output_image_role": "gradcam_overlay",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

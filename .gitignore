@@ -1,0 +1,86 @@
+# Model weights
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.bin
+*.h5
+*.pkl
+
+# Medical imaging data — 환자 데이터, 절대 업로드 금지
+*.nii
+*.nii.gz
+*.dcm
+*.dicom
+*.mha
+*.mhd
+*.nrrd
+
+# Sample / test data — 의료 샘플 포함 가능성
+inputs/
+outputs/
+data/
+sample_data/
+results/
+
+# Checkpoint directories
+checkpoint/
+checkpoints/
+
+# Secrets / credentials
+secrets/
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+
+# ML experiment tracking
+wandb/
+mlruns/
+runs/
+.neptune/
+lightning_logs/
+
+# Local database
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# Logs
+*.log
+logs/

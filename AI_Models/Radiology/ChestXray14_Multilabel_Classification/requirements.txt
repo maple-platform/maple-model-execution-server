@@ -1,0 +1,11 @@
+# Python 3.12 / CUDA 13.1 tested on NVIDIA B200 with system PyTorch 2.10.0a0.
+# If the platform image already provides torch/torchvision, install torchxrayvision with --no-deps.
+# torch==2.10.0a0+b4e4ee81d3.nv25.12
+# torchvision==0.25.0a0+ca221243
+
+numpy==2.1.0
+Pillow==12.0.0
+torchxrayvision==1.4.0
+imageio
+scikit-image
+opencv-python-headless==4.10.0.84

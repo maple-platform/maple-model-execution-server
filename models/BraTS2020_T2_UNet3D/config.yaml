@@ -1,0 +1,11 @@
+model_name: BraTS2020_T2_UNet3D
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/BraTS2020_T2_UNet3D/runner.py
+inference_path: /app/AI_Models/Neurology/BraTS2020_T2_UNet3D/inference.py
+model_path: /app/AI_Models/Neurology/BraTS2020_T2_UNet3D/checkpoint/best.pt
+meta:
+  description: "BraTS2020 T2 modality brain tumor segmentation (UNet3D)"
+  modality: T2 MRI
+  task: segmentation
+  regions: [WT, TC, ET]

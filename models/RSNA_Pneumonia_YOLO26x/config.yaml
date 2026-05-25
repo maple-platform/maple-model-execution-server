@@ -1,0 +1,11 @@
+model_name: RSNA_Pneumonia_YOLO26x
+execution_mode: external_runtime
+runtime: runtime-yolo
+runner_path: /app/models/RSNA_Pneumonia_YOLO26x/runner.py
+inference_path: /app/AI_Models/Radiology/RSNA_Pneumonia_YOLO26x/inference.py
+model_path: /app/AI_Models/Radiology/RSNA_Pneumonia_YOLO26x/checkpoint/best.pt
+meta:
+  description: "RSNA Pneumonia opacity detection (YOLOv8)"
+  modality: Chest X-ray (DICOM)
+  task: object_detection
+  labels: [pneumonia_opacity]

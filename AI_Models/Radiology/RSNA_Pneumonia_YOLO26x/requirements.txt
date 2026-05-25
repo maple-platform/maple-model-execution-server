@@ -1,0 +1,11 @@
+# Python 3.12 / CUDA 선택적 (CPU 동작 가능)
+# DICOM 입력 모델 — pylibjpeg 불필요 (RSNA DICOM은 비압축)
+
+ultralytics==8.4.51
+
+pydicom==3.0.2
+numpy==2.4.6
+Pillow==12.2.0
+
+# 컨테이너 환경에서는 opencv-python-headless 사용
+opencv-python-headless==4.10.0.84

@@ -1,0 +1,7 @@
+# Python 3.12 / CUDA 13.0
+# NIfTI 입력 모델
+
+torch==2.12.0+cu130
+monai==1.5.2
+nibabel==5.4.2
+numpy==2.4.6
