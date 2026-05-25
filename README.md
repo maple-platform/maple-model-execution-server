@@ -52,12 +52,12 @@ maple-model-execution-server/
 │   └── Dockerfile.runtime-nnunet  # runtime-basic + nnunetv2
 │
 ├── models/                        # 모델별 config + runner (volume mount)
-│   ├── brats-t1/
-│   ├── brats-t1ce/
-│   ├── brats-t2/
-│   ├── brats-flair/
-│   ├── chestxray14/
-│   ├── rsna-pneumonia/
+│   ├── BraTS2020_T1_UNet3D/
+│   ├── BraTS2020_T1ce_UNet3D/
+│   ├── BraTS2020_T2_UNet3D/
+│   ├── BraTS2020_FLAIR_UNet3D/
+│   ├── ChestXray14_Multilabel_Classification/
+│   ├── RSNA_Pneumonia_YOLO26x/
 │   └── example_model/             # 템플릿
 │
 ├── AI_Models/                     # 기존 inference.py + 모델 소스 (volume mount)
@@ -107,12 +107,12 @@ curl http://localhost:9021/health
 
 | model_name | runtime | 입력 | 출력 |
 |------------|---------|------|------|
-| `brats-t1` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
-| `brats-t1ce` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
-| `brats-t2` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
-| `brats-flair` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
-| `chestxray14` | runtime-medical | PNG/JPG (흉부 X-ray) | Grad-CAM 오버레이 + 14개 레이블 예측 |
-| `rsna-pneumonia` | runtime-yolo | DICOM (.dcm) | 폐렴 opacity bbox 오버레이 |
+| `BraTS2020_T1_UNet3D` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
+| `BraTS2020_T1ce_UNet3D` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
+| `BraTS2020_T2_UNet3D` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
+| `BraTS2020_FLAIR_UNet3D` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
+| `ChestXray14_Multilabel_Classification` | runtime-medical | PNG/JPG (흉부 X-ray) | Grad-CAM 오버레이 + 14개 레이블 예측 |
+| `RSNA_Pneumonia_YOLO26x` | runtime-yolo | DICOM (.dcm) | 폐렴 opacity bbox 오버레이 |
 
 ---
 
@@ -143,9 +143,9 @@ curl http://localhost:9021/health
 
 ```json
 {
-  "model_name": "brats-t1",
+  "model_name": "BraTS2020_T1_UNet3D",
   "input_path": "/app/inputs/sample.nii.gz",
-  "output_dir": "/app/outputs/brats-t1",
+  "output_dir": "/app/outputs/BraTS2020_T1_UNet3D",
   "params": {}
 }
 ```
@@ -162,11 +162,11 @@ curl http://localhost:9021/health
 ```json
 {
   "status": "ok",
-  "model_name": "brats-t1",
+  "model_name": "BraTS2020_T1_UNet3D",
   "result": {
     "images_b64": ["<base64 PNG>", "..."],
     "labels": ["all_regions", "WT", "TC", "ET"],
-    "output_files": ["/app/outputs/brats-t1/sample_all_regions.png"]
+    "output_files": ["/app/outputs/BraTS2020_T1_UNet3D/sample_all_regions.png"]
   }
 }
 ```
@@ -191,8 +191,8 @@ curl http://localhost:9021/health
   "model_id": "brats-t1",
   "input_data": "/app/inputs/sample.nii.gz",
   "params": {
-    "container_url": "http://localhost:9005",
-    "model_path": "/AI_Models/Neurology/BraTS2020_T1_UNet3D/checkpoint/best.pt",
+    "container_url": "http://localhost:9021",
+    "model_path": "/app/AI_Models/Neurology/BraTS2020_T1_UNet3D/checkpoint/best.pt",
     "timeout": 120.0
   }
 }
@@ -253,7 +253,7 @@ def predict(input_path: str, output_dir: str, config: dict) -> dict:
 ```bash
 curl -X POST http://localhost:8110/infer/v2 \
   -H "Content-Type: application/json" \
-  -d '{"model_name": "my_model", "input_path": "/app/inputs/sample.nii.gz"}'
+  -d '{"model_name": "BraTS2020_T1_UNet3D", "input_path": "/app/inputs/sample.nii.gz"}'
 ```
 
 자세한 내용은 [docs/runtime_architecture.md](docs/runtime_architecture.md) 참고.
