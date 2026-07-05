@@ -1,10 +1,15 @@
 FROM maple/runtime-basic:latest
 
-# MONAI for BraTS segmentation models
-RUN pip install --no-cache-dir \
-    monai==1.5.2
+# OpenCV 런타임 의존 (ChestXray14 Grad-CAM 오버레이용). libgl1/libglib2.0은 headless에서도 필요.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
 
-# TorchXRayVision for ChestXray14 — install without deps to avoid torch conflict
+RUN pip install --no-cache-dir \
+    monai==1.5.2 \
+    opencv-python-headless==4.10.0.84
+
 RUN pip install --no-cache-dir --no-deps \
     torchxrayvision==1.4.0
 
