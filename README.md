@@ -66,7 +66,7 @@ maple-model-execution-server/
 │   │   ├── BraTS2020_T1ce_UNet3D/
 │   │   ├── BraTS2020_T2_UNet3D/
 │   │   └── BraTS2020_FLAIR_UNet3D/
-│   └── Radiology/
+│   └── Pulmonology/
 │       ├── ChestXray14_Multilabel_Classification/
 │       └── RSNA_Pneumonia_YOLO26x/
 │

@@ -15,8 +15,8 @@
 | BraTS2020 T1ce UNet3D | `maple/brats-t1ce` | ✅ | `AI_Models/Neurology/BraTS2020_T1ce_UNet3D/` |
 | BraTS2020 T2 UNet3D | `maple/brats-t2` | ✅ | `AI_Models/Neurology/BraTS2020_T2_UNet3D/` |
 | BraTS2020 FLAIR UNet3D | `maple/brats-flair` | ✅ | `AI_Models/Neurology/BraTS2020_FLAIR_UNet3D/` |
-| ChestXray14 Multilabel | `maple/chestxray14` | ✅ | `AI_Models/Radiology/ChestXray14_Multilabel_Classification/` |
-| RSNA Pneumonia YOLO | `maple/rsna-pneumonia` | ✅ | `AI_Models/Radiology/RSNA_Pneumonia_YOLO26x/` |
+| ChestXray14 Multilabel | `maple/chestxray14` | ✅ | `AI_Models/Pulmonology/ChestXray14_Multilabel_Classification/` |
+| RSNA Pneumonia YOLO | `maple/rsna-pneumonia` | ✅ | `AI_Models/Pulmonology/RSNA_Pneumonia_YOLO26x/` |
 | nnUNet SMWI Segmentation | `maple/nnunet-smwi` | ❌ | 이 레포에 없음 (별도 레포 추정) |
 | BME Classification | `maple/bme-classifier` | ❌ | 이 레포에 없음 |
 | SI Joints Detection | `maple/si-joint-detector` | ❌ | 이 레포에 없음 |
@@ -78,7 +78,7 @@
 
 | 항목 | 값 |
 |------|----|
-| Dockerfile | `AI_Models/Radiology/ChestXray14_Multilabel_Classification/Dockerfile` |
+| Dockerfile | `AI_Models/Pulmonology/ChestXray14_Multilabel_Classification/Dockerfile` |
 | Base Image | `nvcr.io/nvidia/pytorch:25.12-py3` |
 | Python | 3.12 |
 | PyTorch | `2.10.0a0+b4e4ee81d3.nv25.12` (NV container 제공, requirements.txt에서 주석 처리) |
@@ -101,7 +101,7 @@
 
 | 항목 | 값 |
 |------|----|
-| Dockerfile | `AI_Models/Radiology/RSNA_Pneumonia_YOLO26x/Dockerfile` |
+| Dockerfile | `AI_Models/Pulmonology/RSNA_Pneumonia_YOLO26x/Dockerfile` |
 | Base Image | `python:3.12-slim` |
 | Python | 3.12 |
 | PyTorch | ultralytics 내 torch 의존성 (CPU/GPU 자동) |
@@ -110,7 +110,7 @@
 | 기타 의존성 | pydicom 3.0.2, numpy 2.4.6, Pillow 12.2.0, opencv-python-headless 4.10.0.84 |
 | Weight in Image | ✅ (`COPY . .`로 `checkpoint/best.pt` 포함) |
 | Weight Path (컨테이너 내) | `/app/checkpoint/best.pt` |
-| Weight Path (volume) | `/AI_Models/Radiology/RSNA_Pneumonia_YOLO26x/checkpoint/best.pt` |
+| Weight Path (volume) | `/AI_Models/Pulmonology/RSNA_Pneumonia_YOLO26x/checkpoint/best.pt` |
 | Runner | `server.py` → `inference.py::main()` |
 | Input | DICOM 흉부 X-ray 파일 경로 |
 | Output | `(np.ndarray, list[dict])` — bbox overlay 이미지 + 탐지 결과 목록 |

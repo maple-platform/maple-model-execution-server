@@ -111,8 +111,8 @@ AI_Models/Neurology/BraTS2020_T1_UNet3D/Dockerfile      # runtime base FROM 사�
 AI_Models/Neurology/BraTS2020_T1ce_UNet3D/Dockerfile    # runtime base FROM 사용
 AI_Models/Neurology/BraTS2020_T2_UNet3D/Dockerfile      # runtime base FROM 사용
 AI_Models/Neurology/BraTS2020_FLAIR_UNet3D/Dockerfile   # runtime base FROM 사용
-AI_Models/Radiology/ChestXray14_Multilabel_Classification/Dockerfile
-AI_Models/Radiology/RSNA_Pneumonia_YOLO26x/Dockerfile
+AI_Models/Pulmonology/ChestXray14_Multilabel_Classification/Dockerfile
+AI_Models/Pulmonology/RSNA_Pneumonia_YOLO26x/Dockerfile
 
 scripts/precache_chestxray14_weights.sh   # TorchXRayVision 가중치 사전 다운로드
 ```

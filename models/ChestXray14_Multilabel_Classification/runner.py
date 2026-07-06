@@ -1,4 +1,4 @@
-"""ChestXray14 runner — wraps AI_Models/Radiology/ChestXray14_Multilabel_Classification/inference.py.
+"""ChestXray14 runner — wraps AI_Models/Pulmonology/ChestXray14_Multilabel_Classification/inference.py.
 
 predict() returns:
     image_b64         : base64 Grad-CAM overlay PNG

@@ -2,7 +2,7 @@ model_name: ChestXray14_Multilabel_Classification
 execution_mode: external_runtime
 runtime: runtime-medical
 runner_path: /app/models/ChestXray14_Multilabel_Classification/runner.py
-inference_path: /app/AI_Models/Radiology/ChestXray14_Multilabel_Classification/inference.py
+inference_path: /app/AI_Models/Pulmonology/ChestXray14_Multilabel_Classification/inference.py
 # model_path 없음 — TorchXRayVision pretrained weights 자동 다운로드
 meta:
   description: "NIH ChestXray14 multilabel classification with Grad-CAM (TorchXRayVision resnet50)"

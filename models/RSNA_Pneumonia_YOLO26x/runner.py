@@ -1,4 +1,4 @@
-"""RSNA Pneumonia runner — wraps AI_Models/Radiology/RSNA_Pneumonia_YOLO26x/inference.py.
+"""RSNA Pneumonia runner — wraps AI_Models/Pulmonology/RSNA_Pneumonia_YOLO26x/inference.py.
 
 predict() returns:
     image_b64       : base64 bounding-box overlay PNG
