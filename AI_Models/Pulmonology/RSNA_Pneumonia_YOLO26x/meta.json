@@ -5,7 +5,7 @@
   "disease": "pneumonia, lung opacity, chest X-ray",
   "model_type": "standalone",
   "required_data": ["dcm"],
-  "result_type": "image",
+  "result_type": ["bbox_overlay", "detection_predictions"],
   "output_image_role": "bbox_overlay",
   "docker": {
     "service_url": "http://runtime-yolo:8000"

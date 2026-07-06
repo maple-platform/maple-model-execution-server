@@ -5,7 +5,7 @@
   "disease": "chest x-ray, thoracic abnormality, atelectasis, cardiomegaly, effusion, infiltration, mass, nodule, pneumonia, pneumothorax, consolidation, edema, emphysema, fibrosis, pleural thickening, hernia",
   "model_type": "standalone",
   "required_data": ["png", "jpg", "jpeg"],
-  "result_type": "image",
+  "result_type": ["gradcam_overlay", "classification_probabilities"],
   "output_image_role": "gradcam_overlay",
   "docker": {
     "service_url": "http://runtime-medical:8000"
