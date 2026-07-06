@@ -4,7 +4,7 @@
   "task_type": "bbox detection",
   "disease": "pneumonia, lung opacity, chest X-ray",
   "model_type": "standalone",
-  "required_data": ["dicom"],
+  "required_data": ["dcm"],
   "result_type": "image",
   "output_image_role": "bbox_overlay",
   "docker": {

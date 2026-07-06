@@ -4,7 +4,7 @@
   "task_type": "segmentation",
   "disease": "brain tumor, glioma, glioblastoma, BraTS, whole tumor, tumor core, enhancing tumor",
   "model_type": "standalone",
-  "required_data": ["nifti"],
+  "required_data": ["nii.gz", "nii"],
   "result_type": "image",
   "output_image_role": "segmentation_overlay",
   "modality": "T1",
