@@ -60,15 +60,23 @@ maple-model-execution-server/
 │   ├── RSNA_Pneumonia_YOLO26x/
 │   └── example_model/             # 템플릿
 │
-├── AI_Models/                     # 기존 inference.py + 모델 소스 (volume mount)
-│   ├── Neurology/
+├── AI_Models/                     # inference.py + 모델 소스, 진료과별 구조 (volume mount)
+│   ├── Manual.md                  # 연구원용 모델 제출 가이드
+│   ├── Neurology/                 # 신경과
 │   │   ├── BraTS2020_T1_UNet3D/
 │   │   ├── BraTS2020_T1ce_UNet3D/
 │   │   ├── BraTS2020_T2_UNet3D/
 │   │   └── BraTS2020_FLAIR_UNet3D/
-│   └── Pulmonology/
-│       ├── ChestXray14_Multilabel_Classification/
-│       └── RSNA_Pneumonia_YOLO26x/
+│   ├── Pulmonology/               # 호흡기내과
+│   │   ├── ChestXray14_Multilabel_Classification/
+│   │   └── RSNA_Pneumonia_YOLO26x/
+│   ├── Ophthalmology/             # 안과
+│   ├── Pathology/                 # 병리과
+│   ├── Cardiology/                # 심장내과
+│   ├── Dermatology/               # 피부과
+│   ├── Gastroenterology/          # 소화기내과
+│   ├── Orthopedics/               # 정형외과
+│   └── Obstetrics/                # 산부인과
 │
 ├── inputs/                        # 추론 입력 파일 (volume mount, gitignore)
 ├── outputs/                       # 추론 출력 파일 (volume mount, gitignore)
@@ -105,14 +113,14 @@ curl http://localhost:9021/health
 
 ## 등록된 모델
 
-| model_name | runtime | 입력 | 출력 |
-|------------|---------|------|------|
-| `BraTS2020_T1_UNet3D` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
-| `BraTS2020_T1ce_UNet3D` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
-| `BraTS2020_T2_UNet3D` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
-| `BraTS2020_FLAIR_UNet3D` | runtime-medical | NIfTI (.nii.gz) | 분할 오버레이 이미지 (WT/TC/ET) |
-| `ChestXray14_Multilabel_Classification` | runtime-medical | PNG/JPG (흉부 X-ray) | Grad-CAM 오버레이 + 14개 레이블 예측 |
-| `RSNA_Pneumonia_YOLO26x` | runtime-yolo | DICOM (.dcm) | 폐렴 opacity bbox 오버레이 |
+| 진료과 | model_name | runtime | 입력 | result_type |
+|--------|------------|---------|------|-------------|
+| Neurology | `BraTS2020_T1_UNet3D` | runtime-medical | `.nii.gz` | `segmentation_overlay`, `3d_overlay` |
+| Neurology | `BraTS2020_T1ce_UNet3D` | runtime-medical | `.nii.gz` | `segmentation_overlay`, `3d_overlay` |
+| Neurology | `BraTS2020_T2_UNet3D` | runtime-medical | `.nii.gz` | `segmentation_overlay`, `3d_overlay` |
+| Neurology | `BraTS2020_FLAIR_UNet3D` | runtime-medical | `.nii.gz` | `segmentation_overlay`, `3d_overlay` |
+| Pulmonology | `ChestXray14_Multilabel_Classification` | runtime-medical | `.png/.jpg` | `gradcam_overlay`, `classification_probabilities` |
+| Pulmonology | `RSNA_Pneumonia_YOLO26x` | runtime-yolo | `.dcm` | `bbox_overlay`, `detection_predictions` |
 
 ---
 
@@ -121,7 +129,7 @@ curl http://localhost:9021/health
 | 컨테이너 | 포트 | Base Image | 탑재 라이브러리 |
 |---------|------|-----------|----------------|
 | `runtime-basic` | 9020 | nvcr.io/nvidia/pytorch:25.12-py3 | nibabel, scipy, scikit-image |
-| `runtime-medical` | 9021 | runtime-basic | + MONAI 1.5.2, TorchXRayVision 1.4.0 |
+| `runtime-medical` | 9021 | runtime-basic | + MONAI 1.5.2, TorchXRayVision 1.4.0, opencv-python-headless |
 | `runtime-yolo` | 9022 | python:3.12-slim | ultralytics, pydicom, opencv |
 | `runtime-nnunet` | 9023 | runtime-basic | + nnunetv2 |
 
@@ -256,7 +264,8 @@ curl -X POST http://localhost:8110/infer/v2 \
   -d '{"model_name": "BraTS2020_T1_UNet3D", "input_path": "/app/inputs/sample.nii.gz"}'
 ```
 
-자세한 내용은 [docs/runtime_architecture.md](docs/runtime_architecture.md) 참고.
+새 모델을 `AI_Models/{진료과}/{모델명}/`에 추가할 때는 [AI_Models/Manual.md](AI_Models/Manual.md)를 참고하세요.  
+런타임 아키텍처 상세는 [docs/runtime_architecture.md](docs/runtime_architecture.md) 참고.
 
 ---
 
