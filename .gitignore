@@ -1,3 +1,33 @@
+# Model weights
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.bin
+*.h5
+*.pkl
+
+# Medical imaging data
+*.nii
+*.nii.gz
+*.dcm
+*.dicom
+*.mha
+*.mhd
+*.nrrd
+
+# Sample / test data
+inputs/
+outputs/
+data/
+sample_data/
+results/
+
+# Checkpoint directories
+checkpoint/
+checkpoints/
+
 # Secrets / credentials
 secrets/
 *.pem
