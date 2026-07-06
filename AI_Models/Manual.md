@@ -312,19 +312,19 @@ def main(input_data, model_path):
 
 ### 필드 설명
 
-| 필드 | 작성 주체 | 설명 |
-|---|---|---|
-| `model_name` | 연구원 | 모델 표시명. 영문 권장 (e.g. `YOLOv12`, `GradCAM++`) |
-| `description` | 연구원 | 모델 요약. **질환명, 입력 데이터, 출력 형태** 포함. AI Agent 검색에 사용 |
-| `task_type` | 연구원 | `"classification"`, `"segmentation"`, `"bbox detection"` 등 |
-| `disease` | 연구원 | 쉼표로 구분된 질환/키워드. 사용자 질의 매칭에 사용 |
-| `model_type` | 연구원 | `"standalone"` (단독 실행) 또는 `"pipeline"` (앞 단계 모델 필요) |
-| `required_data` | 연구원 | 입력 파일 확장자 리스트. `["dcm"]`, `["nii.gz","nii"]`, `["png","jpg","jpeg"]`, `["csv"]` |
-| `result_type` | 연구원 | 텍스트 결과는 `"text"`. 이미지 결과는 실제 출력 타입 리스트: `["gradcam_overlay","classification_probabilities"]` 등 |
-| `output_image_role` | 연구원 | 결과 이미지의 주 종류. AI Agent VLM이 이미지를 해석할 때 참고. 이미지 결과 모델만 작성 |
-| `pipeline_after` | 연구원 | `pipeline`일 때만. 직전에 실행되어야 하는 모델의 폴더명 |
-| `pipeline_input` | 연구원 | `pipeline`일 때만. `input_data` dict의 키와 각 값의 출처 설명 |
-| `docker.service_url` | **관리자** | 컨테이너 포트 배정 후 관리자가 채움. 연구원은 건드리지 않아도 됨 |
+| 필드 | 설명 |
+|---|---|
+| `model_name` | 모델 표시명. 영문 권장 (e.g. `YOLOv12`, `GradCAM++`) |
+| `description` | 모델 요약. **질환명, 입력 데이터, 출력 형태** 포함. AI Agent 검색에 사용 |
+| `task_type` | `"classification"`, `"segmentation"`, `"bbox detection"` 등 |
+| `disease` | 쉼표로 구분된 질환/키워드. 사용자 질의 매칭에 사용 |
+| `model_type` | `"standalone"` (단독 실행) 또는 `"pipeline"` (앞 단계 모델 필요) |
+| `required_data` | 입력 파일 확장자 리스트. `["dcm"]`, `["nii.gz","nii"]`, `["png","jpg","jpeg"]`, `["csv"]` |
+| `result_type` | 텍스트 결과는 `"text"`. 이미지 결과는 실제 출력 타입 리스트: `["gradcam_overlay","classification_probabilities"]` 등 |
+| `output_image_role` | 결과 이미지의 주 종류. AI Agent VLM이 이미지를 해석할 때 참고. 이미지 결과 모델만 작성 |
+| `pipeline_after` | `pipeline`일 때만. 직전에 실행되어야 하는 모델의 폴더명 |
+| `pipeline_input` | `pipeline`일 때만. `input_data` dict의 키와 각 값의 출처 설명 |
+| `docker.service_url` | **관리자가 작성**. 컨테이너 포트 배정 후 채움. 연구원은 `"관리자 작성 예정"` 그대로 두세요 |
 
 ### `output_image_role` 값 목록
 
