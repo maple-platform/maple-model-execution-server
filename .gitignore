@@ -17,9 +17,11 @@
 *.mhd
 *.nrrd
 
-# Sample / test data
-inputs/
-outputs/
+# Sample / test data (keep the dirs, ignore their contents)
+inputs/*
+outputs/*
+!inputs/.gitkeep
+!outputs/.gitkeep
 data/
 sample_data/
 results/
