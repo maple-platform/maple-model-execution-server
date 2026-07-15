@@ -1,18 +1,30 @@
-# maple-platform AI Inference Server
+# maple-model-execution-server
 
-maple-platform 백엔드에서 분리된 AI 추론 실행 서버입니다.  
-FastAPI 게이트웨이가 요청을 받아 runtime 컨테이너로 라우팅하고, 결과를 정규화해 반환합니다.
+maple-platform 백엔드에서 분리된 **모델 실행 서버(model execution server)** 입니다.  
+모델 추론을 담당하는 스택 전체 — **추론 게이트웨이(inference gateway) + runtime 컨테이너 + 모델 자산** — 를 한 저장소로 묶어 관리합니다.
+
+> **이 저장소의 역할**: 단순히 Dockerfile을 올려두는 것이 아니라, **빌드된 이미지들을 상시 실행되는 서비스로 띄우는 것**입니다.
+> 라우팅 서버는 runtime 컨테이너를 직접 호출하지 않고, 이 저장소가 띄우는 **추론 게이트웨이(`inference-gateway`, :8110)** 에 요청을 보냅니다.
+> 게이트웨이가 `model_name → config.yaml → runtime 컨테이너`로 라우팅하고 응답을 정규화합니다.
+
+### 구성 계층
+
+| 계층 | 실체 | 역할 |
+|------|------|------|
+| **추론 게이트웨이** | `inference-gateway` (:8110) · [main.py](main.py) | 요청을 받아 runtime 컨테이너로 라우팅하고 응답을 정규화하는 상주 서비스 |
+| **runtime 컨테이너** | `runtime-*` (:9020~9023) | 모델을 실제로 실행 (GPU 추론) |
+| **모델 자산** | [models/](models/) · [AI_Models/](AI_Models/) | 모델별 `config.yaml` · `runner.py` · 소스 · 가중치 |
 
 ---
 
 ## 아키텍처 개요
 
 ```
-maple Backend
+라우팅 서버 (maple-routing-server)
      │
      ├─ POST /infer      (legacy)  → 개별 모델 컨테이너 → POST /run
      │
-     └─ POST /infer/v2   (신규)    → runtime 컨테이너   → POST /run/v2
+     └─ POST /infer/v2   (신규)    → 추론 게이트웨이(:8110) → runtime 컨테이너 → POST /run/v2
                                           │
                                    config.yaml 읽기
                                           │
@@ -28,15 +40,55 @@ maple Backend
 
 ---
 
+## 시스템 구성 (배포 토폴로지)
+
+두 대의 GPU 서버 + 로컬 클라이언트로 구성됩니다.
+**서버 간 통신은 인터넷망을 경유하지 않고 사설망(`ens224`)의 사설 IP를 사용**합니다.
+
+```
+Client (로컬)
+   │
+   ▼
+┌──────────────────────────────────────────────────┐
+│ A100 서버                                          │  ← 이 저장소가 배포되는 서버
+│   ├─ 라우팅 서버 (maple-routing-server)    :8100   │
+│   ├─ 추론 게이트웨이 (이 저장소)           :8110   │
+│   ├─ runtime 컨테이너                      :9020~9023 │
+│   └─ MongoDB                               :27017 (localhost) │
+└──────────────────────────────────────────────────┘
+          │  사설망 (인터넷 미경유) → Agent :8101
+          ▼
+┌──────────────────────────────────────────────────┐
+│ H100 서버                                          │
+│   └─ Agent                                 :8101   │
+└──────────────────────────────────────────────────┘
+```
+
+| 서버 | 역할 | 포트 |
+|------|------|------|
+| A100 서버 | 라우팅 + 모델 실행 + MongoDB | 8100 / 8110 / 9020~9023 / 27017 |
+| H100 서버 | Agent | 8101 |
+
+> 역할 매핑은 **현재 A100 서버에서 실제 구동 중인 프로세스 기준**입니다. 배치가 바뀌면 이 표만 갱신하세요.
+
+**통신 규칙**
+
+- 서버 간(라우팅 → Agent)은 **H100 서버의 사설 IP** 사용: 라우팅 서버 `.env`의 `AGENT_URL = http://<H100 사설 IP>:8101`
+- 서버 내(라우팅 → 모델 실행, → MongoDB)는 A100 서버에 함께 있으므로 `localhost` 유지
+  (`MAPLE_INFERENCE_URL=http://localhost:8110`, `MONGO_URI=mongodb://localhost:27017`)
+- 사설 IP 확인: `ifconfig | grep ens224 -A1`
+
+---
+
 ## 디렉터리 구조
 
 ```
 maple-model-execution-server/
 │
-├── main.py                        # 게이트웨이 (/infer + /infer/v2)
+├── main.py                        # 추론 게이트웨이 (/infer + /infer/v2)
 ├── Dockerfile                     # 게이트웨이 컨테이너
 ├── requirements.txt
-├── docker-compose.yml             # 게이트웨이 서비스
+├── docker-compose.yml             # 게이트웨이 서비스 (inference-gateway)
 ├── docker-compose.runtime.yml     # runtime 컨테이너 4종
 │
 ├── app/
@@ -78,8 +130,8 @@ maple-model-execution-server/
 │   ├── Orthopedics/               # 정형외과
 │   └── Obstetrics/                # 산부인과
 │
-├── inputs/                        # 추론 입력 파일 (volume mount, gitignore)
-├── outputs/                       # 추론 출력 파일 (volume mount, gitignore)
+├── inputs/                        # 추론 입력 파일 (volume mount, 내용물 gitignore)
+├── outputs/                       # 추론 출력 파일 (volume mount, 내용물 gitignore)
 └── docs/
     ├── runtime_architecture.md
     ├── runtime_migration_plan.md
@@ -90,19 +142,30 @@ maple-model-execution-server/
 
 ## 빠른 시작
 
+### 요구 사항 (A100 서버)
+
+- NVIDIA GPU + 드라이버 (검증 환경: **A100-SXM4-80GB**, driver 535.183.06)
+- Docker 29.x + Compose v2, **nvidia-container-toolkit** (runtime `nvidia` 등록 필요)
+- 디스크 여유 ≥ 45GB (runtime-basic/medical/nnunet 이미지가 각 ~30GB, NV PyTorch base 공유)
+- `docker` 그룹 권한 (`sudo usermod -aG docker $USER` 후 재로그인)
+
+### 빌드 및 실행
+
 ```bash
 # 1단계: runtime-basic 먼저 빌드 (medical, nnunet이 의존)
 docker compose -f docker-compose.runtime.yml build runtime-basic
 
-# 2단계: 전체 빌드 및 실행
+# 2단계: 전체 빌드 및 실행 (게이트웨이 + runtime 컨테이너)
 docker compose -f docker-compose.yml -f docker-compose.runtime.yml up -d --build
 ```
+
+> `runtime-nnunet`을 사용하는 모델이 아직 없으면 빌드에서 제외해 디스크/시간을 아낄 수 있습니다.
 
 ### 헬스 체크
 
 ```bash
 curl http://localhost:8110/health
-# {"status": "ok", "service": "maple-inference-server"}
+# {"status": "ok", "service": "inference-gateway"}
 
 # runtime 컨테이너 헬스 체크 (등록된 모델 목록 포함)
 curl http://localhost:9021/health
@@ -122,16 +185,22 @@ curl http://localhost:9021/health
 | Pulmonology | `ChestXray14_Multilabel_Classification` | runtime-medical | `.png/.jpg` | `gradcam_overlay`, `classification_probabilities` |
 | Pulmonology | `RSNA_Pneumonia_YOLO26x` | runtime-yolo | `.dcm` | `bbox_overlay`, `detection_predictions` |
 
+> **검증 상태 (A100, 2026-07):** 6개 모델 전부 `POST /infer/v2` end-to-end 통과 — 유효 PNG 출력 확인.
+> BraTS 4종은 `images_b64`(4장)+`output_files`, ChestXray14/RSNA는 `image_b64`(단수)+`output_file`로 반환합니다.
+
 ---
 
-## Runtime 컨테이너
+## 컨테이너 구성
 
-| 컨테이너 | 포트 | Base Image | 탑재 라이브러리 |
-|---------|------|-----------|----------------|
-| `runtime-basic` | 9020 | nvcr.io/nvidia/pytorch:25.12-py3 | nibabel, scipy, scikit-image |
-| `runtime-medical` | 9021 | runtime-basic | + MONAI 1.5.2, TorchXRayVision 1.4.0, opencv-python-headless |
-| `runtime-yolo` | 9022 | python:3.12-slim | ultralytics, pydicom, opencv |
-| `runtime-nnunet` | 9023 | runtime-basic | + nnunetv2 |
+| 컨테이너 | 포트 | Base Image | 이미지 크기 | 탑재 라이브러리 |
+|---------|------|-----------|:----------:|----------------|
+| 추론 게이트웨이 (`inference-gateway`) | 8110 | python:3.11-slim | 232MB | FastAPI, httpx |
+| `runtime-basic` | 9020 | nvcr.io/nvidia/pytorch:25.12-py3 | 30.3GB | nibabel, scipy, scikit-image |
+| `runtime-medical` | 9021 | runtime-basic | 30.9GB | + MONAI 1.5.2, TorchXRayVision 1.4.0, opencv-python-headless |
+| `runtime-yolo` | 9022 | python:3.12-slim | 9.35GB | ultralytics, pydicom, opencv |
+| `runtime-nnunet` | 9023 | runtime-basic | 30.9GB | + nnunetv2 |
+
+> 이미지 크기는 A100 서버 빌드 기준(GPU runtime 3종은 NV PyTorch base 레이어를 공유하므로 실제 디스크 점유는 합산보다 작음).
 
 ---
 
@@ -140,7 +209,7 @@ curl http://localhost:9021/health
 ### `GET /health`
 
 ```json
-{"status": "ok", "service": "maple-inference-server"}
+{"status": "ok", "service": "inference-gateway"}
 ```
 
 ---
@@ -210,7 +279,7 @@ curl http://localhost:9021/health
 
 ## 환경 변수
 
-### 게이트웨이
+### 추론 게이트웨이
 
 | 변수 | 설명 |
 |------|------|
@@ -271,7 +340,7 @@ curl -X POST http://localhost:8110/infer/v2 \
 
 ## 의존성
 
-### 게이트웨이
+### 추론 게이트웨이
 
 ```
 fastapi==0.121.3

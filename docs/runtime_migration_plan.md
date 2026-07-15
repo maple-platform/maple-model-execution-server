@@ -38,7 +38,7 @@
 
 | Model | Base Image | Torch | CUDA | 주요 Framework | Weight 위치 |
 |-------|-----------|-------|------|---------------|------------|
-| maple-inference | python:3.11-slim | 없음 | 없음 | FastAPI | 해당없음 |
+| inference-gateway | python:3.11-slim | 없음 | 없음 | FastAPI | 해당없음 |
 | brats-t1/t1ce/t2/flair | nvcr.io/nvidia/pytorch:25.12-py3 | 2.10.0a0.nv25.12 | 13.1 | MONAI 1.5.2 | image 내 + volume |
 | chestxray14 | nvcr.io/nvidia/pytorch:25.12-py3 | 2.10.0a0.nv25.12 | 13.1 | TorchXRayVision 1.4.0 | 런타임 다운로드 |
 | rsna-pneumonia | python:3.12-slim | ultralytics 내장 | optional | ultralytics 8.4.51 | image 내 + volume |

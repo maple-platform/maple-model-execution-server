@@ -10,7 +10,7 @@
 
 | Model | Docker Image | 레포 내 존재 | 비고 |
 |-------|-------------|-------------|------|
-| maple-inference (Gateway) | `maple/inference-server` | ✅ | `main.py` + `Dockerfile` |
+| inference-gateway (Gateway) | `maple/inference-gateway` | ✅ | `main.py` + `Dockerfile` |
 | BraTS2020 T1 UNet3D | `maple/brats-t1` | ✅ | `AI_Models/Neurology/BraTS2020_T1_UNet3D/` |
 | BraTS2020 T1ce UNet3D | `maple/brats-t1ce` | ✅ | `AI_Models/Neurology/BraTS2020_T1ce_UNet3D/` |
 | BraTS2020 T2 UNet3D | `maple/brats-t2` | ✅ | `AI_Models/Neurology/BraTS2020_T2_UNet3D/` |
@@ -20,13 +20,13 @@
 | nnUNet SMWI Segmentation | `maple/nnunet-smwi` | ❌ | 이 레포에 없음 (별도 레포 추정) |
 | BME Classification | `maple/bme-classifier` | ❌ | 이 레포에 없음 |
 | SI Joints Detection | `maple/si-joint-detector` | ❌ | 이 레포에 없음 |
-| Gateway (현재) | `maple/inference-server` | ✅ | maple-inference (포트 8110) |
+| Gateway (현재) | `maple/inference-gateway` | ✅ | inference-gateway (포트 8110) |
 
 ---
 
 ## 2. 모델별 버전 정보 (Inventory)
 
-### 2-A. maple/inference-server (Gateway)
+### 2-A. maple/inference-gateway (Gateway)
 
 | 항목 | 값 |
 |------|----|
@@ -134,7 +134,7 @@
 
 | Image | Size | 비고 |
 |-------|------|------|
-| `maple/inference-server` | 227 MB | python:3.11-slim 기반 |
+| `maple/inference-gateway` | 227 MB | python:3.11-slim 기반 |
 | `maple/rsna-pneumonia` | 9.59 GB | ultralytics + torch |
 | `maple/brats-t1` | 30.47 GB | NV PyTorch 25.12 기반 |
 | `maple/brats-t1ce` | 30.47 GB | 레이어 공유 (실제 추가 점유 최소) |
@@ -155,7 +155,7 @@
 | `runtime-nvpytorch2512-monai` | brats-t1, brats-t1ce, brats-t2, brats-flair | `nvcr.io/nvidia/pytorch:25.12-py3` | 3.12 | 2.10.0a0.nv25.12 | 13.1 | MONAI 1.5.2 |
 | `runtime-nvpytorch2512-xray` | chestxray14 | `nvcr.io/nvidia/pytorch:25.12-py3` | 3.12 | 2.10.0a0.nv25.12 | 13.1 | TorchXRayVision 1.4.0 |
 | `runtime-py312-cpu-yolo` | rsna-pneumonia | `python:3.12-slim` | 3.12 | (ultralytics 내 포함) | optional | ultralytics 8.4.51 |
-| `runtime-py311-slim-gateway` | maple-inference | `python:3.11-slim` | 3.11 | 없음 | 없음 | FastAPI |
+| `runtime-py311-slim-gateway` | inference-gateway | `python:3.11-slim` | 3.11 | 없음 | 없음 | FastAPI |
 
 > **monai와 torchxrayvision 분리 이유**:  
 > - MONAI는 nibabel/scipy/scikit-image와 함께 3D 의료 영상 처리 특화  

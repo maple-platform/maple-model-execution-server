@@ -31,7 +31,7 @@ class InferResponse(BaseModel):
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
-app = FastAPI(title="maple-platform AI Inference Server", version="0.1.0")
+app = FastAPI(title="maple Model Execution Server — Inference Gateway", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -126,7 +126,7 @@ def _resolve_container_url(container_url: str) -> str:
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": "maple-inference-server"}
+    return {"status": "ok", "service": "inference-gateway"}
 
 
 @app.post("/infer", response_model=InferResponse)

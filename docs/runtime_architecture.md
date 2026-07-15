@@ -22,7 +22,7 @@ Client
   │
   ▼
 ┌─────────────────────────────────┐
-│     maple-inference (8110)      │
+│    inference-gateway (8110)     │
 │         main.py                 │
 │                                 │
 │  POST /infer      POST /infer/v2│
