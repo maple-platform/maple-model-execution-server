@@ -1,0 +1,9 @@
+model_name: ASTRAL_Score
+execution_mode: external_runtime
+runtime: runtime-basic
+runner_path: /app/models/ASTRAL_Score/runner.py
+inference_path: /app/AI_Models/Neurology/ASTRAL_Score/inference.py
+model_path: /app/AI_Models/Neurology/ASTRAL_Score/checkpoint/coefficients.json
+meta:
+  description: "ASTRAL - 90-day functional outcome prognosis in acute ischemic stroke (deterministic)"
+  task: classification
