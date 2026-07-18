@@ -1,0 +1,26 @@
+{
+  "images": [
+    "gradcam_overlay.png"
+  ],
+  "predictions": [
+    {
+      "model": "SPIDER lumbar disc grading",
+      "high_confidence_findings": {},
+      "finding_confidence_floor": 0.7,
+      "pfirrmann_grade": 2,
+      "pfirrmann_expected_grade": 2.0180604457855225,
+      "pfirrmann_probabilities": {
+        "1": 0.005603376310318708,
+        "2": 0.9730646014213562,
+        "3": 0.019594544544816017,
+        "4": 0.0011431955499574542,
+        "5": 0.0005942783318459988
+      },
+      "pred": 2,
+      "pred_name": "Pfirrmann_2",
+      "image_roles": [
+        "gradcam_overlay"
+      ]
+    }
+  ]
+}

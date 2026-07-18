@@ -1,0 +1,14 @@
+model_name: FracAtlas_Fracture_Fusion
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/FracAtlas_Fracture_Fusion/runner.py
+inference_path: /app/AI_Models/Orthopedics/FracAtlas_Fracture_Fusion/inference.py
+model_path: /app/AI_Models/Orthopedics/FracAtlas_Fracture_Fusion/checkpoint
+params:
+  operating_point: high_sensitivity
+meta:
+  description: Musculoskeletal radiograph fracture model returning fused fracture
+    probability, suspicious regions, and a fracture-probability overlay on the original
+    image.
+  modality: png, jpg, jpeg
+  task: classification, segmentation

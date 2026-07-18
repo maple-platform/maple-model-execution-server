@@ -1,0 +1,138 @@
+{
+  "images": [
+    "keypoint_overlay.png"
+  ],
+  "predictions": [
+    {
+      "task": "bilateral_subarticular_keypoints",
+      "points": [
+        {
+          "point": "left L1/L2",
+          "x_pixel": 147.5670928955078,
+          "y_pixel": 146.91371154785156,
+          "slice_index": 32,
+          "instance_number": 15,
+          "normalized_xyz": [
+            0.5786944627761841,
+            0.5761321783065796,
+            0.6983962059020996
+          ]
+        },
+        {
+          "point": "left L2/L3",
+          "x_pixel": 144.82823181152344,
+          "y_pixel": 129.1163787841797,
+          "slice_index": 25,
+          "instance_number": 22,
+          "normalized_xyz": [
+            0.5679538249969482,
+            0.5063387155532837,
+            0.5450395345687866
+          ]
+        },
+        {
+          "point": "left L3/L4",
+          "x_pixel": 137.2617950439453,
+          "y_pixel": 113.65872955322266,
+          "slice_index": 18,
+          "instance_number": 29,
+          "normalized_xyz": [
+            0.5382815599441528,
+            0.44572049379348755,
+            0.39256221055984497
+          ]
+        },
+        {
+          "point": "left L4/L5",
+          "x_pixel": 134.20645141601562,
+          "y_pixel": 109.68546295166016,
+          "slice_index": 12,
+          "instance_number": 35,
+          "normalized_xyz": [
+            0.5262998342514038,
+            0.43013906478881836,
+            0.2708035707473755
+          ]
+        },
+        {
+          "point": "left L5/S1",
+          "x_pixel": 139.9687957763672,
+          "y_pixel": 126.17863464355469,
+          "slice_index": 7,
+          "instance_number": 40,
+          "normalized_xyz": [
+            0.5488972663879395,
+            0.49481818079948425,
+            0.142191082239151
+          ]
+        },
+        {
+          "point": "right L1/L2",
+          "x_pixel": 124.32415771484375,
+          "y_pixel": 145.1167755126953,
+          "slice_index": 32,
+          "instance_number": 15,
+          "normalized_xyz": [
+            0.4875457286834717,
+            0.569085419178009,
+            0.7007092237472534
+          ]
+        },
+        {
+          "point": "right L2/L3",
+          "x_pixel": 123.61031341552734,
+          "y_pixel": 129.38267517089844,
+          "slice_index": 25,
+          "instance_number": 22,
+          "normalized_xyz": [
+            0.4847463369369507,
+            0.5073830485343933,
+            0.5465477705001831
+          ]
+        },
+        {
+          "point": "right L3/L4",
+          "x_pixel": 115.03978729248047,
+          "y_pixel": 115.3848876953125,
+          "slice_index": 18,
+          "instance_number": 29,
+          "normalized_xyz": [
+            0.45113641023635864,
+            0.4524897634983063,
+            0.3909165859222412
+          ]
+        },
+        {
+          "point": "right L4/L5",
+          "x_pixel": 114.47978210449219,
+          "y_pixel": 109.77518463134766,
+          "slice_index": 12,
+          "instance_number": 35,
+          "normalized_xyz": [
+            0.44894033670425415,
+            0.4304909110069275,
+            0.2594620883464813
+          ]
+        },
+        {
+          "point": "right L5/S1",
+          "x_pixel": 114.12932586669922,
+          "y_pixel": 126.51439666748047,
+          "slice_index": 6,
+          "instance_number": 41,
+          "normalized_xyz": [
+            0.4475659728050232,
+            0.496134877204895,
+            0.13669660687446594
+          ]
+        }
+      ],
+      "warning": "Research use only; not a medical device.",
+      "pred": 10,
+      "pred_name": "keypoints_localized",
+      "image_roles": [
+        "keypoint_overlay"
+      ]
+    }
+  ]
+}

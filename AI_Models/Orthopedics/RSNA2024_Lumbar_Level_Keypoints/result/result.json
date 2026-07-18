@@ -1,0 +1,79 @@
+{
+  "images": [
+    "keypoint_overlay.png"
+  ],
+  "predictions": [
+    {
+      "task": "lumbar_level_keypoints",
+      "modality": "sagittal T2/STIR MRI",
+      "points": [
+        {
+          "level": "L1/L2",
+          "x_pixel": 461.63555908203125,
+          "y_pixel": 239.4913330078125,
+          "slice_index": 12,
+          "instance_number": 13,
+          "normalized_xyz": [
+            0.60187166929245,
+            0.3122442364692688,
+            0.4978809058666229
+          ]
+        },
+        {
+          "level": "L2/L3",
+          "x_pixel": 416.5869445800781,
+          "y_pixel": 332.0284118652344,
+          "slice_index": 12,
+          "instance_number": 13,
+          "normalized_xyz": [
+            0.5431381464004517,
+            0.4328923225402832,
+            0.5053808689117432
+          ]
+        },
+        {
+          "level": "L3/L4",
+          "x_pixel": 379.42578125,
+          "y_pixel": 411.9021301269531,
+          "slice_index": 12,
+          "instance_number": 13,
+          "normalized_xyz": [
+            0.49468809366226196,
+            0.5370301604270935,
+            0.49790170788764954
+          ]
+        },
+        {
+          "level": "L4/L5",
+          "x_pixel": 363.8720703125,
+          "y_pixel": 499.43267822265625,
+          "slice_index": 12,
+          "instance_number": 13,
+          "normalized_xyz": [
+            0.4744094908237457,
+            0.6511508226394653,
+            0.49965691566467285
+          ]
+        },
+        {
+          "level": "L5/S1",
+          "x_pixel": 382.2556457519531,
+          "y_pixel": 568.5288696289062,
+          "slice_index": 12,
+          "instance_number": 13,
+          "normalized_xyz": [
+            0.49837765097618103,
+            0.7412371039390564,
+            0.5039436221122742
+          ]
+        }
+      ],
+      "warning": "Research use only; not a medical device.",
+      "pred": 5,
+      "pred_name": "keypoints_localized",
+      "image_roles": [
+        "keypoint_overlay"
+      ]
+    }
+  ]
+}

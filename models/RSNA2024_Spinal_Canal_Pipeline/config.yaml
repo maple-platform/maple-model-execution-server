@@ -1,0 +1,11 @@
+model_name: RSNA2024_Spinal_Canal_Pipeline
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/RSNA2024_Spinal_Canal_Pipeline/runner.py
+inference_path: /app/AI_Models/Orthopedics/RSNA2024_Spinal_Canal_Pipeline/inference.py
+model_path: /app/AI_Models/Orthopedics/RSNA2024_Spinal_Canal_Pipeline/checkpoint
+meta:
+  description: End-to-end lumbar MRI model returning 5 localized spinal canal stenosis
+    grades, probabilities, crops, and overlays from a sagittal T2/STIR DICOM series.
+  modality: dcm
+  task: keypoint detection, classification

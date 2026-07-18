@@ -1,0 +1,18 @@
+{
+  "model_name": "RSNA2024_Lumbar_Level_Keypoints",
+  "description": "Lumbar MRI model returning 5 lumbar level localization keypoints, compatible crops, and a landmark overlay from a sagittal T2/STIR DICOM series.",
+  "task_type": "keypoint detection, crop generation",
+  "disease": "lumbar stenosis, lumbar level localization",
+  "model_type": "standalone",
+  "required_data": [
+    "dcm"
+  ],
+  "result_type": [
+    "bbox_overlay",
+    "detection_predictions"
+  ],
+  "output_image_role": "bbox_overlay",
+  "docker": {
+    "service_url": "\uad00\ub9ac\uc790 \uc791\uc131 \uc608\uc815"
+  }
+}

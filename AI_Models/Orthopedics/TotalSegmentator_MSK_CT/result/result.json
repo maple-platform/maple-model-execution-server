@@ -1,0 +1,288 @@
+{
+  "images": [
+    "axial_group_01_autochthon_left__vertebrae_T1__plus_6.png",
+    "axial_group_02_vertebrae_T4__rib_left_3__plus_3.png",
+    "axial_group_03_rib_left_2__sternum__plus_1.png",
+    "axial_group_04_vertebrae_C2__skull__plus_1.png",
+    "axial_group_05_vertebrae_C5__vertebrae_C6.png",
+    "axial_group_06_vertebrae_C3__vertebrae_C4.png",
+    "axial_group_07_vertebrae_C7.png"
+  ],
+  "predictions": [
+    {
+      "model": "TotalSegmentator 2.15 MSK CT",
+      "preview_files": [
+        "/tmp/maple_totalsegmentator_msk_ct_0f14pr20/axial_group_01_autochthon_left__vertebrae_T1__plus_6.png",
+        "/tmp/maple_totalsegmentator_msk_ct_0f14pr20/axial_group_02_vertebrae_T4__rib_left_3__plus_3.png",
+        "/tmp/maple_totalsegmentator_msk_ct_0f14pr20/axial_group_03_rib_left_2__sternum__plus_1.png",
+        "/tmp/maple_totalsegmentator_msk_ct_0f14pr20/axial_group_04_vertebrae_C2__skull__plus_1.png",
+        "/tmp/maple_totalsegmentator_msk_ct_0f14pr20/axial_group_05_vertebrae_C5__vertebrae_C6.png",
+        "/tmp/maple_totalsegmentator_msk_ct_0f14pr20/axial_group_06_vertebrae_C3__vertebrae_C4.png",
+        "/tmp/maple_totalsegmentator_msk_ct_0f14pr20/axial_group_07_vertebrae_C7.png"
+      ],
+      "preview_roles": [
+        "axial_group_01_autochthon_left__vertebrae_T1__plus_6",
+        "axial_group_02_vertebrae_T4__rib_left_3__plus_3",
+        "axial_group_03_rib_left_2__sternum__plus_1",
+        "axial_group_04_vertebrae_C2__skull__plus_1",
+        "axial_group_05_vertebrae_C5__vertebrae_C6",
+        "axial_group_06_vertebrae_C3__vertebrae_C4",
+        "axial_group_07_vertebrae_C7"
+      ],
+      "overlay_groups": [
+        {
+          "image_role": "axial_group_01_autochthon_left__vertebrae_T1__plus_6",
+          "slice_index": 21,
+          "structures": [
+            "autochthon_left",
+            "vertebrae_T1",
+            "autochthon_right",
+            "clavicula_right",
+            "clavicula_left",
+            "rib_right_1",
+            "rib_left_1",
+            "spinal_cord"
+          ]
+        },
+        {
+          "image_role": "axial_group_02_vertebrae_T4__rib_left_3__plus_3",
+          "slice_index": 1,
+          "structures": [
+            "vertebrae_T4",
+            "rib_left_3",
+            "rib_right_3",
+            "vertebrae_T3",
+            "vertebrae_T2"
+          ]
+        },
+        {
+          "image_role": "axial_group_03_rib_left_2__sternum__plus_1",
+          "slice_index": 14,
+          "structures": [
+            "rib_left_2",
+            "sternum",
+            "rib_right_2"
+          ]
+        },
+        {
+          "image_role": "axial_group_04_vertebrae_C2__skull__plus_1",
+          "slice_index": 92,
+          "structures": [
+            "vertebrae_C2",
+            "skull",
+            "vertebrae_C1"
+          ]
+        },
+        {
+          "image_role": "axial_group_05_vertebrae_C5__vertebrae_C6",
+          "slice_index": 50,
+          "structures": [
+            "vertebrae_C5",
+            "vertebrae_C6"
+          ]
+        },
+        {
+          "image_role": "axial_group_06_vertebrae_C3__vertebrae_C4",
+          "slice_index": 71,
+          "structures": [
+            "vertebrae_C3",
+            "vertebrae_C4"
+          ]
+        },
+        {
+          "image_role": "axial_group_07_vertebrae_C7",
+          "slice_index": 33,
+          "structures": [
+            "vertebrae_C7"
+          ]
+        }
+      ],
+      "structures_present": [
+        "vertebrae_T4",
+        "vertebrae_T3",
+        "vertebrae_T2",
+        "vertebrae_T1",
+        "vertebrae_C7",
+        "vertebrae_C6",
+        "vertebrae_C5",
+        "vertebrae_C4",
+        "vertebrae_C3",
+        "vertebrae_C2",
+        "vertebrae_C1",
+        "clavicula_left",
+        "clavicula_right",
+        "spinal_cord",
+        "autochthon_left",
+        "autochthon_right",
+        "skull",
+        "rib_left_1",
+        "rib_left_2",
+        "rib_left_3",
+        "rib_right_1",
+        "rib_right_2",
+        "rib_right_3",
+        "sternum"
+      ],
+      "label_map": {
+        "40": "vertebrae_T4",
+        "41": "vertebrae_T3",
+        "42": "vertebrae_T2",
+        "43": "vertebrae_T1",
+        "44": "vertebrae_C7",
+        "45": "vertebrae_C6",
+        "46": "vertebrae_C5",
+        "47": "vertebrae_C4",
+        "48": "vertebrae_C3",
+        "49": "vertebrae_C2",
+        "50": "vertebrae_C1",
+        "73": "clavicula_left",
+        "74": "clavicula_right",
+        "79": "spinal_cord",
+        "86": "autochthon_left",
+        "87": "autochthon_right",
+        "91": "skull",
+        "92": "rib_left_1",
+        "93": "rib_left_2",
+        "94": "rib_left_3",
+        "104": "rib_right_1",
+        "105": "rib_right_2",
+        "106": "rib_right_3",
+        "116": "sternum"
+      },
+      "statistics": {
+        "vertebrae_T4": {
+          "volume_mm3": 16.875,
+          "mean_hu": 429.4,
+          "voxels": 5
+        },
+        "vertebrae_T3": {
+          "volume_mm3": 1012.5,
+          "mean_hu": 557.0466666666666,
+          "voxels": 300
+        },
+        "vertebrae_T2": {
+          "volume_mm3": 16848.0,
+          "mean_hu": 362.58133012820514,
+          "voxels": 4992
+        },
+        "vertebrae_T1": {
+          "volume_mm3": 18599.625,
+          "mean_hu": 401.2482308111051,
+          "voxels": 5511
+        },
+        "vertebrae_C7": {
+          "volume_mm3": 14596.875,
+          "mean_hu": 446.65872832369945,
+          "voxels": 4325
+        },
+        "vertebrae_C6": {
+          "volume_mm3": 12096.0,
+          "mean_hu": 497.67550223214283,
+          "voxels": 3584
+        },
+        "vertebrae_C5": {
+          "volume_mm3": 10857.375,
+          "mean_hu": 560.3640037301834,
+          "voxels": 3217
+        },
+        "vertebrae_C4": {
+          "volume_mm3": 9315.0,
+          "mean_hu": 632.427536231884,
+          "voxels": 2760
+        },
+        "vertebrae_C3": {
+          "volume_mm3": 9304.875,
+          "mean_hu": 576.69640914037,
+          "voxels": 2757
+        },
+        "vertebrae_C2": {
+          "volume_mm3": 14529.375,
+          "mean_hu": 568.5094076655053,
+          "voxels": 4305
+        },
+        "vertebrae_C1": {
+          "volume_mm3": 9308.25,
+          "mean_hu": 660.6196519216824,
+          "voxels": 2758
+        },
+        "clavicula_left": {
+          "volume_mm3": 14553.0,
+          "mean_hu": 365.0067254174397,
+          "voxels": 4312
+        },
+        "clavicula_right": {
+          "volume_mm3": 14218.875,
+          "mean_hu": 344.6546403987657,
+          "voxels": 4213
+        },
+        "spinal_cord": {
+          "volume_mm3": 29031.75,
+          "mean_hu": 23.680888165542896,
+          "voxels": 8602
+        },
+        "autochthon_left": {
+          "volume_mm3": 36095.625,
+          "mean_hu": 37.07854137447406,
+          "voxels": 10695
+        },
+        "autochthon_right": {
+          "volume_mm3": 34695.0,
+          "mean_hu": 36.33939688715953,
+          "voxels": 10280
+        },
+        "skull": {
+          "volume_mm3": 168709.5,
+          "mean_hu": 688.0734776346324,
+          "voxels": 49988
+        },
+        "rib_left_1": {
+          "volume_mm3": 6733.125,
+          "mean_hu": 492.78045112781956,
+          "voxels": 1995
+        },
+        "rib_left_2": {
+          "volume_mm3": 2713.5,
+          "mean_hu": 430.80845771144277,
+          "voxels": 804
+        },
+        "rib_left_3": {
+          "volume_mm3": 1589.625,
+          "mean_hu": 436.79193205944796,
+          "voxels": 471
+        },
+        "rib_right_1": {
+          "volume_mm3": 5960.25,
+          "mean_hu": 496.04416761041904,
+          "voxels": 1766
+        },
+        "rib_right_2": {
+          "volume_mm3": 2720.25,
+          "mean_hu": 470.3089330024814,
+          "voxels": 806
+        },
+        "rib_right_3": {
+          "volume_mm3": 1134.0,
+          "mean_hu": 412.1577380952381,
+          "voxels": 336
+        },
+        "sternum": {
+          "volume_mm3": 6736.5,
+          "mean_hu": 230.2184368737475,
+          "voxels": 1996
+        }
+      },
+      "fast_mode": false,
+      "pred": 24,
+      "pred_name": "MSK_structures_present",
+      "image_roles": [
+        "axial_group_01_autochthon_left__vertebrae_T1__plus_6",
+        "axial_group_02_vertebrae_T4__rib_left_3__plus_3",
+        "axial_group_03_rib_left_2__sternum__plus_1",
+        "axial_group_04_vertebrae_C2__skull__plus_1",
+        "axial_group_05_vertebrae_C5__vertebrae_C6",
+        "axial_group_06_vertebrae_C3__vertebrae_C4",
+        "axial_group_07_vertebrae_C7"
+      ]
+    }
+  ]
+}

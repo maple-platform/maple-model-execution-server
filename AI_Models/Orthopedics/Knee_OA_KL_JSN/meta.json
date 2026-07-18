@@ -1,0 +1,21 @@
+{
+  "model_name": "Knee_OA_KL_JSN",
+  "description": "Bilateral PA knee radiograph pipeline returning side-specific KL and joint-space-narrowing grades with segmentation overlay.",
+  "task_type": "detection, segmentation, classification",
+  "disease": "knee osteoarthritis, joint space narrowing, Kellgren-Lawrence grade",
+  "model_type": "standalone",
+  "required_data": [
+    "dcm",
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "segmentation_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "segmentation_overlay",
+  "docker": {
+    "service_url": "\uad00\ub9ac\uc790 \uc791\uc131 \uc608\uc815"
+  }
+}

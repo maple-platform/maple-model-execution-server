@@ -1,0 +1,61 @@
+{
+  "images": [
+    "sagittal_segmentation_01.png",
+    "sagittal_segmentation_02.png",
+    "sagittal_segmentation_03.png",
+    "sagittal_segmentation_04.png",
+    "sagittal_segmentation_05.png"
+  ],
+  "predictions": [
+    {
+      "model": "SPIDER iterative lumbar MRI segmentation",
+      "preview_files": [
+        "/tmp/maple_spider_lumbar_mri_segmentation_xhrytjgk/sagittal_segmentation_01.png",
+        "/tmp/maple_spider_lumbar_mri_segmentation_xhrytjgk/sagittal_segmentation_02.png",
+        "/tmp/maple_spider_lumbar_mri_segmentation_xhrytjgk/sagittal_segmentation_03.png",
+        "/tmp/maple_spider_lumbar_mri_segmentation_xhrytjgk/sagittal_segmentation_04.png",
+        "/tmp/maple_spider_lumbar_mri_segmentation_xhrytjgk/sagittal_segmentation_05.png"
+      ],
+      "preview_roles": [
+        "sagittal_segmentation_01",
+        "sagittal_segmentation_02",
+        "sagittal_segmentation_03",
+        "sagittal_segmentation_04",
+        "sagittal_segmentation_05"
+      ],
+      "foreground_voxels": 196078,
+      "labels_present": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        100,
+        118,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224
+      ],
+      "qc_passed": true,
+      "label_schema": {
+        "1-25": "vertebrae C1-L6",
+        "100": "spinal canal",
+        "101-125": "incompletely visible vertebrae",
+        "201-225": "intervertebral discs following the vertebral label"
+      },
+      "pred": 14,
+      "pred_name": "anatomical_labels_present",
+      "image_roles": [
+        "sagittal_segmentation_01",
+        "sagittal_segmentation_02",
+        "sagittal_segmentation_03",
+        "sagittal_segmentation_04",
+        "sagittal_segmentation_05"
+      ]
+    }
+  ]
+}

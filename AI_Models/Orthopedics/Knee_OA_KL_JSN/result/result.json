@@ -1,0 +1,39 @@
+{
+  "images": [
+    "original_radiograph.png",
+    "right_knee_segmentation.png",
+    "left_knee_segmentation.png"
+  ],
+  "predictions": [
+    {
+      "model": "Duke knee OA KL and JSN pipeline",
+      "knees": [
+        {
+          "side": "right",
+          "kl_grade": 0,
+          "oa_present": false,
+          "medial_jsn_grade": 0,
+          "lateral_jsn_grade": 0
+        },
+        {
+          "side": "left",
+          "kl_grade": 2,
+          "oa_present": true,
+          "medial_jsn_grade": 0,
+          "lateral_jsn_grade": 0
+        }
+      ],
+      "knee_overlay_files": [
+        "/tmp/maple_knee_oa_kl_jsn_ohvq0t1c/smoke_bilateral_views_right_knee_segmentation.png",
+        "/tmp/maple_knee_oa_kl_jsn_ohvq0t1c/smoke_bilateral_views_left_knee_segmentation.png"
+      ],
+      "pred": 2,
+      "pred_name": "maximum_KL2",
+      "image_roles": [
+        "original_radiograph",
+        "right_knee_segmentation",
+        "left_knee_segmentation"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+model_name: Knee_OA_KL_Ensemble
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/Knee_OA_KL_Ensemble/runner.py
+inference_path: /app/AI_Models/Orthopedics/Knee_OA_KL_Ensemble/inference.py
+model_path: /app/AI_Models/Orthopedics/Knee_OA_KL_Ensemble/checkpoint
+meta:
+  description: Single-knee AP or PA radiograph model returning KL grade 0-4, ordinal
+    probabilities, OA probability, and a GradCAM overlay.
+  modality: dcm, png, jpg, jpeg
+  task: classification

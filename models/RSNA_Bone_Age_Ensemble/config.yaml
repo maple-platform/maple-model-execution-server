@@ -1,0 +1,13 @@
+model_name: RSNA_Bone_Age_Ensemble
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/RSNA_Bone_Age_Ensemble/runner.py
+inference_path: /app/AI_Models/Orthopedics/RSNA_Bone_Age_Ensemble/inference.py
+model_path: /app/AI_Models/Orthopedics/RSNA_Bone_Age_Ensemble/checkpoint
+params:
+  sex: female
+meta:
+  description: Pediatric hand radiograph model returning bone age in years and months,
+    uncertainty, and a normalized hand crop with a readable age overlay.
+  modality: dcm, png, jpg, jpeg
+  task: regression, localization

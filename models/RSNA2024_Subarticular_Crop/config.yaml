@@ -1,0 +1,11 @@
+model_name: RSNA2024_Subarticular_Crop
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/RSNA2024_Subarticular_Crop/runner.py
+inference_path: /app/AI_Models/Orthopedics/RSNA2024_Subarticular_Crop/inference.py
+model_path: /app/AI_Models/Orthopedics/RSNA2024_Subarticular_Crop/checkpoint
+meta:
+  description: Lumbar MRI crop model returning three-grade subarticular stenosis probabilities
+    and an annotated preview from a 96 mm three-slice axial T2 crop.
+  modality: png, jpg, jpeg, dcm
+  task: classification

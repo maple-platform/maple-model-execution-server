@@ -1,0 +1,11 @@
+model_name: RSNA2024_Lumbar_Level_Keypoints
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/RSNA2024_Lumbar_Level_Keypoints/runner.py
+inference_path: /app/AI_Models/Orthopedics/RSNA2024_Lumbar_Level_Keypoints/inference.py
+model_path: /app/AI_Models/Orthopedics/RSNA2024_Lumbar_Level_Keypoints/checkpoint
+meta:
+  description: Lumbar MRI model returning 5 lumbar level localization keypoints, compatible
+    crops, and a landmark overlay from a sagittal T2/STIR DICOM series.
+  modality: dcm
+  task: keypoint detection, crop generation
