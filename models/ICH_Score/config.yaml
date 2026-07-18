@@ -1,0 +1,9 @@
+model_name: ICH_Score
+execution_mode: external_runtime
+runtime: runtime-basic
+runner_path: /app/models/ICH_Score/runner.py
+inference_path: /app/AI_Models/Neurology/ICH_Score/inference.py
+model_path: /app/AI_Models/Neurology/ICH_Score/checkpoint/coefficients.json
+meta:
+  description: "ICH Score - 30-day mortality after intracerebral hemorrhage (deterministic)"
+  task: classification

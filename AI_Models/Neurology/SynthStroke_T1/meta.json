@@ -1,0 +1,16 @@
+{
+  "model_name": "SynthStroke_T1",
+  "description": "Chronic stroke lesion segmentation model. Takes a single T1-weighted NIfTI brain MRI and returns axial-slice lesion overlay images, an optional 3D lesion rendering, and per-lesion volume/location statistics. Based on SynthStroke (MONAI 3D UNet trained with synthetic data, MELBA 2025) for robust cross-protocol stroke segmentation.",
+  "task_type": "segmentation",
+  "disease": "stroke, chronic stroke, ischemic stroke, brain lesion, stroke lesion segmentation, infarct",
+  "model_type": "standalone",
+  "requires": [],
+  "provides": [],
+  "required_data": ["nii.gz", "nii"],
+  "result_type": ["segmentation_overlay", "3d_overlay", "detection_predictions"],
+  "output_image_role": "segmentation_overlay",
+  "modality": "T1",
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

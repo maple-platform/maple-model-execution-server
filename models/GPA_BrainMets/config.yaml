@@ -1,0 +1,9 @@
+model_name: GPA_BrainMets
+execution_mode: external_runtime
+runtime: runtime-basic
+runner_path: /app/models/GPA_BrainMets/runner.py
+inference_path: /app/AI_Models/Neurology/GPA_BrainMets/inference.py
+model_path: /app/AI_Models/Neurology/GPA_BrainMets/checkpoint/coefficients.json
+meta:
+  description: "GPA - median survival prognosis for brain metastases (deterministic)"
+  task: classification

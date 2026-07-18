@@ -1,0 +1,13 @@
+# Python 3.10 / CUDA 12.x  (runtime-medical 기준)
+# runtime-medical 에는 monai, nibabel, scipy, scikit-image, Pillow, torch 가 이미 존재.
+# 추가로 필요한 패키지는 safetensors 하나뿐 (오프라인 self-contained 로더에 사용).
+safetensors==0.6.2
+
+# --- 아래는 runtime-medical 에 이미 설치되어 있는 것으로 확인된 의존성(참고용, 재설치 불필요) ---
+# torch (NV PyTorch 25.12 base)
+# monai==1.5.2
+# nibabel
+# scipy
+# scikit-image
+# Pillow
+# (3D 렌더링용) vedo, vtk-osmesa  --  없으면 3d_overlay 는 자동 생략됨(선택)

@@ -1,0 +1,15 @@
+{
+  "model_name": "ASTRAL_Score",
+  "description": "ASTRAL score for acute ischemic stroke prognosis. Takes clinical variables (age, admission NIHSS, onset-to-admission time, visual field defect, acute glucose, level of consciousness) as CSV and returns the ASTRAL score and a risk category for unfavorable 90-day functional outcome (mRS>2). Deterministic integer score (Ntaios 2012).",
+  "task_type": "classification",
+  "disease": "acute ischemic stroke, ischemic stroke, stroke prognosis, functional outcome, mRS",
+  "model_type": "standalone",
+  "requires": [],
+  "provides": [],
+  "required_data": ["csv"],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

@@ -1,0 +1,11 @@
+model_name: SynthStroke_T1
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/SynthStroke_T1/runner.py
+inference_path: /app/AI_Models/Neurology/SynthStroke_T1/inference.py
+# checkpoint 는 폴더 경로로 지정 (inference 가 model.safetensors + config.json 을 폴더에서 해석)
+model_path: /app/AI_Models/Neurology/SynthStroke_T1/checkpoint
+meta:
+  description: "SynthStroke T1 chronic stroke lesion segmentation (MONAI UNet, self-contained safetensors loader)"
+  modality: T1 MRI
+  task: segmentation
