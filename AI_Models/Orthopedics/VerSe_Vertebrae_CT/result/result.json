@@ -1,0 +1,204 @@
+{
+  "images": [
+    "L5_segmentation.png",
+    "L4_segmentation.png",
+    "L3_segmentation.png",
+    "L2_segmentation.png",
+    "L1_segmentation.png",
+    "T12_segmentation.png",
+    "T11_segmentation.png",
+    "T10_segmentation.png"
+  ],
+  "predictions": [
+    {
+      "model": "VerSe vertebrae CT / TotalSegmentator 2.15",
+      "task": "vertebra_localization_identification_and_segmentation",
+      "preview_files": [
+        "/tmp/maple_verse_vertebrae_ct_qmpkfcns/L5_segmentation.png",
+        "/tmp/maple_verse_vertebrae_ct_qmpkfcns/L4_segmentation.png",
+        "/tmp/maple_verse_vertebrae_ct_qmpkfcns/L3_segmentation.png",
+        "/tmp/maple_verse_vertebrae_ct_qmpkfcns/L2_segmentation.png",
+        "/tmp/maple_verse_vertebrae_ct_qmpkfcns/L1_segmentation.png",
+        "/tmp/maple_verse_vertebrae_ct_qmpkfcns/T12_segmentation.png",
+        "/tmp/maple_verse_vertebrae_ct_qmpkfcns/T11_segmentation.png",
+        "/tmp/maple_verse_vertebrae_ct_qmpkfcns/T10_segmentation.png"
+      ],
+      "preview_roles": [
+        "L5_segmentation",
+        "L4_segmentation",
+        "L3_segmentation",
+        "L2_segmentation",
+        "L1_segmentation",
+        "T12_segmentation",
+        "T11_segmentation",
+        "T10_segmentation"
+      ],
+      "vertebrae": [
+        {
+          "label": "L5",
+          "mask_value": 27,
+          "centroid_world_mm": [
+            9.318143475061476,
+            -176.04844135192886,
+            -557.6876360526292
+          ],
+          "centroid_voxel": [
+            140.68185652493852,
+            106.96092754455552,
+            162.6823590645584
+          ],
+          "volume_mm3": 55717.0,
+          "mean_hu": 393.0113525390625,
+          "voxels": 55717
+        },
+        {
+          "label": "L4",
+          "mask_value": 28,
+          "centroid_world_mm": [
+            14.238266786750728,
+            -176.27288669227477,
+            -529.467463344947
+          ],
+          "centroid_voxel": [
+            135.76173321324927,
+            106.73648220420961,
+            190.90253177224056
+          ],
+          "volume_mm3": 59958.0,
+          "mean_hu": 409.6622009277344,
+          "voxels": 59958
+        },
+        {
+          "label": "L3",
+          "mask_value": 29,
+          "centroid_world_mm": [
+            9.702971202751655,
+            -185.53679397607016,
+            -500.9526362676138
+          ],
+          "centroid_voxel": [
+            140.29702879724834,
+            97.47257492041422,
+            219.4173588495737
+          ],
+          "volume_mm3": 54658.0,
+          "mean_hu": 434.4578552246094,
+          "voxels": 54658
+        },
+        {
+          "label": "L2",
+          "mask_value": 30,
+          "centroid_world_mm": [
+            -3.372686155543306,
+            -194.1767378981391,
+            -476.9769007983789
+          ],
+          "centroid_voxel": [
+            153.3726861555433,
+            88.83263099834528,
+            243.3930943188086
+          ],
+          "volume_mm3": 45325.0,
+          "mean_hu": 464.7494201660156,
+          "voxels": 45325
+        },
+        {
+          "label": "L1",
+          "mask_value": 31,
+          "centroid_world_mm": [
+            -11.237110935668312,
+            -199.55225269753225,
+            -450.27295930293354
+          ],
+          "centroid_voxel": [
+            161.2371109356683,
+            83.45711619895212,
+            270.09703581425396
+          ],
+          "volume_mm3": 41799.0,
+          "mean_hu": 417.13946533203125,
+          "voxels": 41799
+        },
+        {
+          "label": "T12",
+          "mask_value": 32,
+          "centroid_world_mm": [
+            -14.083721305740198,
+            -202.91273012794915,
+            -420.1625083710426
+          ],
+          "centroid_voxel": [
+            164.0837213057402,
+            80.09663876853521,
+            300.2074867461449
+          ],
+          "volume_mm3": 37159.0,
+          "mean_hu": 326.8844299316406,
+          "voxels": 37159
+        },
+        {
+          "label": "T11",
+          "mask_value": 33,
+          "centroid_world_mm": [
+            -14.503256309098873,
+            -204.61422831160115,
+            -391.62069960713677
+          ],
+          "centroid_voxel": [
+            164.50325630909887,
+            78.39514058488321,
+            328.74929551005073
+          ],
+          "volume_mm3": 31938.0,
+          "mean_hu": 345.62261962890625,
+          "voxels": 31938
+        },
+        {
+          "label": "T10",
+          "mask_value": 34,
+          "centroid_world_mm": [
+            -13.605392962841165,
+            -230.39608379290001,
+            -379.92967943155776
+          ],
+          "centroid_voxel": [
+            163.60539296284117,
+            52.613285103584346,
+            340.44031568562974
+          ],
+          "volume_mm3": 3041.0,
+          "mean_hu": 494.1780700683594,
+          "voxels": 3041
+        }
+      ],
+      "structures_present": [
+        "L5",
+        "L4",
+        "L3",
+        "L2",
+        "L1",
+        "T12",
+        "T11",
+        "T10"
+      ],
+      "fast_mode": false,
+      "unsupported_variants": [
+        "L6",
+        "T13"
+      ],
+      "warning": "Research use only; not a medical device.",
+      "pred": 8,
+      "pred_name": "vertebrae_identified",
+      "image_roles": [
+        "L5_segmentation",
+        "L4_segmentation",
+        "L3_segmentation",
+        "L2_segmentation",
+        "L1_segmentation",
+        "T12_segmentation",
+        "T11_segmentation",
+        "T10_segmentation"
+      ]
+    }
+  ]
+}

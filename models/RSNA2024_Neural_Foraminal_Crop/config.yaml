@@ -1,0 +1,11 @@
+model_name: RSNA2024_Neural_Foraminal_Crop
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/RSNA2024_Neural_Foraminal_Crop/runner.py
+inference_path: /app/AI_Models/Orthopedics/RSNA2024_Neural_Foraminal_Crop/inference.py
+model_path: /app/AI_Models/Orthopedics/RSNA2024_Neural_Foraminal_Crop/checkpoint
+meta:
+  description: Lumbar MRI crop model returning three-grade neural foraminal narrowing
+    probabilities and an annotated preview from a 96 mm three-slice sagittal T1 crop.
+  modality: png, jpg, jpeg, dcm
+  task: classification

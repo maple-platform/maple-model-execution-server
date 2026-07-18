@@ -1,0 +1,15 @@
+model_name: GRAZPED_Wrist_YOLOv9E
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/GRAZPED_Wrist_YOLOv9E/runner.py
+inference_path: /app/AI_Models/Orthopedics/GRAZPED_Wrist_YOLOv9E/inference.py
+model_path: /app/AI_Models/Orthopedics/GRAZPED_Wrist_YOLOv9E/checkpoint
+params:
+  confidence_threshold: 0.25
+  iou_threshold: 0.45
+  image_size: 640
+meta:
+  description: Pediatric wrist radiograph model returning fracture boxes, confidences,
+    a fracture summary, and a text-free fracture-only bounding-box overlay.
+  modality: png, jpg, jpeg
+  task: bbox detection

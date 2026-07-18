@@ -1,0 +1,20 @@
+{
+  "model_name": "RSNA2024_Spinal_Canal_Crop",
+  "description": "Lumbar MRI crop model returning three-grade spinal canal stenosis probabilities and an annotated preview from a 96 mm three-slice sagittal T2/STIR crop.",
+  "task_type": "classification",
+  "disease": "lumbar stenosis, spinal canal stenosis",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg",
+    "dcm"
+  ],
+  "result_type": [
+    "classification_probabilities"
+  ],
+  "output_image_role": "classification_probabilities",
+  "docker": {
+    "service_url": "\uad00\ub9ac\uc790 \uc791\uc131 \uc608\uc815"
+  }
+}

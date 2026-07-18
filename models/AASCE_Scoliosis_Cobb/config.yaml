@@ -1,0 +1,11 @@
+model_name: AASCE_Scoliosis_Cobb
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/AASCE_Scoliosis_Cobb/runner.py
+inference_path: /app/AI_Models/Orthopedics/AASCE_Scoliosis_Cobb/inference.py
+model_path: /app/AI_Models/Orthopedics/AASCE_Scoliosis_Cobb/checkpoint
+meta:
+  description: Standing AP spine radiograph model returning 68 vertebral landmarks,
+    three Cobb-angle measurements, and a landmark overlay.
+  modality: png, jpg, jpeg
+  task: keypoint detection, pose estimation, measurement

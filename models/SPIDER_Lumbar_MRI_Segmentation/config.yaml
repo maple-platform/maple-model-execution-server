@@ -1,0 +1,11 @@
+model_name: SPIDER_Lumbar_MRI_Segmentation
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/SPIDER_Lumbar_MRI_Segmentation/runner.py
+inference_path: /app/AI_Models/Orthopedics/SPIDER_Lumbar_MRI_Segmentation/inference.py
+model_path: /app/AI_Models/Orthopedics/SPIDER_Lumbar_MRI_Segmentation/checkpoint
+meta:
+  description: 3D lumbar MRI model returning vertebra, disc, and spinal-canal segmentation
+    overlays, labels, and quality-control measurements.
+  modality: nii.gz, nii
+  task: segmentation

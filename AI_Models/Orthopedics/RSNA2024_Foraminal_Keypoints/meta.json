@@ -1,0 +1,18 @@
+{
+  "model_name": "RSNA2024_Foraminal_Keypoints",
+  "description": "Lumbar MRI model returning 10 bilateral neural foraminal localization keypoints, compatible crops, and a landmark overlay from a sagittal T1 DICOM series.",
+  "task_type": "keypoint detection, crop generation",
+  "disease": "lumbar stenosis, bilateral neural foraminal localization",
+  "model_type": "standalone",
+  "required_data": [
+    "dcm"
+  ],
+  "result_type": [
+    "bbox_overlay",
+    "detection_predictions"
+  ],
+  "output_image_role": "bbox_overlay",
+  "docker": {
+    "service_url": "\uad00\ub9ac\uc790 \uc791\uc131 \uc608\uc815"
+  }
+}

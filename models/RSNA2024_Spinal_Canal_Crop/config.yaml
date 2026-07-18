@@ -1,0 +1,11 @@
+model_name: RSNA2024_Spinal_Canal_Crop
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/RSNA2024_Spinal_Canal_Crop/runner.py
+inference_path: /app/AI_Models/Orthopedics/RSNA2024_Spinal_Canal_Crop/inference.py
+model_path: /app/AI_Models/Orthopedics/RSNA2024_Spinal_Canal_Crop/checkpoint
+meta:
+  description: Lumbar MRI crop model returning three-grade spinal canal stenosis probabilities
+    and an annotated preview from a 96 mm three-slice sagittal T2/STIR crop.
+  modality: png, jpg, jpeg, dcm
+  task: classification
