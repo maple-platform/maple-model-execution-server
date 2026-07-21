@@ -1,0 +1,20 @@
+{
+  "model_name": "SkinLesion_ViT12",
+  "description": "Twelve-class dermoscopic skin-lesion classifier. Takes a PNG or JPEG image and returns a Grad-CAM overlay plus class probabilities.",
+  "task_type": "classification",
+  "disease": "skin lesion, melanoma, nevus, carcinoma, keratosis, dermatofibroma, vascular lesion",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "gradcam_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_overlay",
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

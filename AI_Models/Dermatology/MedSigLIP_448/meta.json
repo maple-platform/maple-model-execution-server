@@ -1,0 +1,20 @@
+{
+  "model_name": "MedSigLIP_448",
+  "description": "Zero-shot dermatology image classifier over eleven configured conditions. Takes a clinical PNG or JPEG image and returns a visual-token Grad-CAM overlay plus candidate-relative probabilities.",
+  "task_type": "classification",
+  "disease": "acne, actinic keratosis, basal cell carcinoma, eczema, melanoma, nevus, psoriasis, seborrheic keratosis, tinea, urticaria, viral wart",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "gradcam_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_overlay",
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

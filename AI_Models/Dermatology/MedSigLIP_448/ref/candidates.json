@@ -1,0 +1,9 @@
+{
+  "prompt_template": "a clinical photograph of {label}",
+  "labels": [
+    "atopic dermatitis", "contact dermatitis", "eczema", "psoriasis",
+    "acne vulgaris", "urticaria", "fungal skin infection",
+    "viral skin infection", "bacterial skin infection",
+    "benign skin lesion", "malignant skin lesion"
+  ]
+}
