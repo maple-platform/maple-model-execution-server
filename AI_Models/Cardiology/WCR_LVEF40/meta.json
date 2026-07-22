@@ -1,0 +1,15 @@
+{
+  "model_name": "WCR_LVEF40",
+  "description": "ECG-based reduced-ejection-fraction screening model. Takes a 10-second 12-lead waveform CSV and returns scores for LVEF at or below 40 percent versus above 40 percent.",
+  "task_type": "classification",
+  "disease": "reduced ejection fraction, LVEF, heart failure, left ventricular systolic dysfunction",
+  "model_type": "standalone",
+  "required_data": [
+    "csv"
+  ],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

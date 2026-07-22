@@ -1,0 +1,15 @@
+{
+  "model_name": "DeepECG_SL77",
+  "description": "Multi-label 12-lead ECG interpretation model covering 77 rhythm, conduction, morphology, and ischemic findings. Takes a 10-second ECG waveform CSV and returns ranked finding scores.",
+  "task_type": "classification",
+  "disease": "arrhythmia, atrial fibrillation, conduction abnormality, ischemia, ECG morphology",
+  "model_type": "standalone",
+  "required_data": [
+    "csv"
+  ],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}
