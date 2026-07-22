@@ -1,0 +1,11 @@
+{
+  "model_name": "Breast_IDC_Keras",
+  "description": "Patch-level breast histopathology classifier for invasive ductal carcinoma (IDC). Takes a PNG or JPEG tissue patch and returns IDC-positive or IDC-negative probabilities.",
+  "task_type": "classification",
+  "disease": "breast cancer, invasive ductal carcinoma, IDC, histopathology",
+  "model_type": "standalone",
+  "required_data": ["png", "jpg", "jpeg"],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {"service_url": "관리자 작성 예정"}
+}

@@ -1,0 +1,1 @@
+"""MammoScreen model definition."""

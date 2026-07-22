@@ -1,0 +1,11 @@
+{
+  "model_name": "MammoCrop_ROI",
+  "description": "Breast ROI localization model for mammography preprocessing. Takes a PNG or JPEG mammogram and returns an image with the predicted breast/background crop box plus xywh coordinates. The box is not a lesion localization.",
+  "task_type": "bbox detection",
+  "disease": "breast cancer screening, mammography, breast ROI, image preprocessing",
+  "model_type": "standalone",
+  "required_data": ["png", "jpg", "jpeg"],
+  "result_type": ["bbox_overlay", "detection_predictions"],
+  "output_image_role": "bbox_overlay",
+  "docker": {"service_url": "관리자 작성 예정"}
+}

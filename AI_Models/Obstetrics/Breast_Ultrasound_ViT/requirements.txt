@@ -1,0 +1,8 @@
+# Python 3.11 / CPU inference
+torch==2.5.1
+torchvision==0.20.1
+transformers==4.46.3
+safetensors==0.4.5
+numpy==1.26.4
+pandas==2.2.3
+Pillow==11.1.0
