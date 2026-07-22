@@ -17,27 +17,39 @@
 | `sample_data/` | **필수** | 테스트용 입력 샘플 1~2개 |
 | `ref/` | 조건부 필수 | 전처리에 사용되는 참조 파일 (있는 경우) |
 | `README.md` | 권장 | 모델 상세 설명 (학습 방법, 성능 지표 등) |
+| `runner.py` | **필수** | 실행 어댑터. 연구자의 `main()`을 감싸 플랫폼 표준 출력으로 변환 |
+| `config.yaml` | **필수** | 실행 설정. 런타임·경로 매핑 |
+
+> **제출 위치는 두 곳입니다.** `inference.py`·`checkpoint/`·`meta.json`·`requirements.txt`·`sample_data/`·`ref/`·`README.md`는 `AI_Models/{진료과}/{모델명}/`에, `runner.py`·`config.yaml`는 저장소 최상위 `models/{모델명}/`에 넣습니다. **두 폴더를 함께 업로드**해야 모델이 등록·실행됩니다. (자세한 규격은 [§7](#7-models모델명--runnerpy--configyaml) 참고)
 
 ---
 
 ## 폴더 구조
 
 ```
-AI_Models/
-└── {진료과}/
-    └── {모델명}/
-        ├── inference.py
-        ├── meta.json
-        ├── requirements.txt
-        ├── checkpoint/
-        │   └── model.pt          # 모델 가중치
-        ├── sample_data/
-        │   ├── sample_01.dcm     # 테스트용 입력 샘플 1~2개
-        │   └── sample_02.dcm
-        ├── ref/                  # 전처리에 참조 파일이 필요한 경우
-        │   └── ref_image.dcm
-        └── README.md
+저장소 루트/
+├── AI_Models/
+│   └── {진료과}/
+│       └── {모델명}/
+│           ├── inference.py
+│           ├── meta.json
+│           ├── requirements.txt
+│           ├── checkpoint/
+│           │   └── model.pt          # 모델 가중치
+│           ├── sample_data/
+│           │   ├── sample_01.dcm     # 테스트용 입력 샘플 1~2개
+│           │   └── sample_02.dcm
+│           ├── ref/                  # 전처리에 참조 파일이 필요한 경우
+│           │   └── ref_image.dcm
+│           └── README.md
+│
+└── models/
+    └── {모델명}/                      # {진료과} 계층 없이 모델명 단위
+        ├── config.yaml               # 실행 설정
+        └── runner.py                 # 실행 어댑터
 ```
+
+> `models/{모델명}`의 `{모델명}`은 `AI_Models/{진료과}/{모델명}`의 모델명과 **정확히 같아야** 합니다. 단, `models/` 아래에는 `{진료과}` 계층이 없습니다.
 
 **네이밍 규칙**
 - 경로는 **영어**로 작성합니다.
@@ -73,8 +85,8 @@ def main(input_data, model_path: str):
 ```
 
 > **runner.py 계층 (반환/입력 형태는 '계약').**
-> 런타임에서는 **관리자가 모델마다 작성하는 `runner.py`가 연구자의 `main()`을 감싸 호출**합니다.
-> 따라서 `main()`의 정확한 입력·반환 형태(반환값 개수, `dict` 입력 여부, 컬럼 이름 등)는 플랫폼이 코드로 강제하는 것이 아니라 **`runner.py`와의 계약**입니다.
+> 런타임에서는 **연구자가 모델마다 작성하는 `runner.py`가 자신의 `main()`을 감싸 호출**합니다(아래 [§7 `models/`](#7-models모델명--runnerpy--configyaml) 참고).
+> 따라서 `main()`의 정확한 입력·반환 형태(반환값 개수, `dict` 입력 여부, 컬럼 이름 등)는 플랫폼이 코드로 강제하는 것이 아니라 **`main()`↔`runner.py` 간의 계약**이며, 연구자가 둘을 함께 작성해 일관되게 맞춥니다.
 > 아래 규격은 현재 등록 모델들의 표준이며, 비표준 형태가 필요하면 **관리자와 합의**하세요.
 
 ### 입력 데이터 자료형
@@ -606,7 +618,65 @@ print(result)  # 반환값이 규격(DataFrame / np.ndarray 등)에 맞는지 �
 
 ---
 
-## 7. LLM Wiki — 모델 정보 등록 구조
+## 7. `models/{모델명}/` — `runner.py` + `config.yaml`
+
+`inference.py`와 **함께 제출**하는 실행 계층입니다. 저장소 최상위 `models/` 아래에, **`{진료과}` 계층 없이 모델명 폴더**로 넣습니다.
+
+```
+models/
+└── {모델명}/            # AI_Models/{진료과}/{모델명} 의 {모델명}과 정확히 동일
+    ├── config.yaml
+    └── runner.py
+```
+
+플랫폼은 연구자의 `inference.py`를 직접 호출하지 않고, **`runner.py`가 `main()`을 감싸 호출**한 뒤 결과를 플랫폼 표준 형식(이미지·예측값)으로 변환합니다. `config.yaml`은 어떤 런타임에서 어떤 경로로 실행할지를 정의합니다.
+
+### `config.yaml`
+
+경로는 **컨테이너 내부 절대 경로**(`/app/...`) 규칙을 따릅니다. `{진료과}`/`{모델명}`만 자신의 값으로 바꾸면 됩니다.
+
+```yaml
+model_name: MIMIC_CXR_Cardiomegaly             # {모델명}과 동일
+execution_mode: external_runtime               # 외부 런타임 실행 (표준)
+runtime: runtime-medical                        # 사용할 런타임 이미지
+runner_path:    /app/models/MIMIC_CXR_Cardiomegaly/runner.py
+inference_path: /app/AI_Models/Pulmonology/MIMIC_CXR_Cardiomegaly/inference.py
+model_path:     /app/AI_Models/Pulmonology/MIMIC_CXR_Cardiomegaly/checkpoint
+meta:
+  description: Classifies cardiomegaly on a MIMIC-CXR chest radiograph.
+  modality: png, jpg, jpeg
+  task: binary classification
+```
+
+| 필드 | 설명 |
+|---|---|
+| `model_name` | 모델 식별자. `models/{모델명}` 및 `AI_Models/{진료과}/{모델명}` 폴더명과 일치 |
+| `execution_mode` | 실행 방식. 현재 표준은 `external_runtime` |
+| `runtime` | 실행 런타임 이미지 이름 (관리자와 합의된 값 사용) |
+| `runner_path` | `runner.py`의 컨테이너 내 절대 경로 |
+| `inference_path` | 자신의 `inference.py`의 컨테이너 내 절대 경로 (`{진료과}` 포함) |
+| `model_path` | `checkpoint/` 폴더의 컨테이너 내 절대 경로. `runner`가 `main()`에 주입 |
+| `meta` | 실행 서버용 요약(설명·입력 modality·task) |
+
+### `runner.py`
+
+`inference.py`를 로드해 `main()`을 호출하고, **반환값이 규격에 맞는지 검증**한 뒤, 이미지·예측 JSON을 저장하고 플랫폼 payload로 직렬화합니다. 진입점은 `predict(input_path, output_dir, config)` 입니다.
+
+```python
+def predict(input_path: str, output_dir: str, config: dict) -> dict:
+    inference = _load_inference(config["inference_path"], config["model_name"])
+    returned = inference.main(input_path, config["model_path"])
+    # 1) 반환값 계약 검증 (예: (overlay, predictions), overlay는 RGB np.ndarray 등)
+    # 2) 이미지(PNG)·예측(JSON) 저장
+    # 3) images_b64 / output_files / predictions 를 담은 dict 반환
+    ...
+```
+
+> **`main()`과 `runner.py`는 한 쌍의 계약입니다.** `runner.py`가 기대하는 반환 형태(반환값 개수, 키 이름, 이미지 shape 등)를 자신의 `main()` 반환값과 정확히 맞춰야 합니다. 모델 종류(분류·세그멘테이션·detection)에 따라 검증 로직이 다르므로, **기존 등록 모델의 `runner.py`를 참고**해 작성하세요.
+
+---
+
+## 8. LLM Wiki — 모델 정보 등록 구조
 
 모델이 플랫폼에 등록되면(`POST /admin/models`), 백엔드는 자동으로 AI Agent의 `POST /agent/models/register`를 호출합니다.
 Agent는 이를 받아 두 곳에 모델 정보를 저장합니다.
@@ -662,7 +732,7 @@ BME 여부를 분류하고 GradCAM++ 히트맵 이미지를 반환한다."
 
 ---
 
-## 8. `README.md` (권장 양식)
+## 9. `README.md` (권장 양식)
 
 모델별 README는 필수는 아니지만, 플랫폼 관리자가 연동 작업을 빠르게 진행할 수 있도록 아래 양식을 권장합니다.
 
@@ -727,7 +797,7 @@ result = main(
 
 ---
 
-## 9. 제출 체크리스트
+## 10. 제출 체크리스트
 
 제출 전 아래 항목을 확인해주세요.
 
@@ -746,6 +816,9 @@ result = main(
 - [ ] `requirements.txt` → 버전 고정, 실제 실행 환경과 일치하는지 확인
 - [ ] `requirements.txt` → CUDA 버전 주석 명시 여부 (GPU 모델)
 - [ ] `requirements.txt` → `opencv-python` 대신 `opencv-python-headless` 사용 여부
+- [ ] `models/{모델명}/` → `config.yaml`, `runner.py` 포함 및 `AI_Models`와 함께 업로드 여부
+- [ ] `config.yaml` → `model_name`이 `{모델명}` 폴더명과 일치, 경로 필드(`inference_path`/`model_path` 등)가 실제 위치와 일치하는지 확인
+- [ ] `runner.py` → `inference.main()` 반환값을 규격대로 검증·직렬화하는지 확인
 - [ ] 이미지 여러 장 반환 시 `README.md`에 각 인덱스 의미 명시 여부
 - [ ] `README.md` → 실행 예시(`sample_data` 경로 기준) 포함 여부
 - [ ] 로컬에서 `main()` 함수 직접 호출하여 정상 동작 확인
