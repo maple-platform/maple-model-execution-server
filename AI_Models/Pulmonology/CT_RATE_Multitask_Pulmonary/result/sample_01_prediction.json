@@ -1,0 +1,418 @@
+[
+  {
+    "label": "Emphysema",
+    "probability": 0.08882029354572296,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Emphysema",
+    "model_id": "multitask__pulmonary",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__pulmonary",
+      "family": "multitask",
+      "outputs": [
+        "Emphysema",
+        "Atelectasis",
+        "Lung nodule",
+        "Lung opacity",
+        "Pulmonary fibrotic sequela",
+        "Mosaic attenuation pattern",
+        "Consolidation",
+        "Interlobular septal thickening"
+      ],
+      "macro_auroc": 0.721596626017847,
+      "macro_auprc": 0.42935481065785075,
+      "per_label_auroc": {
+        "Emphysema": 0.7508483183374783,
+        "Atelectasis": 0.7015155677655678,
+        "Lung nodule": 0.6320345533826638,
+        "Lung opacity": 0.701235729000875,
+        "Pulmonary fibrotic sequela": 0.634147547162816,
+        "Mosaic attenuation pattern": 0.7992637481510917,
+        "Consolidation": 0.7477575622634307,
+        "Interlobular septal thickening": 0.8059699820788531
+      },
+      "best_holdout_auroc": 0.7075776097423698,
+      "epochs": 57
+    },
+    "gradcam_available": false,
+    "gradcam_target": "Consolidation",
+    "gradcam_score": "positive_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      64,
+      70,
+      76,
+      82,
+      88
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  },
+  {
+    "label": "Atelectasis",
+    "probability": 0.30239108204841614,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Atelectasis",
+    "model_id": "multitask__pulmonary",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__pulmonary",
+      "family": "multitask",
+      "outputs": [
+        "Emphysema",
+        "Atelectasis",
+        "Lung nodule",
+        "Lung opacity",
+        "Pulmonary fibrotic sequela",
+        "Mosaic attenuation pattern",
+        "Consolidation",
+        "Interlobular septal thickening"
+      ],
+      "macro_auroc": 0.721596626017847,
+      "macro_auprc": 0.42935481065785075,
+      "per_label_auroc": {
+        "Emphysema": 0.7508483183374783,
+        "Atelectasis": 0.7015155677655678,
+        "Lung nodule": 0.6320345533826638,
+        "Lung opacity": 0.701235729000875,
+        "Pulmonary fibrotic sequela": 0.634147547162816,
+        "Mosaic attenuation pattern": 0.7992637481510917,
+        "Consolidation": 0.7477575622634307,
+        "Interlobular septal thickening": 0.8059699820788531
+      },
+      "best_holdout_auroc": 0.7075776097423698,
+      "epochs": 57
+    },
+    "gradcam_available": false,
+    "gradcam_target": "Consolidation",
+    "gradcam_score": "positive_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      64,
+      70,
+      76,
+      82,
+      88
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  },
+  {
+    "label": "Lung nodule",
+    "probability": 0.272024542093277,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Lung nodule",
+    "model_id": "multitask__pulmonary",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__pulmonary",
+      "family": "multitask",
+      "outputs": [
+        "Emphysema",
+        "Atelectasis",
+        "Lung nodule",
+        "Lung opacity",
+        "Pulmonary fibrotic sequela",
+        "Mosaic attenuation pattern",
+        "Consolidation",
+        "Interlobular septal thickening"
+      ],
+      "macro_auroc": 0.721596626017847,
+      "macro_auprc": 0.42935481065785075,
+      "per_label_auroc": {
+        "Emphysema": 0.7508483183374783,
+        "Atelectasis": 0.7015155677655678,
+        "Lung nodule": 0.6320345533826638,
+        "Lung opacity": 0.701235729000875,
+        "Pulmonary fibrotic sequela": 0.634147547162816,
+        "Mosaic attenuation pattern": 0.7992637481510917,
+        "Consolidation": 0.7477575622634307,
+        "Interlobular septal thickening": 0.8059699820788531
+      },
+      "best_holdout_auroc": 0.7075776097423698,
+      "epochs": 57
+    },
+    "gradcam_available": false,
+    "gradcam_target": "Consolidation",
+    "gradcam_score": "positive_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      64,
+      70,
+      76,
+      82,
+      88
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  },
+  {
+    "label": "Lung opacity",
+    "probability": 0.41727152466773987,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Lung opacity",
+    "model_id": "multitask__pulmonary",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__pulmonary",
+      "family": "multitask",
+      "outputs": [
+        "Emphysema",
+        "Atelectasis",
+        "Lung nodule",
+        "Lung opacity",
+        "Pulmonary fibrotic sequela",
+        "Mosaic attenuation pattern",
+        "Consolidation",
+        "Interlobular septal thickening"
+      ],
+      "macro_auroc": 0.721596626017847,
+      "macro_auprc": 0.42935481065785075,
+      "per_label_auroc": {
+        "Emphysema": 0.7508483183374783,
+        "Atelectasis": 0.7015155677655678,
+        "Lung nodule": 0.6320345533826638,
+        "Lung opacity": 0.701235729000875,
+        "Pulmonary fibrotic sequela": 0.634147547162816,
+        "Mosaic attenuation pattern": 0.7992637481510917,
+        "Consolidation": 0.7477575622634307,
+        "Interlobular septal thickening": 0.8059699820788531
+      },
+      "best_holdout_auroc": 0.7075776097423698,
+      "epochs": 57
+    },
+    "gradcam_available": false,
+    "gradcam_target": "Consolidation",
+    "gradcam_score": "positive_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      64,
+      70,
+      76,
+      82,
+      88
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  },
+  {
+    "label": "Pulmonary fibrotic sequela",
+    "probability": 0.25091278553009033,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Pulmonary fibrotic sequela",
+    "model_id": "multitask__pulmonary",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__pulmonary",
+      "family": "multitask",
+      "outputs": [
+        "Emphysema",
+        "Atelectasis",
+        "Lung nodule",
+        "Lung opacity",
+        "Pulmonary fibrotic sequela",
+        "Mosaic attenuation pattern",
+        "Consolidation",
+        "Interlobular septal thickening"
+      ],
+      "macro_auroc": 0.721596626017847,
+      "macro_auprc": 0.42935481065785075,
+      "per_label_auroc": {
+        "Emphysema": 0.7508483183374783,
+        "Atelectasis": 0.7015155677655678,
+        "Lung nodule": 0.6320345533826638,
+        "Lung opacity": 0.701235729000875,
+        "Pulmonary fibrotic sequela": 0.634147547162816,
+        "Mosaic attenuation pattern": 0.7992637481510917,
+        "Consolidation": 0.7477575622634307,
+        "Interlobular septal thickening": 0.8059699820788531
+      },
+      "best_holdout_auroc": 0.7075776097423698,
+      "epochs": 57
+    },
+    "gradcam_available": false,
+    "gradcam_target": "Consolidation",
+    "gradcam_score": "positive_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      64,
+      70,
+      76,
+      82,
+      88
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  },
+  {
+    "label": "Mosaic attenuation pattern",
+    "probability": 0.37983831763267517,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Mosaic attenuation pattern",
+    "model_id": "multitask__pulmonary",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__pulmonary",
+      "family": "multitask",
+      "outputs": [
+        "Emphysema",
+        "Atelectasis",
+        "Lung nodule",
+        "Lung opacity",
+        "Pulmonary fibrotic sequela",
+        "Mosaic attenuation pattern",
+        "Consolidation",
+        "Interlobular septal thickening"
+      ],
+      "macro_auroc": 0.721596626017847,
+      "macro_auprc": 0.42935481065785075,
+      "per_label_auroc": {
+        "Emphysema": 0.7508483183374783,
+        "Atelectasis": 0.7015155677655678,
+        "Lung nodule": 0.6320345533826638,
+        "Lung opacity": 0.701235729000875,
+        "Pulmonary fibrotic sequela": 0.634147547162816,
+        "Mosaic attenuation pattern": 0.7992637481510917,
+        "Consolidation": 0.7477575622634307,
+        "Interlobular septal thickening": 0.8059699820788531
+      },
+      "best_holdout_auroc": 0.7075776097423698,
+      "epochs": 57
+    },
+    "gradcam_available": false,
+    "gradcam_target": "Consolidation",
+    "gradcam_score": "positive_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      64,
+      70,
+      76,
+      82,
+      88
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  },
+  {
+    "label": "Consolidation",
+    "probability": 0.5774953961372375,
+    "threshold": 0.5,
+    "pred": 1,
+    "pred_name": "Consolidation",
+    "model_id": "multitask__pulmonary",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__pulmonary",
+      "family": "multitask",
+      "outputs": [
+        "Emphysema",
+        "Atelectasis",
+        "Lung nodule",
+        "Lung opacity",
+        "Pulmonary fibrotic sequela",
+        "Mosaic attenuation pattern",
+        "Consolidation",
+        "Interlobular septal thickening"
+      ],
+      "macro_auroc": 0.721596626017847,
+      "macro_auprc": 0.42935481065785075,
+      "per_label_auroc": {
+        "Emphysema": 0.7508483183374783,
+        "Atelectasis": 0.7015155677655678,
+        "Lung nodule": 0.6320345533826638,
+        "Lung opacity": 0.701235729000875,
+        "Pulmonary fibrotic sequela": 0.634147547162816,
+        "Mosaic attenuation pattern": 0.7992637481510917,
+        "Consolidation": 0.7477575622634307,
+        "Interlobular septal thickening": 0.8059699820788531
+      },
+      "best_holdout_auroc": 0.7075776097423698,
+      "epochs": 57
+    },
+    "gradcam_available": true,
+    "gradcam_target": "Consolidation",
+    "gradcam_score": "positive_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      64,
+      70,
+      76,
+      82,
+      88
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  },
+  {
+    "label": "Interlobular septal thickening",
+    "probability": 0.06187598779797554,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Interlobular septal thickening",
+    "model_id": "multitask__pulmonary",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__pulmonary",
+      "family": "multitask",
+      "outputs": [
+        "Emphysema",
+        "Atelectasis",
+        "Lung nodule",
+        "Lung opacity",
+        "Pulmonary fibrotic sequela",
+        "Mosaic attenuation pattern",
+        "Consolidation",
+        "Interlobular septal thickening"
+      ],
+      "macro_auroc": 0.721596626017847,
+      "macro_auprc": 0.42935481065785075,
+      "per_label_auroc": {
+        "Emphysema": 0.7508483183374783,
+        "Atelectasis": 0.7015155677655678,
+        "Lung nodule": 0.6320345533826638,
+        "Lung opacity": 0.701235729000875,
+        "Pulmonary fibrotic sequela": 0.634147547162816,
+        "Mosaic attenuation pattern": 0.7992637481510917,
+        "Consolidation": 0.7477575622634307,
+        "Interlobular septal thickening": 0.8059699820788531
+      },
+      "best_holdout_auroc": 0.7075776097423698,
+      "epochs": 57
+    },
+    "gradcam_available": false,
+    "gradcam_target": "Consolidation",
+    "gradcam_score": "positive_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      64,
+      70,
+      76,
+      82,
+      88
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  }
+]

@@ -1,0 +1,98 @@
+{
+  "model": "MSD_Lung_Tumor_nnUNet_Ensemble",
+  "input": "sample_01.nii.gz",
+  "image_count": 8,
+  "labels": [
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice"
+  ],
+  "image_metadata": [
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 231
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 233
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 234
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 236
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 238
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 242
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 245
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 248
+    }
+  ],
+  "mask_file": "sample_01_tumor_mask.nii.gz",
+  "mask_format": "nii.gz",
+  "measurements": [
+    {
+      "label": "lung_tumor",
+      "present": true,
+      "voxel_count": 3238,
+      "volume_ml_from_header": 1.5566595077514649,
+      "volume_quality": "header_spacing_plausible",
+      "header_spacing_mm": [
+        0.693359375,
+        0.693359375,
+        1.0
+      ],
+      "input_intensity_offset_applied": false,
+      "model_id": "msd_lung_nnunet_5fold",
+      "task": "segmentation",
+      "segmentation_slices": [
+        231,
+        233,
+        234,
+        236,
+        238,
+        242,
+        245,
+        248
+      ],
+      "preview_slices": [
+        231,
+        233,
+        234,
+        236,
+        238,
+        242,
+        245,
+        248
+      ],
+      "returned_slice_count": 8,
+      "mask_positive_slice_count": 18,
+      "mask_slice_range": [
+        231,
+        248
+      ],
+      "interpretation_warning": "Research segmentation; requires external clinical validation and verified physical spacing.",
+      "image_roles": [
+        "segmentation_overlay_slice"
+      ]
+    }
+  ]
+}

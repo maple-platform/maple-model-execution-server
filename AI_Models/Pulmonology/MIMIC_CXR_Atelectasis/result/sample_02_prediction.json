@@ -1,0 +1,30 @@
+{
+  "model": "MIMIC_CXR_Atelectasis",
+  "input": "sample_02.jpg",
+  "image_count": 1,
+  "labels": [
+    "gradcam_overlay"
+  ],
+  "predictions": [
+    {
+      "pred": 0,
+      "pred_name": "no_atelectasis",
+      "label": "Atelectasis",
+      "probability": 0.037679579108953476,
+      "threshold": 0.55,
+      "model_id": "scratch_densenet121__atelectasis",
+      "architecture": "densenet121",
+      "test_auroc": 0.73,
+      "test_auprc": 0.434,
+      "test_f1": 0.488,
+      "gradcam_target": "no_atelectasis",
+      "gradcam_layer": "features.denseblock4",
+      "gradcam_score": "negative_logit",
+      "gradcam_available": true,
+      "gradcam_interpretation": "regions supporting the thresholded predicted class",
+      "image_roles": [
+        "gradcam_overlay"
+      ]
+    }
+  ]
+}

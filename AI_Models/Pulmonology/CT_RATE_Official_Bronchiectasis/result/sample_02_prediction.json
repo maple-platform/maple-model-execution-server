@@ -1,0 +1,33 @@
+[
+  {
+    "label": "Bronchiectasis",
+    "probability": 0.36296918988227844,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Bronchiectasis",
+    "model_id": "official__bronchiectasis",
+    "family": "official_18",
+    "validation_metrics": {
+      "valid_n": 1564,
+      "valid_positive": 169,
+      "auroc": 0.7075692986362963,
+      "auprc": 0.21004854667188255,
+      "f1_at_0_5": 0.29396984924623115
+    },
+    "gradcam_available": true,
+    "gradcam_target": "Bronchiectasis",
+    "gradcam_score": "negative_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      49,
+      65,
+      71,
+      77,
+      93
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  }
+]

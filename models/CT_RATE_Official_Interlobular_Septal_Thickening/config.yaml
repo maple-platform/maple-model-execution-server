@@ -1,0 +1,10 @@
+model_name: CT_RATE_Official_Interlobular_Septal_Thickening
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/CT_RATE_Official_Interlobular_Septal_Thickening/runner.py
+inference_path: /app/AI_Models/Pulmonology/CT_RATE_Official_Interlobular_Septal_Thickening/inference.py
+model_path: /app/AI_Models/Pulmonology/CT_RATE_Official_Interlobular_Septal_Thickening/checkpoint
+meta:
+  description: CT-RATE Interlobular septal thickening classifier (official__interlobular_septal_thickening).
+  modality: nii, nii.gz
+  task: classification

@@ -1,0 +1,19 @@
+{
+  "model_name": "CT_RATE_Multitask_Pulmonary",
+  "description": "CT-RATE 8 pulmonary findings classifier (multitask__pulmonary). Returns CT finding probabilities and a 3D Grad-CAM axial montage.",
+  "task_type": "classification",
+  "disease": "8 pulmonary findings",
+  "model_type": "standalone",
+  "required_data": [
+    "nii",
+    "nii.gz"
+  ],
+  "result_type": [
+    "gradcam_axial_montage",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_axial_montage",
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

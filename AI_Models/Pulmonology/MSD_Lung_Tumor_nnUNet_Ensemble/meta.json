@@ -1,0 +1,20 @@
+{
+  "model_name": "MSD_Lung_Tumor_nnUNet_Ensemble",
+  "description": "Five-fold nnU-Net ensemble for CT lung-tumor segmentation, trained on MSD Task06 Lung.",
+  "task_type": "segmentation",
+  "disease": "lung tumor",
+  "model_type": "ensemble",
+  "required_data": [
+    "nii",
+    "nii.gz"
+  ],
+  "result_type": [
+    "segmentation_overlay",
+    "segmentation_mask_volume",
+    "volume_measurements"
+  ],
+  "output_image_role": "segmentation_overlay_slice",
+  "docker": {
+    "service_url": "\uad00\ub9ac\uc790 \uc791\uc131 \uc608\uc815"
+  }
+}
