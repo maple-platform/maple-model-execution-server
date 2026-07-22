@@ -1,15 +1,24 @@
 # MONET_Dermatology
 
+## Overview
+- **Department**: Dermatology
+- **Model type**: standalone
+- **task_type**: classification
+- **result_type**: `['gradcam_overlay', 'classification_probabilities']`
+- **output_image_role**: `gradcam_overlay`
+
 A MONET dermatology image-text model used with the seven prompts in `ref/candidates.json`.
 
 ## Input and output
 
 Pass an absolute PNG/JPEG path to `main(input_data, model_path)`; pass the extracted checkpoint directory as `model_path`. The returned tuple is `[0]` an RGB `uint8` Grad-CAM overlay and `[1]` seven class probabilities in descending order. Zero-shot scores, where applicable, are relative to configured candidates and are not calibrated disease probabilities.
 
-## Local smoke test
+## Execution example
 
-```bash
-python inference.py
+```python
+from inference import main
+overlay, predictions = main("sample_data/sample_melanoma.jpg", "checkpoint")
+print(overlay.shape, predictions)
 ```
 
 The bundled sample is `sample_data/sample_melanoma.jpg`. Model weights belong in `checkpoint/`; large weights and sample data are delivered separately from Git according to the platform manual.
