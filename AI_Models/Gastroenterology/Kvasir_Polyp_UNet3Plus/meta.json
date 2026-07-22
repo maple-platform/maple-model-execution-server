@@ -7,5 +7,7 @@
   "required_data": ["png", "jpg", "jpeg"],
   "result_type": ["segmentation_overlay"],
   "output_image_role": "segmentation_overlay",
+  "requires": [],
+  "provides": [],
   "docker": {"service_url": "관리자 작성 예정"}
 }
