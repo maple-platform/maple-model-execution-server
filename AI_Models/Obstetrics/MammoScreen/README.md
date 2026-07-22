@@ -1,10 +1,40 @@
 # MammoScreen
 
-Breast cancer screening and density classification using `ianpan/mammoscreen`.
+## Overview
+- **Department**: Obstetrics
+- **Model type**: standalone
+- **task_type**: classification
+- **result_type**: `text`
+- **output_image_role**: `null`
 
-- Checkpoint: `checkpoint/model.safetensors`
-- Input: cropped PNG/JPG/JPEG mammogram
-- Output: cancer score, binary threshold result, and density A-D probabilities
-- Optional integration input: `{"cc": path, "mlo": path}` for paired views
+## Target conditions
+- Mammographic breast cancer risk and breast density A-D
 
-The public model's cancer score is not guaranteed to be a calibrated clinical probability. Research use only.
+## Input data
+| Item | Format | Description |
+|---|---|---|
+| Cropped mammogram | PNG/JPG/JPEG | One cropped grayscale mammography view |
+
+## Output
+- `pd.DataFrame` with `pred`, `pred_name`, `prob`, `cancer_score`, predicted density, and density A-D probabilities.
+
+## Model files
+| File | Description |
+|---|---|
+| `checkpoint/model.safetensors` | MammoScreen ensemble weights |
+
+## Preprocessing
+1. Convert the image to grayscale.
+2. Resize/pad it for each of three ensemble members.
+3. Normalize to `[-1, 1]` and average member outputs.
+
+## Execution example
+```python
+from inference import main
+result = main("sample_data/sample_01.png", "checkpoint/model.safetensors")
+print(result)
+```
+
+## Notes
+- Source: `ianpan/mammoscreen`.
+- The score is not guaranteed to be a calibrated clinical probability.
