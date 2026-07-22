@@ -1,0 +1,11 @@
+{
+  "model_name": "Kvasir_Polyp_YOLOv8",
+  "description": "YOLOv8 detector for colorectal polyps in colonoscopy images. Returns a bounding-box overlay and polyp coordinates with confidence scores.",
+  "task_type": "bbox detection",
+  "disease": "colorectal polyp, colonoscopy, gastrointestinal endoscopy, Kvasir-SEG",
+  "model_type": "standalone",
+  "required_data": ["png", "jpg", "jpeg"],
+  "result_type": ["bbox_overlay", "detection_predictions"],
+  "output_image_role": "bbox_overlay",
+  "docker": {"service_url": "관리자 작성 예정"}
+}
