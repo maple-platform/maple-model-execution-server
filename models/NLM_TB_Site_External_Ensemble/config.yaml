@@ -1,0 +1,10 @@
+model_name: NLM_TB_Site_External_Ensemble
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/NLM_TB_Site_External_Ensemble/runner.py
+inference_path: /app/AI_Models/Pulmonology/NLM_TB_Site_External_Ensemble/inference.py
+model_path: /app/AI_Models/Pulmonology/NLM_TB_Site_External_Ensemble/checkpoint
+meta:
+  description: Site-externally evaluated TB-consistent abnormality ensemble.
+  modality: png, jpg, jpeg
+  task: classification

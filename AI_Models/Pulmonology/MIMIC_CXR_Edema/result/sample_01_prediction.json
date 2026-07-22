@@ -1,0 +1,30 @@
+{
+  "model": "MIMIC_CXR_Edema",
+  "input": "sample_01.jpg",
+  "image_count": 1,
+  "labels": [
+    "gradcam_overlay"
+  ],
+  "predictions": [
+    {
+      "pred": 0,
+      "pred_name": "no_edema",
+      "label": "Edema",
+      "probability": 0.02937742881476879,
+      "threshold": 0.73,
+      "model_id": "scratch_densenet121__edema",
+      "architecture": "densenet121",
+      "test_auroc": 0.833,
+      "test_auprc": 0.582,
+      "test_f1": 0.576,
+      "gradcam_target": "no_edema",
+      "gradcam_layer": "features.denseblock4",
+      "gradcam_score": "negative_logit",
+      "gradcam_available": true,
+      "gradcam_interpretation": "regions supporting the thresholded predicted class",
+      "image_roles": [
+        "gradcam_overlay"
+      ]
+    }
+  ]
+}

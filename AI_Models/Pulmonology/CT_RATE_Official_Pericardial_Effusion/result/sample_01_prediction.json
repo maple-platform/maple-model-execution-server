@@ -1,0 +1,33 @@
+[
+  {
+    "label": "Pericardial effusion",
+    "probability": 0.08269733935594559,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Pericardial effusion",
+    "model_id": "official__pericardial_effusion",
+    "family": "official_18",
+    "validation_metrics": {
+      "valid_n": 1564,
+      "valid_positive": 110,
+      "auroc": 0.8126297361510567,
+      "auprc": 0.2675237113126957,
+      "f1_at_0_5": 0.29902912621359223
+    },
+    "gradcam_available": true,
+    "gradcam_target": "Pericardial effusion",
+    "gradcam_score": "negative_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      49,
+      65,
+      71,
+      77,
+      93
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  }
+]

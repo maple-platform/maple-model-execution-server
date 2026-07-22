@@ -1,0 +1,3 @@
+# LungMask_R231_Lung_Segmentation
+
+Open LungMask R231 model for bilateral lung segmentation on CT. CT-RATE volumes encoded as HU+1024 are detected and converted to HU before inference. Unilateral predictions outside the bilateral lung-support range are suppressed to remove inferior/superior air-space false positives. Returns the complete spatially referenced 3D mask as one compressed NIfTI file and eight independent representative axial overlay images selected by cumulative lung-mask volume. Header-derived volume is suppressed when the total is physiologically implausible, because some research NIfTI files have placeholder spacing. Research use only.

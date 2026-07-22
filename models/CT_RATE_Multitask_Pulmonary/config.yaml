@@ -1,0 +1,10 @@
+model_name: CT_RATE_Multitask_Pulmonary
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/CT_RATE_Multitask_Pulmonary/runner.py
+inference_path: /app/AI_Models/Pulmonology/CT_RATE_Multitask_Pulmonary/inference.py
+model_path: /app/AI_Models/Pulmonology/CT_RATE_Multitask_Pulmonary/checkpoint
+meta:
+  description: CT-RATE 8 pulmonary findings classifier (multitask__pulmonary).
+  modality: nii, nii.gz
+  task: classification

@@ -1,0 +1,145 @@
+{
+  "model": "LungMask_R231_Lung_Segmentation",
+  "input": "sample_02.nii.gz",
+  "image_count": 8,
+  "labels": [
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice",
+    "segmentation_overlay_slice"
+  ],
+  "image_metadata": [
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 92
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 137
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 166
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 176
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 203
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 252
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 302
+    },
+    {
+      "role": "segmentation_overlay_slice",
+      "slice_index": 345
+    }
+  ],
+  "mask_file": "sample_02_lung_mask.nii.gz",
+  "mask_format": "nii.gz",
+  "measurements": [
+    {
+      "label": "lung_label_1",
+      "present": true,
+      "voxel_count": 7141706,
+      "volume_ml_from_header": null,
+      "volume_quality": "rejected_implausible_header_spacing",
+      "header_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "quantification_warning": "Header-derived volume is suppressed when total segmented volume is implausible; verify physical NIfTI spacing before quantitative use.",
+      "model_id": "lungmask_r231",
+      "task": "segmentation",
+      "postprocessing": "bilateral_slice_support_crop",
+      "input_intensity_offset_applied": true,
+      "segmentation_slices": [
+        92,
+        137,
+        166,
+        176,
+        203,
+        252,
+        302,
+        345
+      ],
+      "preview_slices": [
+        92,
+        137,
+        166,
+        176,
+        203,
+        252,
+        302,
+        345
+      ],
+      "returned_slice_count": 8,
+      "mask_positive_slice_count": 345,
+      "mask_slice_range": [
+        92,
+        436
+      ],
+      "image_roles": [
+        "segmentation_overlay_slice"
+      ]
+    },
+    {
+      "label": "lung_label_2",
+      "present": true,
+      "voxel_count": 7666684,
+      "volume_ml_from_header": null,
+      "volume_quality": "rejected_implausible_header_spacing",
+      "header_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "quantification_warning": "Header-derived volume is suppressed when total segmented volume is implausible; verify physical NIfTI spacing before quantitative use.",
+      "model_id": "lungmask_r231",
+      "task": "segmentation",
+      "postprocessing": "bilateral_slice_support_crop",
+      "input_intensity_offset_applied": true,
+      "segmentation_slices": [
+        92,
+        137,
+        166,
+        176,
+        203,
+        252,
+        302,
+        345
+      ],
+      "preview_slices": [
+        92,
+        137,
+        166,
+        176,
+        203,
+        252,
+        302,
+        345
+      ],
+      "returned_slice_count": 8,
+      "mask_positive_slice_count": 345,
+      "mask_slice_range": [
+        92,
+        436
+      ],
+      "image_roles": [
+        "segmentation_overlay_slice"
+      ]
+    }
+  ]
+}

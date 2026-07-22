@@ -1,0 +1,10 @@
+model_name: CT_RATE_Official_Bronchiectasis
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/CT_RATE_Official_Bronchiectasis/runner.py
+inference_path: /app/AI_Models/Pulmonology/CT_RATE_Official_Bronchiectasis/inference.py
+model_path: /app/AI_Models/Pulmonology/CT_RATE_Official_Bronchiectasis/checkpoint
+meta:
+  description: CT-RATE Bronchiectasis classifier (official__bronchiectasis).
+  modality: nii, nii.gz
+  task: classification

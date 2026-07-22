@@ -1,0 +1,10 @@
+model_name: MIMIC_CXR_View_AP
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/MIMIC_CXR_View_AP/runner.py
+inference_path: /app/AI_Models/Pulmonology/MIMIC_CXR_View_AP/inference.py
+model_path: /app/AI_Models/Pulmonology/MIMIC_CXR_View_AP/checkpoint
+meta:
+  description: Classifies whether a MIMIC-CXR chest radiograph uses AP rather than PA projection.
+  modality: png, jpg, jpeg
+  task: binary classification

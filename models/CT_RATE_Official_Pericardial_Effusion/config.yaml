@@ -1,0 +1,10 @@
+model_name: CT_RATE_Official_Pericardial_Effusion
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/CT_RATE_Official_Pericardial_Effusion/runner.py
+inference_path: /app/AI_Models/Pulmonology/CT_RATE_Official_Pericardial_Effusion/inference.py
+model_path: /app/AI_Models/Pulmonology/CT_RATE_Official_Pericardial_Effusion/checkpoint
+meta:
+  description: CT-RATE Pericardial effusion classifier (official__pericardial_effusion).
+  modality: nii, nii.gz
+  task: classification

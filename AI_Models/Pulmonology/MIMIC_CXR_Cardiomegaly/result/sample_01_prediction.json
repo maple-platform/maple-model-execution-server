@@ -1,0 +1,30 @@
+{
+  "model": "MIMIC_CXR_Cardiomegaly",
+  "input": "sample_01.jpg",
+  "image_count": 1,
+  "labels": [
+    "gradcam_overlay"
+  ],
+  "predictions": [
+    {
+      "pred": 1,
+      "pred_name": "cardiomegaly",
+      "label": "Cardiomegaly",
+      "probability": 0.7236714959144592,
+      "threshold": 0.53,
+      "model_id": "scratch_resnet34__cardiomegaly__30h_broad_s20260716_bce",
+      "architecture": "resnet34",
+      "test_auroc": 0.77,
+      "test_auprc": 0.514,
+      "test_f1": 0.549,
+      "gradcam_target": "cardiomegaly",
+      "gradcam_layer": "layer4[-1]",
+      "gradcam_score": "positive_logit",
+      "gradcam_available": true,
+      "gradcam_interpretation": "regions supporting the thresholded predicted class",
+      "image_roles": [
+        "gradcam_overlay"
+      ]
+    }
+  ]
+}

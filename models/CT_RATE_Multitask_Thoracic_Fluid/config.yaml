@@ -1,0 +1,10 @@
+model_name: CT_RATE_Multitask_Thoracic_Fluid
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/CT_RATE_Multitask_Thoracic_Fluid/runner.py
+inference_path: /app/AI_Models/Pulmonology/CT_RATE_Multitask_Thoracic_Fluid/inference.py
+model_path: /app/AI_Models/Pulmonology/CT_RATE_Multitask_Thoracic_Fluid/checkpoint
+meta:
+  description: CT-RATE Pleural + Pericardial effusion classifier (multitask__thoracic_fluid).
+  modality: nii, nii.gz
+  task: classification

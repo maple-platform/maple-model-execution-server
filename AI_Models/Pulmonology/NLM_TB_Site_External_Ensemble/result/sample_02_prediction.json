@@ -1,0 +1,35 @@
+{
+  "model": "NLM_TB_Site_External_Ensemble",
+  "input": "sample_02.png",
+  "image_count": 1,
+  "labels": [
+    "gradcam_overlay"
+  ],
+  "predictions": [
+    {
+      "label": "TB-consistent abnormality",
+      "probability": 0.7884729504585266,
+      "threshold": 0.5870312499999997,
+      "pred": 1,
+      "pred_name": "TB-consistent abnormality",
+      "model_id": "nlm_tb_3member_site_external",
+      "ensemble_members": 3,
+      "external_validation": {
+        "auroc": 0.9334051724137931,
+        "auprc": 0.9164490953533267,
+        "threshold": 0.5870312499999997,
+        "f1": 0.8468468468468469,
+        "accuracy": 0.8768115942028986,
+        "count": 138
+      },
+      "gradcam_available": true,
+      "gradcam_target": "TB-consistent abnormality",
+      "gradcam_score": "positive_logit",
+      "gradcam_layer": "ensemble architecture-specific final feature stages",
+      "interpretation_warning": "Screening output and model attention only; not microbiologic TB diagnosis or lesion localization.",
+      "image_roles": [
+        "gradcam_overlay"
+      ]
+    }
+  ]
+}

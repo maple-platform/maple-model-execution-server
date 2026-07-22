@@ -1,0 +1,19 @@
+{
+  "model_name": "CT_RATE_Official_Interlobular_Septal_Thickening",
+  "description": "CT-RATE Interlobular septal thickening classifier (official__interlobular_septal_thickening). Returns CT finding probabilities and a 3D Grad-CAM axial montage.",
+  "task_type": "classification",
+  "disease": "Interlobular septal thickening",
+  "model_type": "standalone",
+  "required_data": [
+    "nii",
+    "nii.gz"
+  ],
+  "result_type": [
+    "gradcam_axial_montage",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_axial_montage",
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}
