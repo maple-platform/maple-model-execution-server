@@ -1,0 +1,11 @@
+model_name: Breast_IDC_Keras
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/Breast_IDC_Keras/runner.py
+inference_path: /app/AI_Models/Obstetrics/Breast_IDC_Keras/inference.py
+model_path: /app/AI_Models/Obstetrics/Breast_IDC_Keras/checkpoint
+result_type: "text"
+meta:
+  description: "Patch-level breast histopathology classifier for invasive ductal carcinoma (IDC). Takes a PNG or JPEG tissue patch and returns IDC-positive or IDC-negative probabilities."
+  modality: "png, jpg, jpeg"
+  task: "classification"

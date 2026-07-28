@@ -1,0 +1,11 @@
+model_name: MammoScreen
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/MammoScreen/runner.py
+inference_path: /app/AI_Models/Obstetrics/MammoScreen/inference.py
+model_path: /app/AI_Models/Obstetrics/MammoScreen/checkpoint
+result_type: "text"
+meta:
+  description: "Mammography screening classifier from ianpan/mammoscreen. Takes a cropped PNG or JPEG mammogram and returns a breast cancer score and BI-RADS-like breast density classes A-D."
+  modality: "png, jpg, jpeg"
+  task: "classification"
