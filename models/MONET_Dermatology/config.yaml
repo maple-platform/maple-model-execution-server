@@ -1,0 +1,11 @@
+model_name: MONET_Dermatology
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/MONET_Dermatology/runner.py
+inference_path: /app/AI_Models/Dermatology/MONET_Dermatology/inference.py
+model_path: /app/AI_Models/Dermatology/MONET_Dermatology/checkpoint
+result_type: ["gradcam_overlay", "classification_probabilities"]
+meta:
+  description: "Zero-shot dermatology image classifier over seven configured lesion concepts. Takes a clinical PNG or JPEG image and returns a visual-token Grad-CAM overlay plus candidate-relative probabilities."
+  modality: "png, jpg, jpeg"
+  task: "classification"
