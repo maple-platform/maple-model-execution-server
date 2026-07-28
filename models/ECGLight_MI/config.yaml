@@ -1,0 +1,11 @@
+model_name: ECGLight_MI
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/ECGLight_MI/runner.py
+inference_path: /app/AI_Models/Cardiology/ECGLight_MI/inference.py
+model_path: /app/AI_Models/Cardiology/ECGLight_MI/checkpoint
+result_type: "text"
+meta:
+  description: "ECGLight myocardial-infarction classifier. Takes a segmented digitized 12-lead ECG CSV and returns MI-versus-normal class probabilities."
+  modality: "csv"
+  task: "classification"

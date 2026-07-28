@@ -1,0 +1,11 @@
+model_name: WCR_LVEF40
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/WCR_LVEF40/runner.py
+inference_path: /app/AI_Models/Cardiology/WCR_LVEF40/inference.py
+model_path: /app/AI_Models/Cardiology/WCR_LVEF40/checkpoint
+result_type: "text"
+meta:
+  description: "ECG-based reduced-ejection-fraction screening model. Takes a 10-second 12-lead waveform CSV and returns scores for LVEF at or below 40 percent versus above 40 percent."
+  modality: "csv"
+  task: "classification"

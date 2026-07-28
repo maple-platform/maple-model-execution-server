@@ -1,0 +1,11 @@
+model_name: ECG_FM17
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/ECG_FM17/runner.py
+inference_path: /app/AI_Models/Cardiology/ECG_FM17/inference.py
+model_path: /app/AI_Models/Cardiology/ECG_FM17/checkpoint
+result_type: "text"
+meta:
+  description: "ECG-FM multi-label classifier for 17 rhythm and conduction findings. Takes a 12-lead ECG waveform CSV, segments it into five-second windows, and returns aggregated finding scores."
+  modality: "csv"
+  task: "classification"
