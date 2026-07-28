@@ -1,0 +1,11 @@
+model_name: LC25000_Colon_ViT
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/LC25000_Colon_ViT/runner.py
+inference_path: /app/AI_Models/Gastroenterology/LC25000_Colon_ViT/inference.py
+model_path: /app/AI_Models/Gastroenterology/LC25000_Colon_ViT/checkpoint
+result_type: "text"
+meta:
+  description: "Vision Transformer for colon histopathology tile classification. Takes an H&E PNG or JPEG tile and returns benign colon tissue or colon adenocarcinoma probabilities."
+  modality: "png, jpg, jpeg"
+  task: "classification"
