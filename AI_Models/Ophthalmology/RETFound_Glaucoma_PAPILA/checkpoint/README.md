@@ -20,7 +20,7 @@ Verified official file:
 
 - Google Drive file ID: `1CraCqBclTSCSNzn0jogyIqjBNYcep9rx`
 - Size: `3,639,964,135` bytes (~3.39 GiB), modified 2024-01-27
-- SHA-256: `2a7040436c3b5b9f25bdb45cb047e34397f9b6e4f207d946660e25b81865f97`
+- SHA-256: `2a7040436c3b5b9f25bdb45cb047e34397f9b6e4f207d946660e25b81865f97b`
 - Model head: `(3, 1024)`, input size `224`, global pool enabled (architecture
   load/shape check pending -- see IMPLEMENTATION_STATUS.md)
 

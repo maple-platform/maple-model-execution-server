@@ -11,7 +11,7 @@
   class-to-index assignment produces 0=normal, 1=suspect, 2=glaucoma.
 - Downloaded the official PAPILA checkpoint from the Google Drive link in
   `BENCHMARK.md` and verified its size (3,639,964,135 bytes) and computed its
-  SHA-256 (`2a7040436c3b5b9f25bdb45cb047e34397f9b6e4f207d946660e25b81865f97`,
+  SHA-256 (`2a7040436c3b5b9f25bdb45cb047e34397f9b6e4f207d946660e25b81865f97b`,
   recorded in `checkpoint/README.md`).
 - Downloaded two real PAPILA test-set images (CC BY 4.0) directly from the
   same data-split archive for `sample_data/`, with known ground truth from
