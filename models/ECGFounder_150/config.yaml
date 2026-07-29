@@ -1,0 +1,11 @@
+model_name: ECGFounder_150
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/ECGFounder_150/runner.py
+inference_path: /app/AI_Models/Cardiology/ECGFounder_150/inference.py
+model_path: /app/AI_Models/Cardiology/ECGFounder_150/checkpoint
+result_type: "text"
+meta:
+  description: "ECGFounder multi-label model for 150 ECG statements. Takes a 10-second 12-lead ECG waveform CSV and returns ranked independent finding scores."
+  modality: "csv"
+  task: "classification"

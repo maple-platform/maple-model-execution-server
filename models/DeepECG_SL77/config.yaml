@@ -1,0 +1,11 @@
+model_name: DeepECG_SL77
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/DeepECG_SL77/runner.py
+inference_path: /app/AI_Models/Cardiology/DeepECG_SL77/inference.py
+model_path: /app/AI_Models/Cardiology/DeepECG_SL77/checkpoint
+result_type: "text"
+meta:
+  description: "Multi-label 12-lead ECG interpretation model covering 77 rhythm, conduction, morphology, and ischemic findings. Takes a 10-second ECG waveform CSV and returns ranked finding scores."
+  modality: "csv"
+  task: "classification"

@@ -1,0 +1,17 @@
+{
+  "model_name": "ECGLight_MI",
+  "description": "ECGLight myocardial-infarction classifier. Takes a segmented digitized 12-lead ECG CSV and returns MI-versus-normal class probabilities.",
+  "task_type": "classification",
+  "disease": "myocardial infarction, MI, normal ECG",
+  "model_type": "standalone",
+  "required_data": [
+    "csv"
+  ],
+  "result_type": "text",
+  "output_image_role": null,
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

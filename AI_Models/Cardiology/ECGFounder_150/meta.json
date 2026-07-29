@@ -1,0 +1,17 @@
+{
+  "model_name": "ECGFounder_150",
+  "description": "ECGFounder multi-label model for 150 ECG statements. Takes a 10-second 12-lead ECG waveform CSV and returns ranked independent finding scores.",
+  "task_type": "classification",
+  "disease": "arrhythmia, atrial fibrillation, myocardial infarction, conduction abnormality, chamber hypertrophy, ECG interpretation",
+  "model_type": "standalone",
+  "required_data": [
+    "csv"
+  ],
+  "result_type": "text",
+  "output_image_role": null,
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

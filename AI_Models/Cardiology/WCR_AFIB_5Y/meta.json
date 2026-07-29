@@ -1,0 +1,17 @@
+{
+  "model_name": "WCR_AFIB_5Y",
+  "description": "ECG-based five-year incident atrial-fibrillation risk model. Takes a 10-second 12-lead waveform CSV and returns incident-AF and no-incident-AF scores.",
+  "task_type": "classification",
+  "disease": "atrial fibrillation, incident AF, five-year AF risk",
+  "model_type": "standalone",
+  "required_data": [
+    "csv"
+  ],
+  "result_type": "text",
+  "output_image_role": null,
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

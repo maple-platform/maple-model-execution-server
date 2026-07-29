@@ -1,0 +1,11 @@
+model_name: WCR_AFIB_5Y
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/WCR_AFIB_5Y/runner.py
+inference_path: /app/AI_Models/Cardiology/WCR_AFIB_5Y/inference.py
+model_path: /app/AI_Models/Cardiology/WCR_AFIB_5Y/checkpoint
+result_type: "text"
+meta:
+  description: "ECG-based five-year incident atrial-fibrillation risk model. Takes a 10-second 12-lead waveform CSV and returns incident-AF and no-incident-AF scores."
+  modality: "csv"
+  task: "classification"
