@@ -1,0 +1,11 @@
+model_name: ISIC2019_ViT3
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/ISIC2019_ViT3/runner.py
+inference_path: /app/AI_Models/Dermatology/ISIC2019_ViT3/inference.py
+model_path: /app/AI_Models/Dermatology/ISIC2019_ViT3/checkpoint
+result_type: ["gradcam_overlay", "classification_probabilities"]
+meta:
+  description: "Three-class dermoscopic lesion classifier for benign lesions, melanoma, and carcinoma. Takes a PNG or JPEG image and returns a Grad-CAM overlay plus class probabilities."
+  modality: "png, jpg, jpeg"
+  task: "classification"

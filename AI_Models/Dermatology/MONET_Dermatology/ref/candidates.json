@@ -1,0 +1,7 @@
+{
+  "prompt_template": "a dermatology image of {label}",
+  "labels": [
+    "actinic keratosis", "basal cell carcinoma", "benign keratosis",
+    "dermatofibroma", "melanoma", "melanocytic nevus", "vascular lesion"
+  ]
+}

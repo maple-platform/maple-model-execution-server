@@ -1,0 +1,22 @@
+{
+  "model_name": "DermFoundation_SCIN",
+  "description": "SCIN common-condition classifier using Derm Foundation embeddings. Takes a clinical PNG or JPEG image and returns a 3-by-3 occlusion-sensitivity overlay plus thirteen class probabilities.",
+  "task_type": "classification",
+  "disease": "acne, eczema, psoriasis, dermatitis, fungal infection, viral infection, benign skin lesion, skin cancer",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "occlusion_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "occlusion_overlay",
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "model_name": "DermLIP_PanDerm",
+  "description": "Zero-shot dermatology image classifier over thirteen configured conditions. Takes a clinical PNG or JPEG image and returns a visual-token Grad-CAM overlay plus candidate-relative probabilities.",
+  "task_type": "classification",
+  "disease": "acne, actinic keratosis, basal cell carcinoma, eczema, melanoma, nevus, psoriasis, rosacea, seborrheic keratosis, squamous cell carcinoma, tinea, urticaria, viral wart",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "gradcam_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_overlay",
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

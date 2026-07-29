@@ -1,0 +1,6 @@
+# Python 3.11 / CPU only
+tensorflow==2.18.1
+numpy==2.0.2
+Pillow==12.3.0
+joblib==1.5.3
+scikit-learn==1.9.0
