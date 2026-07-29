@@ -1,0 +1,21 @@
+model_name: DeepSeeNet_AMD_SimplifiedScore
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path:    /app/models/DeepSeeNet_AMD_SimplifiedScore/runner.py
+inference_path: /app/AI_Models/Ophthalmology/DeepSeeNet_AMD_SimplifiedScore/inference.py
+model_path:     /app/AI_Models/Ophthalmology/DeepSeeNet_AMD_SimplifiedScore/checkpoint
+meta:
+  description: >-
+    DeepSeeNet AREDS Simplified Severity Score for age-related macular
+    degeneration (AMD). Takes one left-eye and one right-eye color fundus
+    photograph and returns the patient-level score (0-5) plus per-eye
+    drusen/pigment/advanced-AMD risk factors. Public domain, research use only.
+  modality: Color fundus photography
+  task: two-image patient-level classification (AREDS Simplified Severity Score)
+  labels:
+    - AREDS Simplified Severity Score 0-5
+  license: Public domain (US Government Work); research/non-commercial use per NCBI notice
+  input_convention: >-
+    PROVISIONAL: input_path must point to a JSON manifest
+    {"left_eye": "...", "right_eye": "..."} -- see runner.py and
+    IMPLEMENTATION_STATUS.md for the open multi-file upload question.

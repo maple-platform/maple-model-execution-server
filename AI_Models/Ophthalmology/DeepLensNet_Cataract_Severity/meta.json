@@ -1,0 +1,13 @@
+{
+  "model_name": "DeepLensNet_Cataract_Severity",
+  "description": "DeepLensNet cataract type and severity quantification model (research/non-commercial use only). Takes up to three anterior-segment eye photographs per exam -- a 45-degree slit-lamp photo, an anterior/retroillumination photo, and a posterior/retroillumination photo -- and returns continuous severity scores for nuclear sclerosis (NS), cortical lens opacity percentage (PCTCOL), and posterior subcapsular opacity percentage (PCTPSC).",
+  "task_type": "regression",
+  "disease": "cataract, nuclear sclerosis, cortical lens opacity, posterior subcapsular cataract",
+  "model_type": "standalone",
+  "required_data": ["png", "jpg", "jpeg"],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}
