@@ -1,0 +1,13 @@
+{
+  "model_name": "MammoScreen",
+  "description": "Mammography screening classifier from ianpan/mammoscreen. Takes a cropped PNG or JPEG mammogram and returns a breast cancer score and BI-RADS-like breast density classes A-D.",
+  "task_type": "classification",
+  "disease": "breast cancer, mammography screening, breast density",
+  "model_type": "standalone",
+  "required_data": ["png", "jpg", "jpeg"],
+  "result_type": "text",
+  "output_image_role": null,
+  "requires": [],
+  "provides": [],
+  "docker": {"service_url": "관리자 작성 예정"}
+}

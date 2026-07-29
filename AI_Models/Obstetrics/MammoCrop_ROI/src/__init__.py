@@ -1,0 +1,1 @@
+"""MammoCrop model definition."""

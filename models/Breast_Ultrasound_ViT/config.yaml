@@ -1,0 +1,11 @@
+model_name: Breast_Ultrasound_ViT
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/Breast_Ultrasound_ViT/runner.py
+inference_path: /app/AI_Models/Obstetrics/Breast_Ultrasound_ViT/inference.py
+model_path: /app/AI_Models/Obstetrics/Breast_Ultrasound_ViT/checkpoint
+result_type: "text"
+meta:
+  description: "Vision Transformer classifier for breast ultrasound images. Returns benign, malignant, or normal class probabilities from a PNG or JPEG ultrasound image."
+  modality: "png, jpg, jpeg"
+  task: "classification"

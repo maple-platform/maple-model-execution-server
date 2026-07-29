@@ -1,0 +1,11 @@
+model_name: Cervical_Cytology_SIPaKMeD
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/Cervical_Cytology_SIPaKMeD/runner.py
+inference_path: /app/AI_Models/Obstetrics/Cervical_Cytology_SIPaKMeD/inference.py
+model_path: /app/AI_Models/Obstetrics/Cervical_Cytology_SIPaKMeD/checkpoint
+result_type: "text"
+meta:
+  description: "AlexNet cervical cytology model fine-tuned on SIPaKMeD. Classifies a cropped Pap-smear cell into five morphology categories and returns class probabilities."
+  modality: "png, jpg, jpeg"
+  task: "classification"
