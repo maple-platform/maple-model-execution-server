@@ -1,6 +1,7 @@
 model_name: MSD_Lung_Tumor_nnUNet_Ensemble
 execution_mode: external_runtime
-runtime: runtime-medical
+runtime: runtime-nnunet
+timeout: 900
 runner_path: /app/models/MSD_Lung_Tumor_nnUNet_Ensemble/runner.py
 inference_path: /app/AI_Models/Pulmonology/MSD_Lung_Tumor_nnUNet_Ensemble/inference.py
 model_path: /app/AI_Models/Pulmonology/MSD_Lung_Tumor_nnUNet_Ensemble/checkpoint

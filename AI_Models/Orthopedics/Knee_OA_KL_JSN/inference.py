@@ -7,6 +7,7 @@ import threading
 from pathlib import Path
 from types import SimpleNamespace
 
+import torch
 from PIL import Image
 
 
@@ -20,6 +21,19 @@ def predict(input_path: str, engine_path: str, output_dir: str) -> dict:
     sys.path.insert(0, str(engine))
 
     with _LOCK:
+        # Other embedded model packages (notably YOLO) also import a top-level
+        # ``utils`` package. The runtime process is shared across models, so
+        # temporarily isolate this engine's modules to avoid reusing another
+        # model's cached ``utils`` package.
+        isolated_names = (
+            "kl_process",
+            *(name for name in sys.modules if name == "utils" or name.startswith("utils.")),
+        )
+        previous_modules = {
+            name: sys.modules.pop(name)
+            for name in isolated_names
+            if name in sys.modules
+        }
         previous = Path.cwd()
         try:
             os.chdir(engine)
@@ -29,9 +43,27 @@ def predict(input_path: str, engine_path: str, output_dir: str) -> dict:
                 img_name=str(Path(input_path).resolve()), narrow_type="lower_upper_mean",
                 box_size=672, save_folder=str(output), shape=(672, 672), mode=2,
             )
-            raw, segmented, medial, lateral, grades = seg_class_function(args)
+            original_load = torch.load
+
+            def trusted_checkpoint_load(*args, **kwargs):
+                kwargs.setdefault("weights_only", False)
+                return original_load(*args, **kwargs)
+
+            torch.load = trusted_checkpoint_load
+            try:
+                raw, segmented, medial, lateral, grades = seg_class_function(args)
+            finally:
+                torch.load = original_load
         finally:
             os.chdir(previous)
+            for name in tuple(sys.modules):
+                if (
+                    name == "kl_process"
+                    or name == "utils"
+                    or name.startswith("utils.")
+                ):
+                    sys.modules.pop(name, None)
+            sys.modules.update(previous_modules)
 
     stem = Path(input_path).stem
     original_path = output / f"{stem}_original_radiograph.png"

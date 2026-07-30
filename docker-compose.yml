@@ -12,8 +12,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: maple-inference-gateway
-    image: maple/inference-gateway:latest
+    container_name: maple-inference
+    image: maple/inference-server:latest
     ports:
       - "8110:8110"
     environment:
@@ -24,4 +24,5 @@ services:
       - MODELS_DIR=/app/models
     volumes:
       - ./models:/app/models:ro
+      - ./AI_Models:/app/AI_Models:ro
     restart: unless-stopped
