@@ -1,0 +1,21 @@
+{
+  "model_name": "Knee_OA_KL_Ensemble",
+  "description": "Single-knee AP or PA radiograph model returning KL grade 0-4, ordinal probabilities, OA probability, and a GradCAM overlay.",
+  "task_type": "classification",
+  "disease": "knee osteoarthritis, Kellgren-Lawrence grade",
+  "model_type": "standalone",
+  "required_data": [
+    "dcm",
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "gradcam_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_overlay",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

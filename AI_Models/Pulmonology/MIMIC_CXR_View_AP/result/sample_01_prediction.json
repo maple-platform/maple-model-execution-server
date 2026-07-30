@@ -1,0 +1,30 @@
+{
+  "model": "MIMIC_CXR_View_AP",
+  "input": "sample_01.jpg",
+  "image_count": 1,
+  "labels": [
+    "gradcam_overlay"
+  ],
+  "predictions": [
+    {
+      "pred": 1,
+      "pred_name": "AP",
+      "label": "View AP",
+      "probability": 0.9978340268135071,
+      "threshold": 0.07,
+      "model_id": "scratch_efficientnet_b0__view_ap",
+      "architecture": "efficientnet_b0",
+      "test_auroc": 0.998,
+      "test_auprc": 0.999,
+      "test_f1": 0.993,
+      "gradcam_target": "AP",
+      "gradcam_layer": "features[-1]",
+      "gradcam_score": "positive_logit",
+      "gradcam_available": true,
+      "gradcam_interpretation": "regions supporting the thresholded predicted class",
+      "image_roles": [
+        "gradcam_overlay"
+      ]
+    }
+  ]
+}

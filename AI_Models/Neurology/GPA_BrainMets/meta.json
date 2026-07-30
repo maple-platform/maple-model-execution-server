@@ -1,0 +1,15 @@
+{
+  "model_name": "GPA_BrainMets",
+  "description": "Graded Prognostic Assessment (GPA) for brain metastases. Takes clinical variables (age, Karnofsky performance status, number of CNS metastases, extracranial metastases) as CSV and returns the 0-4 GPA score, a prognostic category, and estimated median survival in months. Deterministic index (Sperduto 2008). Can consume metastasis count forwarded from a brain-metastasis detection model.",
+  "task_type": "classification",
+  "disease": "brain metastases, brain metastasis, metastatic brain tumor, prognosis, survival",
+  "model_type": "standalone",
+  "requires": [],
+  "provides": [],
+  "required_data": ["csv"],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {
+    "service_url": "http://runtime-basic:8000"
+  }
+}

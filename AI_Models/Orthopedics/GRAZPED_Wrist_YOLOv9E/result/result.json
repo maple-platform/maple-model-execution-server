@@ -1,0 +1,42 @@
+{
+  "images": [
+    "fracture_bbox_overlay.png"
+  ],
+  "predictions": [
+    {
+      "model": "GRAZPEDWRI-DX YOLOv9-E",
+      "detections": [
+        {
+          "label": "fracture",
+          "class_id": 3,
+          "confidence": 0.81298828125,
+          "bbox_xyxy": [
+            204,
+            454,
+            295,
+            520
+          ]
+        },
+        {
+          "label": "fracture",
+          "class_id": 3,
+          "confidence": 0.78515625,
+          "bbox_xyxy": [
+            357,
+            444,
+            421,
+            496
+          ]
+        }
+      ],
+      "fracture_detected": true,
+      "fracture_max_confidence": 0.81298828125,
+      "confidence_threshold": 0.25,
+      "pred": 1,
+      "pred_name": "fracture",
+      "image_roles": [
+        "fracture_bbox_overlay"
+      ]
+    }
+  ]
+}

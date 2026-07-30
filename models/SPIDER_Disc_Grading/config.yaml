@@ -1,0 +1,11 @@
+model_name: SPIDER_Disc_Grading
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/SPIDER_Disc_Grading/runner.py
+inference_path: /app/AI_Models/Orthopedics/SPIDER_Disc_Grading/inference.py
+model_path: /app/AI_Models/Orthopedics/SPIDER_Disc_Grading/checkpoint
+meta:
+  description: Sagittal lumbar disc MRI patch model returning Pfirrmann probabilities,
+    high-confidence degeneration findings, and a GradCAM overlay.
+  modality: png, jpg, jpeg
+  task: multilabel classification, ordinal classification

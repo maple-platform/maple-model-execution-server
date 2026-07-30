@@ -1,0 +1,25 @@
+{
+  "images": [
+    "hand_crop_with_predicted_age.png"
+  ],
+  "predictions": [
+    {
+      "bone_age_months": 79.98064422607422,
+      "bone_age_years": 6.665053685506185,
+      "sex": "female",
+      "uncertainty_months": 1.4209483743497475,
+      "crop_bbox_xywh": [
+        81,
+        91,
+        1116,
+        1300
+      ],
+      "model": "Ian Pan RSNA bone-age 3-fold ConvNeXtV2 ensemble",
+      "pred": 80,
+      "pred_name": "80.0_months",
+      "image_roles": [
+        "hand_crop_with_predicted_age"
+      ]
+    }
+  ]
+}

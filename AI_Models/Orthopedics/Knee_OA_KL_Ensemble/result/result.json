@@ -1,0 +1,26 @@
+{
+  "images": [
+    "gradcam_overlay.png"
+  ],
+  "predictions": [
+    {
+      "model": "Knee OA KL ConvNeXt ensemble",
+      "input_scope": "single cropped AP/PA knee radiograph",
+      "kl_grade": 0,
+      "expected_kl_grade": 0.6251439112238586,
+      "kl_probabilities": {
+        "KL0": 0.47867846488952637,
+        "KL1": 0.45546236634254456,
+        "KL2": 0.04363521933555603,
+        "KL3": 0.0064848349429667,
+        "KL4": 0.01573915034532547
+      },
+      "oa_kl2_probability": 0.06585920602083206,
+      "pred": 0,
+      "pred_name": "KL0",
+      "image_roles": [
+        "gradcam_overlay"
+      ]
+    }
+  ]
+}

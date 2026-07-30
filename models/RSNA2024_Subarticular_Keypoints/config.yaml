@@ -1,0 +1,11 @@
+model_name: RSNA2024_Subarticular_Keypoints
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/RSNA2024_Subarticular_Keypoints/runner.py
+inference_path: /app/AI_Models/Orthopedics/RSNA2024_Subarticular_Keypoints/inference.py
+model_path: /app/AI_Models/Orthopedics/RSNA2024_Subarticular_Keypoints/checkpoint
+meta:
+  description: Lumbar MRI model returning 10 bilateral subarticular localization keypoints,
+    compatible crops, and a landmark overlay from a axial T2 DICOM series.
+  modality: dcm
+  task: keypoint detection, crop generation

@@ -1,0 +1,176 @@
+{
+  "images": [
+    "keypoint_overlay.png",
+    "L1_L2_severity_overlay.png",
+    "L2_L3_severity_overlay.png",
+    "L3_L4_severity_overlay.png",
+    "L4_L5_severity_overlay.png",
+    "L5_S1_severity_overlay.png"
+  ],
+  "predictions": [
+    {
+      "task": "spinal_canal_stenosis_pipeline",
+      "levels": [
+        {
+          "level": "L1/L2",
+          "keypoint": {
+            "level": "L1/L2",
+            "x_pixel": 461.63555908203125,
+            "y_pixel": 239.4913330078125,
+            "slice_index": 12,
+            "instance_number": 13,
+            "normalized_xyz": [
+              0.60187166929245,
+              0.3122442364692688,
+              0.4978809058666229
+            ]
+          },
+          "severity": {
+            "task": "spinal_canal",
+            "scope": "coordinate-centered three-slice crop classification",
+            "input_mode": "three_slice_rgb",
+            "grade": 2,
+            "label": "severe",
+            "expected_grade": 1.5136461853981018,
+            "probabilities": {
+              "normal_mild": 0.04133612662553787,
+              "moderate": 0.40368157625198364,
+              "severe": 0.5549823045730591
+            },
+            "warning": "Research use only. This model does not localize the lumbar level."
+          }
+        },
+        {
+          "level": "L2/L3",
+          "keypoint": {
+            "level": "L2/L3",
+            "x_pixel": 416.5869445800781,
+            "y_pixel": 332.0284118652344,
+            "slice_index": 12,
+            "instance_number": 13,
+            "normalized_xyz": [
+              0.5431381464004517,
+              0.4328923225402832,
+              0.5053808689117432
+            ]
+          },
+          "severity": {
+            "task": "spinal_canal",
+            "scope": "coordinate-centered three-slice crop classification",
+            "input_mode": "three_slice_rgb",
+            "grade": 2,
+            "label": "severe",
+            "expected_grade": 1.8207757323980331,
+            "probabilities": {
+              "normal_mild": 0.005403331480920315,
+              "moderate": 0.1684175580739975,
+              "severe": 0.8261790871620178
+            },
+            "warning": "Research use only. This model does not localize the lumbar level."
+          }
+        },
+        {
+          "level": "L3/L4",
+          "keypoint": {
+            "level": "L3/L4",
+            "x_pixel": 379.42578125,
+            "y_pixel": 411.9021301269531,
+            "slice_index": 12,
+            "instance_number": 13,
+            "normalized_xyz": [
+              0.49468809366226196,
+              0.5370301604270935,
+              0.49790170788764954
+            ]
+          },
+          "severity": {
+            "task": "spinal_canal",
+            "scope": "coordinate-centered three-slice crop classification",
+            "input_mode": "three_slice_rgb",
+            "grade": 2,
+            "label": "severe",
+            "expected_grade": 1.8480195254087448,
+            "probabilities": {
+              "normal_mild": 0.005283286329358816,
+              "moderate": 0.1414138525724411,
+              "severe": 0.8533028364181519
+            },
+            "warning": "Research use only. This model does not localize the lumbar level."
+          }
+        },
+        {
+          "level": "L4/L5",
+          "keypoint": {
+            "level": "L4/L5",
+            "x_pixel": 363.8720703125,
+            "y_pixel": 499.43267822265625,
+            "slice_index": 12,
+            "instance_number": 13,
+            "normalized_xyz": [
+              0.4744094908237457,
+              0.6511508226394653,
+              0.49965691566467285
+            ]
+          },
+          "severity": {
+            "task": "spinal_canal",
+            "scope": "coordinate-centered three-slice crop classification",
+            "input_mode": "three_slice_rgb",
+            "grade": 2,
+            "label": "severe",
+            "expected_grade": 1.9041728749871254,
+            "probabilities": {
+              "normal_mild": 0.004576672799885273,
+              "moderate": 0.08667371422052383,
+              "severe": 0.9087495803833008
+            },
+            "warning": "Research use only. This model does not localize the lumbar level."
+          }
+        },
+        {
+          "level": "L5/S1",
+          "keypoint": {
+            "level": "L5/S1",
+            "x_pixel": 382.2556457519531,
+            "y_pixel": 568.5288696289062,
+            "slice_index": 12,
+            "instance_number": 13,
+            "normalized_xyz": [
+              0.49837765097618103,
+              0.7412371039390564,
+              0.5039436221122742
+            ]
+          },
+          "severity": {
+            "task": "spinal_canal",
+            "scope": "coordinate-centered three-slice crop classification",
+            "input_mode": "three_slice_rgb",
+            "grade": 0,
+            "label": "normal_mild",
+            "expected_grade": 0.684960663318634,
+            "probabilities": {
+              "normal_mild": 0.5080039501190186,
+              "moderate": 0.29903143644332886,
+              "severe": 0.1929646134376526
+            },
+            "warning": "Research use only. This model does not localize the lumbar level."
+          }
+        }
+      ],
+      "maximum_grade": 2,
+      "maximum_label": "severe",
+      "maximum_level": "L1/L2",
+      "warning": "Research use only; not a medical device.",
+      "pred": 2,
+      "pred_name": "severe",
+      "image_roles": [
+        "keypoint_overlay",
+        "L1/L2_severity_overlay",
+        "L2/L3_severity_overlay",
+        "L3/L4_severity_overlay",
+        "L4/L5_severity_overlay",
+        "L5/S1_severity_overlay"
+      ]
+    }
+  ]
+}

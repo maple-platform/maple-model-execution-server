@@ -1,0 +1,52 @@
+{
+  "images": [
+    "fracture_probability_overlay.png"
+  ],
+  "predictions": [
+    {
+      "prediction": 1,
+      "pred_name": "fracture",
+      "operating_point": "high_sensitivity",
+      "selected_threshold": 0.20341691856802413,
+      "balanced_prediction": 1,
+      "high_sensitivity_prediction": 1,
+      "fused_probability": 0.9479351029161086,
+      "balanced_threshold": 0.6599999999999999,
+      "high_sensitivity_threshold": 0.20341691856802413,
+      "component_probabilities": {
+        "convnext": 0.96199631690979,
+        "efficientnet_v2": 0.9997883439064026,
+        "segmentation_max": 0.9999955296516418
+      },
+      "regions": [
+        {
+          "bbox_xywh": [
+            294,
+            233,
+            79,
+            68
+          ],
+          "area_pixels": 2683,
+          "max_probability": 0.999992847442627,
+          "mean_probability": 0.9235476851463318
+        },
+        {
+          "bbox_xywh": [
+            67,
+            63,
+            61,
+            54
+          ],
+          "area_pixels": 1755,
+          "max_probability": 0.9999948740005493,
+          "mean_probability": 0.9085091948509216
+        }
+      ],
+      "model": "FracAtlas fracture classification-segmentation fusion",
+      "pred": 1,
+      "image_roles": [
+        "fracture_probability_overlay"
+      ]
+    }
+  ]
+}

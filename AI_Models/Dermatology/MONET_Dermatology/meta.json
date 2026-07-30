@@ -1,0 +1,22 @@
+{
+  "model_name": "MONET_Dermatology",
+  "description": "Zero-shot dermatology image classifier over seven configured lesion concepts. Takes a clinical PNG or JPEG image and returns a visual-token Grad-CAM overlay plus candidate-relative probabilities.",
+  "task_type": "classification",
+  "disease": "melanoma, nevus, basal cell carcinoma, squamous cell carcinoma, actinic keratosis, seborrheic keratosis, dermatofibroma",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "gradcam_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_overlay",
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

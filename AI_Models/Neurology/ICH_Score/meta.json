@@ -1,0 +1,15 @@
+{
+  "model_name": "ICH_Score",
+  "description": "Intracerebral hemorrhage (ICH) 30-day mortality risk score. Takes clinical variables (GCS, age, hematoma volume in mL, intraventricular hemorrhage, infratentorial origin) as CSV and returns the 0-6 ICH Score, a risk category, and estimated 30-day mortality. Deterministic formula (Hemphill 2001). Can consume hematoma volume/IVH forwarded from a hemorrhage segmentation model.",
+  "task_type": "classification",
+  "disease": "intracerebral hemorrhage, ICH, hemorrhagic stroke, brain hemorrhage, mortality risk",
+  "model_type": "standalone",
+  "requires": [],
+  "provides": [],
+  "required_data": ["csv"],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {
+    "service_url": "http://runtime-basic:8000"
+  }
+}

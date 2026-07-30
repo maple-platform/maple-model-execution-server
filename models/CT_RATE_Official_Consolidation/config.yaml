@@ -1,0 +1,10 @@
+model_name: CT_RATE_Official_Consolidation
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/CT_RATE_Official_Consolidation/runner.py
+inference_path: /app/AI_Models/Pulmonology/CT_RATE_Official_Consolidation/inference.py
+model_path: /app/AI_Models/Pulmonology/CT_RATE_Official_Consolidation/checkpoint
+meta:
+  description: CT-RATE Consolidation classifier (official__consolidation).
+  modality: nii, nii.gz
+  task: classification

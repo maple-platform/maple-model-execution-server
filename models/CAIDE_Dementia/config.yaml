@@ -1,0 +1,9 @@
+model_name: CAIDE_Dementia
+execution_mode: external_runtime
+runtime: runtime-basic
+runner_path: /app/models/CAIDE_Dementia/runner.py
+inference_path: /app/AI_Models/Neurology/CAIDE_Dementia/inference.py
+model_path: /app/AI_Models/Neurology/CAIDE_Dementia/checkpoint/coefficients.json
+meta:
+  description: "CAIDE - 20-year dementia risk from midlife factors (deterministic)"
+  task: classification

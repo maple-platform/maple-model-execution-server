@@ -1,0 +1,19 @@
+{
+  "model_name": "CT_RATE_Official_Bronchiectasis",
+  "description": "CT-RATE Bronchiectasis classifier (official__bronchiectasis). Returns CT finding probabilities and a 3D Grad-CAM axial montage.",
+  "task_type": "classification",
+  "disease": "Bronchiectasis",
+  "model_type": "standalone",
+  "required_data": [
+    "nii",
+    "nii.gz"
+  ],
+  "result_type": [
+    "gradcam_axial_montage",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_axial_montage",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

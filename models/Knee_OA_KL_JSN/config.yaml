@@ -1,0 +1,11 @@
+model_name: Knee_OA_KL_JSN
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/Knee_OA_KL_JSN/runner.py
+inference_path: /app/AI_Models/Orthopedics/Knee_OA_KL_JSN/inference.py
+model_path: /app/AI_Models/Orthopedics/Knee_OA_KL_JSN/checkpoint
+meta:
+  description: Bilateral PA knee radiograph pipeline returning side-specific KL and
+    joint-space-narrowing grades with segmentation overlay.
+  modality: dcm, png, jpg, jpeg
+  task: detection, segmentation, classification

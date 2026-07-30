@@ -1,0 +1,26 @@
+{
+  "images": [
+    "severity_overlay.png"
+  ],
+  "predictions": [
+    {
+      "task": "subarticular",
+      "scope": "coordinate-centered three-slice crop classification",
+      "input_mode": "three_slice_rgb",
+      "grade": 0,
+      "label": "normal_mild",
+      "expected_grade": 0.1848064288496971,
+      "probabilities": {
+        "normal_mild": 0.8714798092842102,
+        "moderate": 0.0722339004278183,
+        "severe": 0.05628626421093941
+      },
+      "warning": "Research use only. This model does not localize the lumbar level.",
+      "pred": 0,
+      "pred_name": "normal_mild",
+      "image_roles": [
+        "severity_overlay"
+      ]
+    }
+  ]
+}

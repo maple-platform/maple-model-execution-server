@@ -1,0 +1,20 @@
+{
+  "model_name": "RSNA2024_Neural_Foraminal_Crop",
+  "description": "Lumbar MRI crop model returning three-grade neural foraminal narrowing probabilities and an annotated preview from a 96 mm three-slice sagittal T1 crop.",
+  "task_type": "classification",
+  "disease": "lumbar stenosis, neural foraminal narrowing",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg",
+    "dcm"
+  ],
+  "result_type": [
+    "classification_probabilities"
+  ],
+  "output_image_role": "classification_probabilities",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

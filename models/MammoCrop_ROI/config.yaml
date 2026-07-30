@@ -1,0 +1,11 @@
+model_name: MammoCrop_ROI
+execution_mode: external_runtime
+runtime: runtime-yolo
+runner_path: /app/models/MammoCrop_ROI/runner.py
+inference_path: /app/AI_Models/Obstetrics/MammoCrop_ROI/inference.py
+model_path: /app/AI_Models/Obstetrics/MammoCrop_ROI/checkpoint
+result_type: ["bbox_overlay", "detection_predictions"]
+meta:
+  description: "Breast ROI localization model for mammography preprocessing. Takes a PNG or JPEG mammogram and returns an image with the predicted breast/background crop box plus xywh coordinates. The box is not a lesion localization."
+  modality: "png, jpg, jpeg"
+  task: "bbox detection"

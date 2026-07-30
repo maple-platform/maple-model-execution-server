@@ -1,0 +1,18 @@
+{
+  "model_name": "RSNA2024_Neural_Foraminal_Pipeline",
+  "description": "End-to-end lumbar MRI model returning 10 localized bilateral neural foraminal narrowing grades, probabilities, crops, and overlays from a sagittal T1 DICOM series.",
+  "task_type": "keypoint detection, classification",
+  "disease": "lumbar stenosis, bilateral neural foraminal narrowing",
+  "model_type": "standalone",
+  "required_data": [
+    "dcm"
+  ],
+  "result_type": [
+    "bbox_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "classification_probabilities",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

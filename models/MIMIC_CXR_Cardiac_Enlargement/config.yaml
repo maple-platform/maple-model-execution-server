@@ -1,0 +1,10 @@
+model_name: MIMIC_CXR_Cardiac_Enlargement
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/MIMIC_CXR_Cardiac_Enlargement/runner.py
+inference_path: /app/AI_Models/Pulmonology/MIMIC_CXR_Cardiac_Enlargement/inference.py
+model_path: /app/AI_Models/Pulmonology/MIMIC_CXR_Cardiac_Enlargement/checkpoint
+meta:
+  description: Screens a MIMIC-CXR chest radiograph for cardiomegaly or enlarged cardiomediastinum.
+  modality: png, jpg, jpeg
+  task: binary classification

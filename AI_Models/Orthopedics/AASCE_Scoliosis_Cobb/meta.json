@@ -1,0 +1,20 @@
+{
+  "model_name": "AASCE_Scoliosis_Cobb",
+  "description": "Standing AP spine radiograph model returning 68 vertebral landmarks, three Cobb-angle measurements, and a landmark overlay.",
+  "task_type": "keypoint detection, pose estimation, measurement",
+  "disease": "scoliosis, spinal deformity, Cobb angle",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "bbox_overlay",
+    "detection_predictions"
+  ],
+  "output_image_role": "bbox_overlay",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

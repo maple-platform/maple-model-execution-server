@@ -1,0 +1,20 @@
+{
+  "model_name": "NLM_TB_Site_External_Ensemble",
+  "description": "Three-member TB-consistent abnormality classifier trained on Shenzhen and tested on the held-out Montgomery site.",
+  "task_type": "classification",
+  "disease": "pulmonary tuberculosis-consistent abnormality",
+  "model_type": "ensemble",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "gradcam_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_overlay",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

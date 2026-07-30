@@ -1,0 +1,26 @@
+{
+  "images": [
+    "severity_overlay.png"
+  ],
+  "predictions": [
+    {
+      "task": "spinal_canal",
+      "scope": "coordinate-centered three-slice crop classification",
+      "input_mode": "three_slice_rgb",
+      "grade": 0,
+      "label": "normal_mild",
+      "expected_grade": 0.22514567151665688,
+      "probabilities": {
+        "normal_mild": 0.8682904243469238,
+        "moderate": 0.03827357664704323,
+        "severe": 0.09343604743480682
+      },
+      "warning": "Research use only. This model does not localize the lumbar level.",
+      "pred": 0,
+      "pred_name": "normal_mild",
+      "image_roles": [
+        "severity_overlay"
+      ]
+    }
+  ]
+}

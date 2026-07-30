@@ -1,0 +1,17 @@
+{
+  "model_name": "MediSense_ECG10",
+  "description": "Dual-head ECG Transformer for six diagnostic groups and four rhythm groups. Takes a 10-second 12-lead ECG waveform CSV and returns diagnostic and rhythm probabilities.",
+  "task_type": "classification",
+  "disease": "STEMI, ST depression, LBBB, RBBB, LVH, atrial fibrillation, bradycardia, tachycardia",
+  "model_type": "standalone",
+  "required_data": [
+    "csv"
+  ],
+  "result_type": "text",
+  "output_image_role": null,
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

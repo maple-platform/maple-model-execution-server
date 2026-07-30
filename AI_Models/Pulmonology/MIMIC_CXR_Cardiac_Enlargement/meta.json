@@ -1,0 +1,20 @@
+{
+  "model_name": "MIMIC_CXR_Cardiac_Enlargement",
+  "description": "Screens a MIMIC-CXR chest radiograph for cardiomegaly or enlarged cardiomediastinum. Returns one probability, a validation-derived binary decision, and a Grad-CAM overlay for the positive-class logit.",
+  "task_type": "classification",
+  "disease": "cardiac enlargement, cardiomegaly, enlarged cardiomediastinum, chest x-ray",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "gradcam_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_overlay",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model_name": "CAIDE_Dementia",
+  "description": "CAIDE dementia risk score. Takes midlife risk factors (age, years of education, sex, systolic blood pressure, BMI, total cholesterol, physical activity) as CSV and returns the 0-15 CAIDE score, a risk category, and estimated 20-year risk of dementia. Deterministic score (Kivipelto 2006). Complements white-matter/small-vessel burden from a WMH segmentation model.",
+  "task_type": "classification",
+  "disease": "dementia, dementia risk, cognitive decline, Alzheimer, small vessel disease, midlife risk",
+  "model_type": "standalone",
+  "requires": [],
+  "provides": [],
+  "required_data": ["csv"],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {
+    "service_url": "http://runtime-basic:8000"
+  }
+}

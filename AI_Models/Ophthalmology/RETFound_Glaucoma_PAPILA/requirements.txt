@@ -1,0 +1,9 @@
+# RETFound official reference environment: Python 3.11, CUDA 12.1
+# Identical stack to RETFound_DR_APTOS2019_GradCAM (same backbone/codebase).
+# Maple administrator must reconcile these pins with the selected GPU runtime.
+torch==2.5.1
+torchvision==0.20.1
+timm==0.9.2
+numpy==1.26.4
+Pillow==10.2.0
+opencv-python-headless==4.9.0.80

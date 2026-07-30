@@ -1,0 +1,17 @@
+{
+  "model_name": "ECG_FM17",
+  "description": "ECG-FM multi-label classifier for 17 rhythm and conduction findings. Takes a 12-lead ECG waveform CSV, segments it into five-second windows, and returns aggregated finding scores.",
+  "task_type": "classification",
+  "disease": "atrial fibrillation, atrial flutter, tachycardia, bradycardia, infarction, atrioventricular block, bundle branch block",
+  "model_type": "standalone",
+  "required_data": [
+    "csv"
+  ],
+  "result_type": "text",
+  "output_image_role": null,
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

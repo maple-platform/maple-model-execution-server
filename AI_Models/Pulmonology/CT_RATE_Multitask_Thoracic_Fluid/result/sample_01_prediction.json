@@ -1,0 +1,82 @@
+[
+  {
+    "label": "Pleural effusion",
+    "probability": 0.29746994376182556,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Pleural effusion",
+    "model_id": "multitask__thoracic_fluid",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__thoracic_fluid",
+      "family": "multitask",
+      "outputs": [
+        "Pleural effusion",
+        "Pericardial effusion"
+      ],
+      "macro_auroc": 0.8637922977730406,
+      "macro_auprc": 0.49983077713404933,
+      "per_label_auroc": {
+        "Pleural effusion": 0.9292852332852333,
+        "Pericardial effusion": 0.7982993622608479
+      },
+      "best_holdout_auroc": 0.8517197700574592,
+      "epochs": 45
+    },
+    "gradcam_available": true,
+    "gradcam_target": "Pleural effusion",
+    "gradcam_score": "negative_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      50,
+      56,
+      62,
+      81,
+      87,
+      93
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  },
+  {
+    "label": "Pericardial effusion",
+    "probability": 0.13939638435840607,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Pericardial effusion",
+    "model_id": "multitask__thoracic_fluid",
+    "family": "multitask",
+    "validation_metrics": {
+      "model_id": "multitask__thoracic_fluid",
+      "family": "multitask",
+      "outputs": [
+        "Pleural effusion",
+        "Pericardial effusion"
+      ],
+      "macro_auroc": 0.8637922977730406,
+      "macro_auprc": 0.49983077713404933,
+      "per_label_auroc": {
+        "Pleural effusion": 0.9292852332852333,
+        "Pericardial effusion": 0.7982993622608479
+      },
+      "best_holdout_auroc": 0.8517197700574592,
+      "epochs": 45
+    },
+    "gradcam_available": false,
+    "gradcam_target": "Pleural effusion",
+    "gradcam_score": "negative_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      50,
+      56,
+      62,
+      81,
+      87,
+      93
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  }
+]

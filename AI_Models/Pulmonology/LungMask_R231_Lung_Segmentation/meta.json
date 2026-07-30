@@ -1,0 +1,20 @@
+{
+  "model_name": "LungMask_R231_Lung_Segmentation",
+  "description": "LungMask R231 bilateral lung segmentation for thoracic CT with guarded header-derived measurements.",
+  "task_type": "segmentation, quantification",
+  "disease": "lung anatomy, thoracic CT",
+  "model_type": "standalone",
+  "required_data": [
+    "nii",
+    "nii.gz"
+  ],
+  "result_type": [
+    "segmentation_overlay",
+    "segmentation_mask_volume",
+    "volume_measurements"
+  ],
+  "output_image_role": "segmentation_overlay_slice",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

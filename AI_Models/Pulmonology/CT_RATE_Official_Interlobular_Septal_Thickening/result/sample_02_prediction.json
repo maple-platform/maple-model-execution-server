@@ -1,0 +1,33 @@
+[
+  {
+    "label": "Interlobular septal thickening",
+    "probability": 0.18594719469547272,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Interlobular septal thickening",
+    "model_id": "official__interlobular_septal_thickening",
+    "family": "official_18",
+    "validation_metrics": {
+      "valid_n": 1564,
+      "valid_positive": 124,
+      "auroc": 0.793010752688172,
+      "auprc": 0.2593587084528037,
+      "f1_at_0_5": 0.30103806228373703
+    },
+    "gradcam_available": true,
+    "gradcam_target": "Interlobular septal thickening",
+    "gradcam_score": "negative_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      43,
+      49,
+      55,
+      61,
+      67,
+      93
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  }
+]

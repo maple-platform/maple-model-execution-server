@@ -1,0 +1,22 @@
+{
+  "model_name": "HAM10000_ViT7",
+  "description": "Seven-class dermoscopic skin-lesion classifier. Takes a PNG or JPEG dermoscopy image and returns a Grad-CAM overlay plus class probabilities.",
+  "task_type": "classification",
+  "disease": "melanoma, melanocytic nevus, basal cell carcinoma, actinic keratosis, benign keratosis, dermatofibroma, vascular lesion",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "gradcam_overlay",
+    "classification_probabilities"
+  ],
+  "output_image_role": "gradcam_overlay",
+  "requires": [],
+  "provides": [],
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

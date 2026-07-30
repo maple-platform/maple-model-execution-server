@@ -1,0 +1,13 @@
+{
+  "model_name": "RETFound_DR_APTOS2019_GradCAM",
+  "description": "RETFound-MAE 기반 APTOS2019 당뇨망막병증 5단계 분류 및 ViT Grad-CAM 시각화 (연구용/비상업용)",
+  "task_type": "classification",
+  "disease": "Diabetic Retinopathy",
+  "model_type": "standalone",
+  "required_data": ["png", "jpg", "jpeg"],
+  "result_type": ["gradcam_overlay", "classification_probabilities"],
+  "output_image_role": "gradcam_overlay",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "label": "Pleural effusion",
+    "probability": 0.16885694861412048,
+    "threshold": 0.5,
+    "pred": 0,
+    "pred_name": "No Pleural effusion",
+    "model_id": "official__pleural_effusion",
+    "family": "official_18",
+    "validation_metrics": {
+      "valid_n": 1564,
+      "valid_positive": 189,
+      "auroc": 0.9254179894179894,
+      "auprc": 0.7525917909632811,
+      "f1_at_0_5": 0.6570841889117043
+    },
+    "gradcam_available": true,
+    "gradcam_target": "Pleural effusion",
+    "gradcam_score": "negative_logit",
+    "gradcam_layer": "encoder.layers.4.blocks",
+    "gradcam_slices": [
+      50,
+      56,
+      62,
+      68,
+      87,
+      93
+    ],
+    "image_roles": [
+      "gradcam_axial_montage"
+    ]
+  }
+]

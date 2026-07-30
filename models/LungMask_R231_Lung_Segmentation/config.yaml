@@ -1,0 +1,10 @@
+model_name: LungMask_R231_Lung_Segmentation
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/LungMask_R231_Lung_Segmentation/runner.py
+inference_path: /app/AI_Models/Pulmonology/LungMask_R231_Lung_Segmentation/inference.py
+model_path: /app/AI_Models/Pulmonology/LungMask_R231_Lung_Segmentation/checkpoint
+meta:
+  description: LungMask R231 bilateral lung segmentation and volume measurement.
+  modality: nii, nii.gz
+  task: segmentation, quantification

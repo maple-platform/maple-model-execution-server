@@ -1,0 +1,13 @@
+{
+  "model_name": "Cervical_Cytology_SIPaKMeD",
+  "description": "AlexNet cervical cytology model fine-tuned on SIPaKMeD. Classifies a cropped Pap-smear cell into five morphology categories and returns class probabilities.",
+  "task_type": "classification",
+  "disease": "cervical cytology, Pap smear, cervical cancer screening, SIPaKMeD",
+  "model_type": "standalone",
+  "required_data": ["png", "jpg", "jpeg"],
+  "result_type": "text",
+  "output_image_role": null,
+  "requires": [],
+  "provides": [],
+  "docker": {"service_url": "http://runtime-medical:8000"}
+}

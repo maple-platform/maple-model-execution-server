@@ -1,0 +1,20 @@
+{
+  "model_name": "GRAZPED_Wrist_YOLOv9E",
+  "description": "Pediatric wrist radiograph model returning fracture boxes, confidences, a fracture summary, and a text-free fracture-only bounding-box overlay.",
+  "task_type": "bbox detection",
+  "disease": "pediatric wrist fracture, bone anomaly, bone lesion, foreign body",
+  "model_type": "standalone",
+  "required_data": [
+    "png",
+    "jpg",
+    "jpeg"
+  ],
+  "result_type": [
+    "bbox_overlay",
+    "detection_predictions"
+  ],
+  "output_image_role": "bbox_overlay",
+  "docker": {
+    "service_url": "http://runtime-medical:8000"
+  }
+}

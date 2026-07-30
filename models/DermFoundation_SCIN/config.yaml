@@ -1,0 +1,11 @@
+model_name: DermFoundation_SCIN
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path: /app/models/DermFoundation_SCIN/runner.py
+inference_path: /app/AI_Models/Dermatology/DermFoundation_SCIN/inference.py
+model_path: /app/AI_Models/Dermatology/DermFoundation_SCIN/checkpoint
+result_type: ["occlusion_overlay", "classification_probabilities"]
+meta:
+  description: "SCIN common-condition classifier using Derm Foundation embeddings. Takes a clinical PNG or JPEG image and returns a 3-by-3 occlusion-sensitivity overlay plus thirteen class probabilities."
+  modality: "png, jpg, jpeg"
+  task: "classification"
