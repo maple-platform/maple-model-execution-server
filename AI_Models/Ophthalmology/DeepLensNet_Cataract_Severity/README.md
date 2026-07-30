@@ -11,8 +11,9 @@ Included: single-exam inference (three-photo input), the three official
 InceptionV3 regressors (NS / PCTCOL / PCTPSC), and model caching. Excluded by
 project decision: training/fine-tuning, batch/CSV input, attention-map
 visualization (the upstream repo ships a separate `attention_map_samples.zip`
-that was not adapted here), runner/server/Docker work, and platform
-registration.
+that was not adapted here). A Maple runtime adapter and platform registration
+are included under `models/DeepLensNet_Cataract_Severity/`; see that folder's
+README for the JSON-manifest API contract and deployment status.
 
 ## Target quantities
 
@@ -69,6 +70,27 @@ result.
 single-file contract, this model needs three co-registered photos from the
 same exam. See `IMPLEMENTATION_STATUS.md` for the open question on how the
 platform's upload flow should deliver three files to one `POST /run` call.
+
+For the current provisional API, the uploaded source files remain JPG/PNG,
+but `input_path` must reference a JSON manifest containing their paths. The
+`meta.json` `required_data` field describes the clinical source files, not
+the transport wrapper. Do not send one photograph directly to `/infer/v2`.
+
+## Docker and API deployment
+
+This model is registered to `runtime-medical`, but it is **not currently
+installable in the shared runtime image**. Its verified stack requires Python
+3.8, TensorFlow 2.3.1, Keras 2.4.3, and old NumPy/Pillow versions, whereas the
+shared runtime contains the platform's newer PyTorch/medical stack. Treat the
+registration as integration metadata until a dedicated legacy TensorFlow
+runtime is added.
+
+The required deployment sequence, including checkpoint placement, manifest
+format, container paths, health checks, and API examples, is documented in:
+
+- `models/DeepLensNet_Cataract_Severity/README.md`
+- `AI_Models/Ophthalmology/README.md`
+- `AI_Models/Ophthalmology/overview.md`
 
 ## Validation before submission
 

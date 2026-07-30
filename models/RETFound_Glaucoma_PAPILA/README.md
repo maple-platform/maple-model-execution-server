@@ -38,3 +38,57 @@ for the full validation data.
 
 RETFound is CC BY-NC 4.0 and is limited to research/non-commercial use unless
 separate permission is obtained.
+
+## Docker execution
+
+The host and container paths are connected by the compose mounts:
+
+| Host path | Container path | Mode |
+|---|---|---|
+| `models/` | `/app/models` | read-only |
+| `AI_Models/` | `/app/AI_Models` | read-only |
+| `inputs/` | `/app/inputs` | read/write |
+| `outputs/` | `/app/outputs` | read/write |
+
+Place `checkpoint-best.pth` in the checkpoint directory and put the input
+image under `inputs/`. Then run from the repository root:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.runtime.yml build runtime-basic runtime-medical inference-gateway
+docker compose -f docker-compose.yml -f docker-compose.runtime.yml up -d runtime-medical inference-gateway
+docker compose -f docker-compose.yml -f docker-compose.runtime.yml ps
+curl -f http://localhost:9021/health
+curl -f http://localhost:8110/ready
+```
+
+Gateway request:
+
+```bash
+curl -sS http://localhost:8110/infer/v2 \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model_name": "RETFound_Glaucoma_PAPILA",
+    "input_path": "/app/inputs/papila.jpg",
+    "output_dir": "/app/outputs/RETFound_Glaucoma_PAPILA",
+    "params": {"timeout": 300}
+  }'
+```
+
+For runtime-only troubleshooting, bypass the Gateway:
+
+```bash
+curl -sS http://localhost:9021/run/v2 \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model_name": "RETFound_Glaucoma_PAPILA",
+    "input_path": "/app/inputs/papila.jpg",
+    "output_dir": "/app/outputs/RETFound_Glaucoma_PAPILA",
+    "params": {}
+  }'
+```
+
+Inspect failures without rebuilding:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.runtime.yml logs --tail=200 inference-gateway runtime-medical
+```

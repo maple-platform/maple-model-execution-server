@@ -16,7 +16,8 @@ Included: single-image inference, PAPILA 3-class glaucoma classification,
 model caching, and ViT Grad-CAM. Excluded by project decision:
 training/fine-tuning, CSV or tabular input, multimodal fusion (PAPILA also
 has clinical/demographic data not used here), OCT, segmentation, pipelines,
-runner/server/Docker work, and platform registration.
+and autonomous clinical diagnosis. A Maple runtime adapter and platform
+registration are included under `models/RETFound_Glaucoma_PAPILA/`.
 
 ## Required external artifacts
 
@@ -88,6 +89,44 @@ python validate_package.py \
 
 Expected checks: RGB `uint8` output, shape `(224, 224, 3)`, three finite
 probabilities summing to approximately 1, and one top prediction.
+
+## Docker and API deployment
+
+The model is routed to `runtime-medical`. Place
+`checkpoint-best.pth` in this package's `checkpoint/` directory before
+starting the containers; `AI_Models` is mounted read-only at
+`/app/AI_Models`, so the file becomes:
+
+```text
+/app/AI_Models/Ophthalmology/RETFound_Glaucoma_PAPILA/checkpoint/checkpoint-best.pth
+```
+
+Build and start the Gateway and runtime services from the repository root:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.runtime.yml build runtime-basic runtime-medical inference-gateway
+docker compose -f docker-compose.yml -f docker-compose.runtime.yml up -d runtime-medical inference-gateway
+curl -f http://localhost:9021/health
+curl -f http://localhost:8110/ready
+```
+
+Copy or place an image under the host `inputs/` directory and call the
+Gateway with the corresponding container path:
+
+```bash
+curl -sS http://localhost:8110/infer/v2 \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model_name": "RETFound_Glaucoma_PAPILA",
+    "input_path": "/app/inputs/papila_test_cglaucoma_RET102OD.jpg",
+    "output_dir": "/app/outputs/RETFound_Glaucoma_PAPILA",
+    "params": {"timeout": 300}
+  }'
+```
+
+The response contains all three probabilities and a base64 Grad-CAM image.
+The UI must expose the full probability vector and the known calibration
+limitation, rather than presenting `top_prediction` as a diagnosis.
 
 ## License and clinical limitation
 
