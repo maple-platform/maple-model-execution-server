@@ -10,9 +10,11 @@ AREDS Simplified Severity Score for age-related macular degeneration (AMD).
 Included: single-exam inference (two-photo input) and the three official
 risk-factor classifiers behind the AREDS Simplified Severity Score (drusen
 size, pigmentary abnormality, advanced AMD) plus the official scoring
-formula. Excluded by project decision: training, the separate geographic
-atrophy (GA) and central-GA models (upstream tag `0.2`), runner/server/Docker
-work, and platform registration.
+formula. Excluded by project decision: training and the separate geographic
+atrophy (GA) and central-GA models (upstream tag `0.2`). A Maple runtime
+adapter and platform registration are included under
+`models/DeepSeeNet_AMD_SimplifiedScore/`; see that folder's README for the
+JSON-manifest API contract and deployment status.
 
 ## Input
 
@@ -62,6 +64,28 @@ with large drusen; +1 more if both eyes have intermediate drusen; capped at 5.
 co-registered photos from the same exam, not Maple's usual single-file
 contract. See `IMPLEMENTATION_STATUS.md` for the same open upload-flow
 question already flagged for `DeepLensNet_Cataract_Severity`.
+
+For the provisional API, the clinical source files are JPG/PNG, while
+`input_path` must reference a JSON manifest containing both paths. The
+`meta.json` `required_data` field describes the source images rather than the
+transport wrapper. Sending a single fundus image directly to `/infer/v2`
+will fail manifest validation.
+
+## Docker and API deployment
+
+This model is registered to `runtime-medical`, but it is **not currently
+installable in the shared runtime image**. The verified upstream stack
+requires Python 3.6, TensorFlow 1.15.5, Keras 2.2.4, and NumPy below 1.19.
+Those versions cannot be combined safely with the current shared
+PyTorch/medical runtime. A dedicated legacy TensorFlow runtime is required
+before production container execution.
+
+The required deployment sequence, checkpoint placement, manifest format,
+container paths, health checks, and API examples are documented in:
+
+- `models/DeepSeeNet_AMD_SimplifiedScore/README.md`
+- `AI_Models/Ophthalmology/README.md`
+- `AI_Models/Ophthalmology/overview.md`
 
 ## Validation before submission
 
