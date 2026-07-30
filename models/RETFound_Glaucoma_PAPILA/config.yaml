@@ -1,0 +1,22 @@
+model_name: RETFound_Glaucoma_PAPILA
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path:    /app/models/RETFound_Glaucoma_PAPILA/runner.py
+inference_path: /app/AI_Models/Ophthalmology/RETFound_Glaucoma_PAPILA/inference.py
+model_path:     /app/AI_Models/Ophthalmology/RETFound_Glaucoma_PAPILA/checkpoint
+meta:
+  description: >-
+    RETFound-MAE model fine-tuned on PAPILA for 3-class glaucoma
+    classification (normal, glaucoma suspect, glaucoma) from a color fundus
+    photograph, returning class probabilities and a ViT Grad-CAM overlay.
+    Research and non-commercial use only. KNOWN LIMITATION: local batch
+    validation (98 test images) found the Glaucoma class never wins the
+    top-1 argmax, even for confirmed glaucoma cases -- present the returned
+    per-class probabilities, not just top_prediction, to the clinician.
+  modality: Color fundus photography
+  task: single-label classification, explainability
+  labels:
+    - Normal (non-glaucoma)
+    - Glaucoma suspect
+    - Glaucoma
+  license: CC BY-NC 4.0
