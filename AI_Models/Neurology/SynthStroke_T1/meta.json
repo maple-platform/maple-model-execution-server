@@ -11,6 +11,6 @@
   "output_image_role": "segmentation_overlay",
   "modality": "T1",
   "docker": {
-    "service_url": "관리자 작성 예정"
+    "service_url": "http://runtime-medical:8000"
   }
 }
