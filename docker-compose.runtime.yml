@@ -88,6 +88,13 @@ services:
       - MODELS_DIR=/app/models
       - INPUTS_DIR=/app/inputs
       - OUTPUTS_DIR=/app/outputs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
   runtime-nnunet:
     build:
@@ -95,6 +102,7 @@ services:
       dockerfile: docker/Dockerfile.runtime-nnunet
     image: maple/runtime-nnunet:latest
     container_name: maple-runtime-nnunet
+    shm_size: "8gb"
     depends_on:
       - runtime-basic
     restart: unless-stopped

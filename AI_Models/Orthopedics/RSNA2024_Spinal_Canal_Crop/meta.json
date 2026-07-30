@@ -15,6 +15,6 @@
   ],
   "output_image_role": "classification_probabilities",
   "docker": {
-    "service_url": "\uad00\ub9ac\uc790 \uc791\uc131 \uc608\uc815"
+    "service_url": "http://runtime-medical:8000"
   }
 }

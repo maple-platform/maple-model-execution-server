@@ -5,6 +5,7 @@ import base64
 import io
 import json
 import sys
+import threading
 from pathlib import Path
 
 import cv2
@@ -14,6 +15,7 @@ from PIL import Image
 
 
 _CACHE = {}
+_LOAD_LOCK = threading.Lock()
 
 
 def _load_model(repo_path: Path, weights_path: Path):
@@ -24,7 +26,20 @@ def _load_model(repo_path: Path, weights_path: Path):
     from models.common import DetectMultiBackend
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = DetectMultiBackend(str(weights_path), device=device, fp16=device.type == "cuda")
+    with _LOAD_LOCK:
+        original_load = torch.load
+
+        def trusted_checkpoint_load(*args, **kwargs):
+            kwargs.setdefault("weights_only", False)
+            return original_load(*args, **kwargs)
+
+        torch.load = trusted_checkpoint_load
+        try:
+            model = DetectMultiBackend(
+                str(weights_path), device=device, fp16=device.type == "cuda"
+            )
+        finally:
+            torch.load = original_load
     _CACHE[key] = (model, device)
     return model, device
 

@@ -14,6 +14,6 @@
   ],
   "output_image_role": "gradcam_axial_montage",
   "docker": {
-    "service_url": "관리자 작성 예정"
+    "service_url": "http://runtime-medical:8000"
   }
 }

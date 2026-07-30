@@ -29,6 +29,10 @@ results/
 # Checkpoint directories
 checkpoint/
 checkpoints/
+!AI_Models/Pulmonology/ChestXray14_Multilabel_Classification/checkpoint/
+!AI_Models/Pulmonology/ChestXray14_Multilabel_Classification/checkpoint/.gitkeep
+!models/example_model/checkpoint/
+!models/example_model/checkpoint/.gitkeep
 
 # Secrets / credentials
 secrets/

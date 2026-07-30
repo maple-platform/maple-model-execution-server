@@ -167,6 +167,9 @@ docker compose -f docker-compose.yml -f docker-compose.runtime.yml up -d --build
 curl http://localhost:8110/health
 # {"status": "ok", "service": "inference-gateway"}
 
+# 모델 설정과 네 runtime 연결을 함께 확인하는 readiness
+curl http://localhost:8110/ready
+
 # runtime 컨테이너 헬스 체크 (등록된 모델 목록 포함)
 curl http://localhost:9021/health
 # {"status": "ok", "service": "maple-runtime-server", "models": [...]}
@@ -212,6 +215,26 @@ curl http://localhost:9021/health
 {"status": "ok", "service": "inference-gateway"}
 ```
 
+`GET /health`는 프로세스 생존만 확인합니다. 트래픽 투입 전에는 `GET /ready`를
+사용하세요. `/ready`는 73개 모델 설정과 각 Runtime의 `/health`를 2초
+타임아웃으로 검사합니다. 모델 설정 오류가 있으면 해당 모델만 비활성 상태로
+간주하고, `503 not_ready` 응답의 `errors`에 누락 없이 공개합니다. 즉 운영
+환경에서 잘못된 모델을 조용히 건너뛰지 않습니다.
+
+```json
+{
+  "status": "ready",
+  "models": {"total": 73, "valid": 73, "invalid": 0},
+  "runtimes": {
+    "runtime-basic": "ready",
+    "runtime-medical": "ready",
+    "runtime-yolo": "ready",
+    "runtime-nnunet": "ready"
+  },
+  "errors": []
+}
+```
+
 ---
 
 ### `POST /infer/v2` — 신규 runtime 기반 추론
@@ -232,18 +255,23 @@ curl http://localhost:9021/health
 | `model_name` | `str` | `models/` 디렉터리 이름과 일치 |
 | `input_path` | `str` | 컨테이너 내부 입력 파일 경로 |
 | `output_dir` | `str` | 출력 디렉터리 (미지정 시 `/app/outputs/{model_name}`) |
-| `params` | `dict` | config 오버라이드 (선택) |
+| `params` | `dict` | Runtime에 전달할 추가 파라미터 (선택). `container_url`과 `container_endpoint`는 무시됨 |
 
 **Response**
 
 ```json
 {
   "status": "ok",
-  "model_name": "BraTS2020_T1_UNet3D",
   "result": {
-    "images_b64": ["<base64 PNG>", "..."],
-    "labels": ["all_regions", "WT", "TC", "ET"],
-    "output_files": ["/app/outputs/BraTS2020_T1_UNet3D/sample_all_regions.png"]
+    "result_type": "segmentation",
+    "predictions": [],
+    "data": {}
+  },
+  "output_images": ["<base64 PNG>", "..."],
+  "model_output": {},
+  "metadata": {
+    "model_name": "BraTS2020_T1_UNet3D",
+    "runtime": "runtime-medical"
   }
 }
 ```
@@ -253,15 +281,21 @@ curl http://localhost:9021/health
 | HTTP | 발생 조건 |
 |------|----------|
 | `404` | model_name에 해당하는 config.yaml 없음 |
-| `503` | runtime 컨테이너 URL 환경변수 미설정 |
-| `502` | runtime 컨테이너 오류 |
+| `422` | config.yaml 오류 또는 지원하지 않는 runtime |
+| `503` | runtime URL 환경변수 미설정 또는 잘못된 HTTP(S) URL |
+| `502` | runtime 연결/응답 오류 |
 | `504` | 타임아웃 |
+
+오류의 `detail`에는 `model_name`, `runtime`, `error_type`, `message`가
+포함되며 Runtime URL이나 환경변수 값은 노출하지 않습니다.
 
 ---
 
 ### `POST /infer` — Legacy 직접 라우팅
 
-기존 호환용. `params.container_url`에 컨테이너 URL을 직접 지정합니다.
+기존 호환용이며 로그에 legacy 호출로 기록됩니다. `params.container_url`은
+hostname이 있는 절대 `http://` 또는 `https://` URL이어야 합니다.
+placeholder나 프로토콜 없는 값은 외부 HTTP 요청 전에 `422`로 거절됩니다.
 
 ```json
 {

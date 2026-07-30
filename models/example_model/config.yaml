@@ -15,6 +15,9 @@ runtime: runtime-basic
 # runner.py 는 predict(input_path, output_dir, config) -> dict 를 구현해야 함
 runner_path: /app/models/example_model/runner.py
 
+# 실제 모델에서는 AI_Models 아래의 inference.py를 지정합니다.
+inference_path: /app/models/example_model/runner.py
+
 # 모델 가중치 경로 (컨테이너 내부 경로)
 # docker-compose volume 으로 주입됨
 model_path: /app/models/example_model/checkpoint/model.pt

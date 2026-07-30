@@ -6,10 +6,16 @@ from urllib.parse import urlparse
 import httpx
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-from app.model_config import load_model_config
-from app.runtime_loader import resolve_runtime_url
+from app.model_config import REQUIRED_FIELDS, load_model_config, validate_all_model_configs
+from app.runtime_loader import (
+    RuntimeConfigError,
+    list_runtimes,
+    resolve_runtime_url,
+    validate_http_url,
+)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -25,6 +31,7 @@ class InferRequest(BaseModel):
 
 
 class InferResponse(BaseModel):
+    status: str = "ok"
     result: Any = None
     output_images: list[str] = Field(default_factory=list)
     model_output: dict[str, Any] = Field(default_factory=dict)
@@ -39,6 +46,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+def _request_timeout(
+    params: dict[str, Any],
+    model_config: dict[str, Any] | None = None,
+) -> float:
+    """Resolve timeout without coupling the legacy endpoint to v2 config."""
+    configured_default = (model_config or {}).get("timeout", 120.0)
+    return float(params.get("timeout", configured_default))
 
 
 def _build_container_payload(input_data: Any, params: dict[str, Any]) -> dict[str, Any]:
@@ -89,9 +105,9 @@ def _normalize_container_response(model_id: str, raw: dict[str, Any]) -> InferRe
 
     return InferResponse(
         result={
-            "result_type": runner_data.get("result_type"),
-            "predictions": runner_data.get("predictions"),
-            "data": runner_data.get("data"),
+            "result_type": runner_data.get("result_type") or "unknown",
+            "predictions": runner_data.get("predictions") or [],
+            "data": runner_data.get("data") or {},
         },
         output_images=images,
         model_output=model_output,
@@ -101,6 +117,33 @@ def _normalize_container_response(model_id: str, raw: dict[str, Any]) -> InferRe
             "result_type": runner_data.get("result_type"),
         },
     )
+
+
+def _normalize_v2_response(
+    model_name: str,
+    runtime_name: str,
+    raw: dict[str, Any],
+) -> InferResponse:
+    response = _normalize_container_response(model_name, raw)
+    response.metadata = {
+        "model_name": model_name,
+        "runtime": runtime_name,
+    }
+    return response
+
+
+def _error_detail(
+    model_name: str,
+    runtime: str | None,
+    error_type: str,
+    message: str,
+) -> dict[str, Any]:
+    return {
+        "model_name": model_name,
+        "runtime": runtime,
+        "error_type": error_type,
+        "message": message,
+    }
 
 
 def _resolve_container_url(container_url: str) -> str:
@@ -129,17 +172,91 @@ async def health():
     return {"status": "ok", "service": "inference-gateway"}
 
 
+@app.on_event("startup")
+async def validate_models_on_startup() -> None:
+    report = validate_all_model_configs()
+    app.state.model_validation = report
+    if report["invalid"]:
+        logger.error(
+            "Model configuration validation failed: valid=%s invalid=%s errors=%s",
+            report["valid"],
+            report["invalid"],
+            report["errors"],
+        )
+    else:
+        logger.info("Model configuration validation passed: %s models", report["valid"])
+
+
+@app.get("/ready")
+async def ready():
+    report = validate_all_model_configs()
+    app.state.model_validation = report
+    runtime_states: dict[str, str] = {}
+    errors = list(report["errors"])
+
+    for runtime_name, runtime_url in list_runtimes().items():
+        if not runtime_url:
+            runtime_states[runtime_name] = "invalid_config"
+            errors.append({
+                "runtime": runtime_name,
+                "error_type": "runtime_url_invalid",
+                "message": "Runtime URL is missing or invalid",
+            })
+            continue
+        try:
+            async with httpx.AsyncClient(timeout=2.0) as client:
+                response = await client.get(f"{runtime_url}/health")
+                response.raise_for_status()
+            runtime_states[runtime_name] = "ready"
+        except httpx.TimeoutException:
+            runtime_states[runtime_name] = "timeout"
+            errors.append({"runtime": runtime_name, "error_type": "runtime_timeout", "message": "Health check timed out"})
+        except (httpx.HTTPError, ValueError):
+            runtime_states[runtime_name] = "unavailable"
+            errors.append({"runtime": runtime_name, "error_type": "runtime_unavailable", "message": "Health check failed"})
+
+    is_ready = not errors
+    body = {
+        "status": "ready" if is_ready else "not_ready",
+        "models": {key: report[key] for key in ("total", "valid", "invalid")},
+        "runtimes": runtime_states,
+        "errors": errors,
+    }
+    if not is_ready:
+        return JSONResponse(status_code=503, content=body)
+    return body
+
+
 @app.post("/infer", response_model=InferResponse)
 async def infer(req: InferRequest):
     container_url = (req.params.get("container_url") or "").rstrip("/")
     container_endpoint = req.params.get("container_endpoint", "/run")
-    timeout = float(req.params.get("timeout", 120.0))
+    timeout = _request_timeout(req.params)
 
-    if not container_url:
-        raise HTTPException(status_code=400, detail="params.container_url is required")
+    logger.warning("Legacy POST /infer used - model_id=%s", req.model_id)
+    if not validate_http_url(container_url):
+        raise HTTPException(
+            status_code=422,
+            detail=_error_detail(
+                req.model_id,
+                None,
+                "invalid_container_url",
+                "params.container_url must be an absolute HTTP(S) URL",
+            ),
+        )
     if not container_endpoint.startswith("/"):
         container_endpoint = f"/{container_endpoint}"
     container_url = _resolve_container_url(container_url)
+    if not validate_http_url(container_url):
+        raise HTTPException(
+            status_code=422,
+            detail=_error_detail(
+                req.model_id,
+                None,
+                "invalid_container_url",
+                "Resolved params.container_url must be an absolute HTTP(S) URL",
+            ),
+        )
 
     payload = _build_container_payload(req.input_data, req.params)
     logger.info("Infer request - model_id=%s target=%s%s", req.model_id, container_url, container_endpoint)
@@ -179,47 +296,122 @@ async def infer_v2(req: InferV2Request):
     try:
         config = load_model_config(req.model_name)
     except FileNotFoundError as exc:
-        raise HTTPException(status_code=404, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=404,
+            detail=_error_detail(req.model_name, None, "model_not_found", str(exc)),
+        ) from exc
     except ValueError as exc:
-        raise HTTPException(status_code=422, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=422,
+            detail=_error_detail(req.model_name, None, "invalid_model_config", str(exc)),
+        ) from exc
 
     runtime_name = config.get("runtime")
     if not runtime_name:
-        raise HTTPException(status_code=422, detail=f"config.yaml for '{req.model_name}' missing 'runtime' field")
-
-    runtime_url = resolve_runtime_url(runtime_name)
-    if not runtime_url:
         raise HTTPException(
-            status_code=503,
-            detail=f"Runtime '{runtime_name}' URL not configured (set env var for this runtime)",
+            status_code=422,
+            detail=_error_detail(req.model_name, None, "missing_runtime", "config.yaml is missing 'runtime'"),
         )
+    missing_fields = [field for field in REQUIRED_FIELDS if not config.get(field)]
+    if missing_fields:
+        raise HTTPException(
+            status_code=422,
+            detail=_error_detail(
+                req.model_name,
+                runtime_name,
+                "missing_model_fields",
+                f"Missing required fields: {', '.join(missing_fields)}",
+            ),
+        )
+    if config["model_name"] != req.model_name:
+        raise HTTPException(
+            status_code=422,
+            detail=_error_detail(
+                req.model_name,
+                runtime_name,
+                "model_name_mismatch",
+                "config.yaml model_name does not match its directory",
+            ),
+        )
+    startup_report = getattr(app.state, "model_validation", None)
+    if startup_report:
+        model_error = next(
+            (
+                error
+                for error in startup_report["errors"]
+                if error.get("model_name") == req.model_name
+            ),
+            None,
+        )
+        if model_error:
+            raise HTTPException(
+                status_code=422,
+                detail=_error_detail(
+                    req.model_name,
+                    runtime_name,
+                    model_error["error_type"],
+                    model_error["message"],
+                ),
+            )
 
+    try:
+        runtime_url = resolve_runtime_url(runtime_name)
+    except RuntimeConfigError as exc:
+        status_code = 422 if exc.error_type == "unsupported_runtime" else 503
+        raise HTTPException(
+            status_code=status_code,
+            detail=_error_detail(req.model_name, runtime_name, exc.error_type, str(exc)),
+        ) from exc
+
+    safe_params = {
+        key: value
+        for key, value in req.params.items()
+        if key not in {"container_url", "container_endpoint"}
+    }
     payload = {
         "model_name": req.model_name,
         "input_path": req.input_path,
         "output_dir": req.output_dir,
-        "params": req.params,
+        "params": safe_params,
     }
-    timeout = float(req.params.get("timeout", 120.0))
-    logger.info("InferV2 request - model_name=%s runtime=%s", req.model_name, runtime_name)
+    timeout = _request_timeout(req.params, config)
+    target = f"{runtime_url}/run/v2"
+    logger.info(
+        "InferV2 request - model_name=%s runtime=%s target=%s",
+        req.model_name,
+        runtime_name,
+        target,
+    )
 
     try:
         async with httpx.AsyncClient(timeout=timeout) as client:
-            resp = await client.post(f"{runtime_url.rstrip('/')}/run/v2", json=payload)
+            resp = await client.post(target, json=payload)
             resp.raise_for_status()
             raw = resp.json()
     except httpx.TimeoutException as exc:
         logger.error("Runtime timeout - model_name=%s: %s", req.model_name, exc)
-        raise HTTPException(status_code=504, detail=f"Runtime timeout: {exc}") from exc
+        raise HTTPException(
+            status_code=504,
+            detail=_error_detail(req.model_name, runtime_name, "runtime_timeout", "Runtime request timed out"),
+        ) from exc
     except httpx.HTTPStatusError as exc:
         logger.error("Runtime HTTP error - model_name=%s: %s", req.model_name, exc)
-        raise HTTPException(status_code=502, detail=f"Runtime HTTP error: {exc}") from exc
+        raise HTTPException(
+            status_code=502,
+            detail=_error_detail(req.model_name, runtime_name, "runtime_http_error", "Runtime returned an error"),
+        ) from exc
     except httpx.HTTPError as exc:
         logger.error("Runtime request failed - model_name=%s: %s", req.model_name, exc)
-        raise HTTPException(status_code=502, detail=f"Runtime request failed: {exc}") from exc
+        raise HTTPException(
+            status_code=502,
+            detail=_error_detail(req.model_name, runtime_name, "runtime_connection_failed", "Runtime connection failed"),
+        ) from exc
 
     if raw.get("status") != "ok":
         detail = raw.get("detail") or raw.get("message") or "Runtime inference failed"
-        raise HTTPException(status_code=502, detail=detail)
+        raise HTTPException(
+            status_code=502,
+            detail=_error_detail(req.model_name, runtime_name, "runtime_inference_failed", str(detail)),
+        )
 
-    return raw
+    return _normalize_v2_response(req.model_name, runtime_name, raw)
