@@ -1,0 +1,17 @@
+# Official DeepLensNet reference environment: Python 3.8, CPU or GPU (TF auto-detects)
+# Pinned exactly to the versions in the upstream repo's requirements.txt because the
+# .h5 checkpoints were saved with this Keras/TensorFlow combination.
+# Maple administrator: confirm a Python 3.8 wheel is available for this runtime image;
+# these are considerably older pins than the other registered Ophthalmology models.
+numpy==1.18.5
+pandas==1.0.5
+docopt==0.6.2
+tensorflow==2.3.1
+keras==2.4.3
+pillow==7.2.0
+
+# Not in the upstream repo's requirements.txt, but required: unpinned
+# transitive resolution pulls a modern protobuf (5.x) that breaks tensorflow's
+# generated _pb2.py files with "Descriptors cannot be created directly".
+# Verified locally -- see IMPLEMENTATION_STATUS.md.
+protobuf==3.19.6

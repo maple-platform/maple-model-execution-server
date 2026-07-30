@@ -1,0 +1,13 @@
+{
+  "model_name": "DeepSeeNet_AMD_SimplifiedScore",
+  "description": "DeepSeeNet AREDS Simplified Severity Score model for age-related macular degeneration (AMD). Takes one left-eye and one right-eye color fundus photograph and returns the patient-level AREDS Simplified Severity Score (0-5), derived from per-eye drusen size, pigmentary abnormality, and advanced AMD risk-factor classifiers.",
+  "task_type": "classification",
+  "disease": "age-related macular degeneration, AMD, drusen, pigmentary abnormality, advanced AMD",
+  "model_type": "standalone",
+  "required_data": ["png", "jpg", "jpeg"],
+  "result_type": "text",
+  "output_image_role": null,
+  "docker": {
+    "service_url": "관리자 작성 예정"
+  }
+}

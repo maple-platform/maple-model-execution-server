@@ -1,0 +1,24 @@
+model_name: DeepLensNet_Cataract_Severity
+execution_mode: external_runtime
+runtime: runtime-medical
+runner_path:    /app/models/DeepLensNet_Cataract_Severity/runner.py
+inference_path: /app/AI_Models/Ophthalmology/DeepLensNet_Cataract_Severity/inference.py
+model_path:     /app/AI_Models/Ophthalmology/DeepLensNet_Cataract_Severity/checkpoint
+meta:
+  description: >-
+    DeepLensNet cataract type and severity quantification. Takes up to three
+    anterior-segment photos per exam (45-degree slit-lamp, anterior/retro,
+    posterior/retro) and returns continuous severity scores for nuclear
+    sclerosis, cortical opacity (%), and posterior subcapsular opacity (%).
+    Research/non-commercial use only; no formal upstream LICENSE file.
+  modality: Anterior-segment slit-lamp / retroillumination photography
+  task: multi-image, multi-output regression (cataract severity quantification)
+  labels:
+    - Nuclear sclerosis (continuous, ~0.9-7.1)
+    - Cortical lens opacity percent (0-100)
+    - Posterior subcapsular opacity percent (0-100)
+  license: No upstream LICENSE file; NCBI states research/non-commercial use only
+  input_convention: >-
+    PROVISIONAL: input_path must point to a JSON manifest with any subset of
+    {"ns_image", "cortical_image", "psc_image"} -- see runner.py and
+    IMPLEMENTATION_STATUS.md for the open multi-file upload question.
